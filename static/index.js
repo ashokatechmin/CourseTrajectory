@@ -84,27 +84,23 @@ async function updateCourses() {
     }
 
     const div = document.createElement('div');
-    div.classList.add('col');
+    div.classList.add('m-1', 'rounded', 'border', 'border-black', 'p-[2px]', 'bg-slate-100', 'shadow');
     div.setAttribute('name', 'courseDiv');
     div.setAttribute('draggable', 'true');
     div.ondragstart = (event) => drag(event);
     div.setAttribute('id', course.code);
 
-    const div2 = document.createElement('div');
-    div2.classList.add('courseInfo');
-
-    const courseName = document.createElement('h5');
-    courseName.classList.add('text-center', 'm-0');
+    const courseName = document.createElement('p');
+    courseName.classList.add('text-center', 'm-0', 'font-medium');
     courseName.textContent = course.name;
 
     const courseCode = document.createElement('p');
-    courseCode.classList.add('text-center', 'm-0', 'p-0');
+    courseCode.classList.add('text-center', 'm-0');
     courseCode.textContent = course.code;
 
     // append
-    div2.appendChild(courseName);
-    div2.appendChild(courseCode);
-    div.appendChild(div2);
+    div.appendChild(courseName);
+    div.appendChild(courseCode);
     container.appendChild(div);
   });
 }
@@ -112,20 +108,33 @@ async function updateCourses() {
 window.onload = () => {
   const semContainer = document.querySelector('#semContainer');
   const noSems = 8;
+  const noRows = 2;
+  const noCols = noSems / noRows;
 
-  for (let sem = 1; sem <= noSems; sem++) {
+  semContainer.classList.add(`grid-cols-${noCols}`, `grid-rows-${noRows}`);
+
+  // create the semesters in a way so that 1, ..., n is converted into an array like: [1, 3, 5, 7, 2, 4, 6, 8]
+  // this is done so that the semesters are displayed in a zig-zag manner
+  const sems = Array.from({ length: noSems }, (_, i) => i + 1);
+  const semsZigZag = [];
+  for (let i = 0; i < noRows; i++) {
+    semsZigZag.push(...sems.filter((sem) => (sem - 1) % noRows === i));
+  }
+  console.log(semsZigZag);
+
+  for (const sem of semsZigZag) {
     chosenCourses[sem] = [];
 
     const div = document.createElement('div');
-    div.classList.add('d-flex', 'p-0', 'm-0', 'border', 'border-black');
+    div.classList.add('p-0', 'm-0', 'border-[1px]', 'border-black', 'w-full', 'h-full');
 
     const innerDiv1 = document.createElement('div');
-    innerDiv1.classList.add('text-center', 'bg-secondary', 'py-2', 'mt-0', 'w-25');
+    innerDiv1.classList.add('text-center', 'bg-neutral-200', 'py-2', 'mt-0', 'font-medium', 'border-b', 'border-black');
     innerDiv1.textContent = `Semester ${sem}`;
     div.appendChild(innerDiv1);
 
     const innerDiv2 = document.createElement('div');
-    innerDiv2.classList.add('mx-auto', 'px-4', 'py-2', 'w-100', 'row', 'row-cols-5', 'align-items-center');
+    innerDiv2.classList.add('mx-auto', 'px-4', 'py-2', 'w-full', 'h-full');
     innerDiv2.ondrop = (event) => drop(event);
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
