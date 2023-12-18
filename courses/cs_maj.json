@@ -1,0 +1,130 @@
+[
+    {
+    "name": "Calculus",
+    "code": ["MAT-1000"],
+    "pre-reqs": [],
+    "semester": "Monsoon",
+    "sem_no": 1,
+    "credits": 4
+    },
+    {
+    "name": "Introduction to Computer Science",
+    "code": ["CS-1102"],
+    "pre-reqs": ["Calculus"],
+    "semester": "Spring",
+    "sem_no": 2,
+    "credits": 4
+    },
+    {
+    "name": "Discrete Mathematics",
+    "code": ["CS-1104"],
+    "pre-reqs": ["Calculus"],
+    "semester": "Spring",
+    "sem_no": 2,
+    "credits": 4
+    },
+    {
+    "name": "Probability and Statistics",
+    "code": ["MAT-2020","CS-1209"],
+    "pre-reqs": ["Calculus"],
+    "semester": "Monsoon",
+    "sem_no": 3,
+    "credits": 4
+    },
+    {
+    "name": "Linear Algebra",
+    "code": ["MAT-1001"],
+    "pre-reqs": ["Calculus"],
+    "semester": "Monsoon",
+    "sem_no": 3,
+    "credits": 4
+    },
+    {
+    "name": "Data Structures and Algorithms",
+    "code": ["CS-1203"],
+    "pre-reqs": ["Introduction to Computer Science","Discrete Mathematics"],
+    "semester": "Monsoon",
+    "sem_no": 3,
+    "credits": 4
+    },
+    {
+    "name": "Theory of Computation",
+    "code": ["CS-1349"],
+    "pre-reqs": ["Data Structures and Algorithms"],
+    "semester": "Spring",
+    "sem_no": 4,
+    "credits": 4
+    },
+    {
+    "name": "Computer Organisation and Systems",
+    "code": ["CS-1216"],
+    "pre-reqs": ["Introduction to Computer Science"],
+    "semester": "Spring",
+    "sem_no": 4,
+    "credits": 4
+    },
+    {
+    "name": "Design Practices in CS",
+    "code": ["tbd-1"],
+    "pre-reqs": ["Data Structures and Algorithms","Computer Organisation and Systems"],
+    "semester": "Monsoon",
+    "sem_no": 5,
+    "credits": 4
+    },
+    {
+    "name": "Introduction to Machine Learning",
+    "code": ["CS-1390"],
+    "pre-reqs": ["Probability and Statistics","Data Structures and Algorithms"],
+    "semester": "Monsoon",
+    "sem_no": 5,
+    "credits": 4
+    },
+    {
+    "name": "Computer Networks",
+    "code": ["CS-1340"],
+    "pre-reqs": ["Data Structures and Algorithms"],
+    "semester": "Monsoon",
+    "sem_no": 5,
+    "credits": 2
+    },
+    {
+    "name": "Information Security",
+    "code": ["tbd-2"],
+    "pre-reqs": ["Data Structures and Algorithms","Probability and Statistics"],
+    "semester": "Monsoon",
+    "sem_no": 5,
+    "credits": 2
+    },
+    {
+    "name": "Design and Analysis of Algorithms",
+    "code": ["CS-1205"],
+    "pre-reqs": ["Data Structures and Algorithms","Linear Algebra"],
+    "semester": "Spring",
+    "sem_no": 6,
+    "credits": 4
+    },
+    {
+    "name": "Data Science and Management",
+    "code": ["tbd-3"],
+    "pre-reqs": ["Data Structures and Algorithms","Introduction to Machine Learning"],
+    "semester": "Spring",
+    "sem_no": 6,
+    "credits": 4
+    },
+    {
+    "name": "Capstone Project",
+    "code": ["tbd-4"],
+    "pre-reqs": ["Data Science and Management"],
+    "semester": "Monsoon",
+    "sem_no": 7,
+    "credits": 4
+    },
+    {
+    "name": "Programming Languages and Translation",
+    "code": ["tbd-5"],
+    "pre-reqs": ["Data Structures and Algorithms","Theory of Computation"],
+    "semester": "Monsoon",
+    "sem_no": 7,
+    "credits": 4
+    }
+  ]

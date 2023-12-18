@@ -19,10 +19,9 @@
 
 
 <body>
-    <div class="w-[95%] mx-auto mt-5">
-        <h1 class="text-center text-4xl font-bold">Course Trajectory Mapper</h1>
+    <div class="mr-5">
         <div>
-            <div class="flex flex-row justify-between mt-3 w-1/2 border border-black mx-auto rounded bg-slate-100 p-5">
+            <!-- <div class="flex flex-row justify-between mt-3 w-1/2 border border-black mx-auto rounded bg-slate-100 p-5">
                 <div class="flex flex-col w-1/4">
                     <label class="text-center" for="major">Major</label>
                     <select class="rounded border border-slate-500 w-full" name="major" id="major"
@@ -41,20 +40,29 @@
                         onchange="updateCourses()">
                     </select>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="flex mt-5">
-                <div class="flex flex-col p-4 rounded bg-slate-200 border border-black shadow-lg mr-4 w-[20%] h-[70vh]">
+            <div class="flex">
+                <div class="flex flex-col p-3 bg-[#003049] border border-black shadow-lg mr-4 w-[20%] h-[100vh]">
                     <div class="mx-auto w-100 d-flex flex-column">
-                        <h3 class="text-xl font-semibold text-center">Courses</h3>
-                        <input type="text" class=" border-[1px] py-1 px-2 rounded w-full my-2" onkeyup="updateCourses()"
-                            placeholder="Search for a course ..." id="courseQuery" />
+                        <h3 class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] font-mono text-2xl font-semibold text-white">Course Planner</h3>
+                        <br>
+                        <select class="rounded border border-slate-500 w-full my-3 font-mono text-sm" name="major" id="major" onchange="updateCourses()">
+                            <option selected>Select a Major</option>
+                            <option value="US">Computer Science</option>
+                            <option value="CA">Computer Science + Math - Cryptography</option>
+                            <option value="FR">Computer Science + Math - Machine Learning</option>
+                            <option value="FR">Economics</option>
+                            <option value="FR">Psychology</option>
+                        </select>
+                        <p class="font-mono text-white text-sm mt-1">Search Course Name or Code:</p>
+                        <input type="text" class=" border-[1px] py-1 px-2 w-full mt-3 mb-4" onkeyup="updateCourses()" id="courseQuery" />
                     </div>
                     <div id="courseContainer" class="overflow-y-scroll" ondrop="drop(event)"
                         ondragover="allowDrop(event)" droppable="true">
                     </div>
                 </div>
-                <div id="semContainer" class="grid rounded border-[1px] border-black w-4/5">
+                <div id="semContainer" class="grid grid-cols-4 gap-3 w-4/5 mt-1 mb-1 ml-0 mr-0 overflow-hidden">
                 </div>
             </div>
         </div>

@@ -4,3 +4,23 @@
   border: 1px black solid;
   margin: 5px 0;
 }
+/* For webkit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 7px; /* Adjust scrollbar width as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #f1f1f1; /* Handle and track colors */
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}

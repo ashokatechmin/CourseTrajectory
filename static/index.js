@@ -5,20 +5,34 @@ const getCourseData = async () => {
   if (mainCourseData) {
     return mainCourseData;
   }
-  mainCourseData = await fetch('./courses.json').then((res) => res.json());
+  mainCourseData = await fetch('./courses/cs_maj.json').then((res) => res.json());
   return mainCourseData;
 };
 
 const getCourses = async ({ query }) => {
   const courses = [];
   const coursesData = await getCourseData();
-  const keys = ['code', 'name', 'subject'];
+  const keys = ['name', 'code'];
 
   for (const course of coursesData) {
-    // use the any operatore for checking if the query is in any of the keys
-    if (keys.some((key) => course[key].toLowerCase().includes(query))) {
-      courses.push(course);
+   // use the any operatore for checking if the query is in any of the keys
+    // if (keys.some((key) => course[key].toLowerCase().includes(query))) {
+    for (var i = 0; i < 2; i++) {
+      if (typeof(course[keys[i]])==='string') {
+          if (course[keys[i]].toLowerCase().includes(query.toLowerCase())) {
+            courses.push(course);
+          }
+      }
+      // array type
+      else{
+        if (course[keys[i]].some((value) => value.toLowerCase().includes(query.toLowerCase()))) {
+          courses.push(course);
+        }
+      }
     }
+    // if (keys.some((key) => course[key].toLowerCase().includes(query))) {
+    //   courses.push(course);
+    //   }
   }
 
   return courses;
@@ -79,23 +93,24 @@ async function updateCourses() {
   selectedCourses = Array.from(selectedCourses).map((course) => course.id);
 
   courses.forEach((course) => {
+    console.log(course.name)
     if (selectedCourses.includes(course.code)) {
       return;
     }
 
     const div = document.createElement('div');
-    div.classList.add('m-1', 'rounded', 'border', 'border-black', 'p-[2px]', 'bg-slate-100', 'shadow');
+    div.classList.add('m-1', 'p-[3px]', 'bg-slate-100', 'shadow');
     div.setAttribute('name', 'courseDiv');
     div.setAttribute('draggable', 'true');
     div.ondragstart = (event) => drag(event);
     div.setAttribute('id', course.code);
 
     const courseName = document.createElement('p');
-    courseName.classList.add('text-center', 'm-0', 'font-medium');
+    courseName.classList.add('text-center', 'm-0', 'font-medium','font-mono','text-sm');
     courseName.textContent = course.name;
 
     const courseCode = document.createElement('p');
-    courseCode.classList.add('text-center', 'm-0');
+    courseCode.classList.add('text-center', 'm-0','font-mono','text-sm');
     courseCode.textContent = course.code;
 
     // append
@@ -126,10 +141,10 @@ window.onload = () => {
     chosenCourses[sem] = [];
 
     const div = document.createElement('div');
-    div.classList.add('p-0', 'm-0', 'border-[1px]', 'border-black', 'w-full', 'h-full');
+    div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full');
 
     const innerDiv1 = document.createElement('div');
-    innerDiv1.classList.add('text-center', 'bg-neutral-200', 'py-2', 'mt-0', 'font-medium', 'border-b', 'border-black');
+    innerDiv1.classList.add('text-center', 'text-white', 'drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)]', 'font-mono', 'bg-[#c1121f]', 'py-3', 'mt-0', 'mb-0', 'text-base', 'border-black');
     innerDiv1.textContent = `Semester ${sem}`;
     div.appendChild(innerDiv1);
 
