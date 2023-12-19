@@ -1,10 +1,4 @@
-.courseInfo {
-  /* Add Styles */
-  border-radius: 2px;
-  border: 1px black solid;
-  margin: 5px 0;
-}
-/* For webkit-based browsers (Chrome, Safari, Edge) */
+/* For all scrollbars */
 ::-webkit-scrollbar {
   width: 7px; /* Adjust scrollbar width as needed */
 }
@@ -16,6 +10,21 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+/* For horizontal scrollbars */
+::-webkit-scrollbar:horizontal {
+  height: 7px; /* Adjust scrollbar height as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track:horizontal {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb:horizontal {
   background: #000000;
 }
 
