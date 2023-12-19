@@ -17,18 +17,20 @@ const getCourses = async ({ query }) => {
   for (const course of coursesData) {
    // use the any operatore for checking if the query is in any of the keys
     // if (keys.some((key) => course[key].toLowerCase().includes(query))) {
+    var v = 0;
     for (var i = 0; i < 2; i++) {
-      if (typeof(course[keys[i]])==='string') {
-          if (course[keys[i]].toLowerCase().includes(query.toLowerCase())) {
-            courses.push(course);
-          }
-      }
-      // array type
-      else{
+      if (typeof(course[keys[i]])==='string' && v==0) {
+        console.log('name: '+course.name);
+        if (course[keys[i]].toLowerCase().includes(query.toLowerCase())) {
+          courses.push(course);
+          v = v+1;
+        }
+      } else if(v==0){
+        console.log('code: '+course.name)
         if (course[keys[i]].some((value) => value.toLowerCase().includes(query.toLowerCase()))) {
           courses.push(course);
         }
-      }
+      }       
     }
     // if (keys.some((key) => course[key].toLowerCase().includes(query))) {
     //   courses.push(course);
