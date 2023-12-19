@@ -46,14 +46,31 @@ function drag(ev) {
   const parent = target.parentNode;
   const sem = parent.id.replace('sem', '');
   
-  ev.dataTransfer.setData('elementData', JSON.stringify({ courseId: target.id, ogSem: sem }));
+  ev.dataTransfer.setData('elementData', JSON.stringify({ courseName: target.id, ogSem: sem }));
 }
+
+// function check_prereqs(coursename,sem){
+//   const course = mainCourseData.find((course) => course.name === coursename);
+//   var pre_reqs = course.pre_reqs;
+//   var flag = pre_reqs.length;
+//   console.log("flag: "+flag);
+//   // pre_reqs.forEach(prereq => {
+//   //   console.log("pre-req: "+prereq);
+//   // });
+  
+//   for (let i = 1; i <=sem; i++) {
+//     pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
+//     flag = pre_reqs.length;
+//     // if flag=0 then all pre-reqs are satisfied
+//   }
+//   return [flag,pre_reqs];
+// }
 
 function drop(ev) {
   ev.preventDefault();
 
-  const { courseId, ogSem } = JSON.parse(ev.dataTransfer.getData('elementData'));
-  const elem = document.getElementById(courseId);
+  const { courseName, ogSem } = JSON.parse(ev.dataTransfer.getData('elementData'));
+  const elem = document.getElementById(courseName);
 
   let target = ev.target;
   while (target.getAttribute('droppable') !== 'true') {
@@ -63,22 +80,60 @@ function drop(ev) {
       return;
     }
   }
-  // target sem div
+
+  // const sem = target.id.replace('sem', '');
+  // var flag = 0;
+  // var pre_reqs = null;
+  // var flagfin = 0;
+  // for (let i = 1; i <= sem; i++) {
+  //   chosenCourses[i].forEach(coursename => {
+  //     const [flag,pre_reqs] = check_prereqs(coursename,i);
+  //     if (flag) {
+  //       alert('course: '+coursename+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!')
+  //       flagfin = 1;
+  //     }
+  //   });
+  // }
+
+  
+  // check_prereqs(course,sem)
+  
+  // Retrieve course name using courseId
+  const course = mainCourseData.find((course) => course.name === courseName);
+
+  var pre_reqs = course.pre_reqs;
+  var flag = pre_reqs.length;
+  console.log("flag: "+flag);
+  // pre_reqs.forEach(prereq => {
+  //   console.log("pre-req: "+prereq);
+  // });
+  
   const sem = target.id.replace('sem', '');
-  if (sem !== 'courseContainer') {
-    chosenCourses[sem].push(courseId);
+  for (let i = 1; i <=sem; i++) {
+    pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
+    flag = pre_reqs.length;
+    // if flag=0 then all pre-reqs are satisfied
   }
-
-  if (ogSem !== 'courseContainer') {
-    // remove the course from the original container in chosenCourses
-    const index = chosenCourses[ogSem].indexOf(courseId);
-    if (index > -1) {
-      chosenCourses[ogSem].splice(index, 1);
+  
+  if (!flag) {
+    // target sem div
+    if (sem !== 'courseContainer') {
+      chosenCourses[sem].push(courseName);
     }
-  }
-  console.log(chosenCourses);
 
-  target.appendChild(elem);
+    if (ogSem !== 'courseContainer') {
+      // remove the course from the original container in chosenCourses
+      const index = chosenCourses[ogSem].indexOf(courseName);
+      if (index > -1) {
+        chosenCourses[ogSem].splice(index, 1);
+      }
+    }
+    console.log(chosenCourses);
+
+    target.appendChild(elem);
+  }else{
+    alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!');
+  }
 }
 
 async function updateCourses() {
@@ -108,14 +163,16 @@ async function updateCourses() {
     div.setAttribute('name', 'courseDiv');
     div.setAttribute('draggable', 'true');
     div.ondragstart = (event) => drag(event);
-    div.setAttribute('id', course.code);
+    // set div id as course name
+    div.setAttribute('id', course.name);
+    // div.setAttribute('id', course.code);
 
     const courseName = document.createElement('p');
-    courseName.classList.add('text-center', 'm-0','mb-1', 'font-medium','font-mono','text-sm','underline', 'underline-offset-4');
+    courseName.classList.add('text-center', 'm-0','mb-2', 'font-medium','font-mono','text-base','underline', 'underline-offset-4');
     courseName.textContent = course.name;
 
     const courseCode = document.createElement('p');
-    courseCode.classList.add('text-center', 'm-0','mb-1','font-mono','text-sm');
+    courseCode.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
     courseCode.textContent = course.code;
 
     const coursePrereqs = document.createElement('div');
@@ -164,17 +221,18 @@ window.onload = () => {
   // create the semesters in a way so that 1, ..., n is converted into an array like: [1, 3, 5, 7, 2, 4, 6, 8]
   // this is done so that the semesters are displayed in a zig-zag manner
   const sems = Array.from({ length: noSems }, (_, i) => i + 1);
-  const semsZigZag = [];
-  for (let i = 0; i < noRows; i++) {
-    semsZigZag.push(...sems.filter((sem) => (sem - 1) % noRows === i));
-  }
-  console.log(semsZigZag);
+  // const semsZigZag = [];
+  // for (let i = 0; i < noRows; i++) {
+  //   semsZigZag.push(...sems.filter((sem) => (sem - 1) % noRows === i));
+  // }
+  // console.log(semsZigZag);
 
-  for (const sem of semsZigZag) {
+  for (const sem of sems) {
     chosenCourses[sem] = [];
 
     const div = document.createElement('div');
-    div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full','shadow','bg-slate-100');
+    //
+    div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full', 'shadow', 'bg-slate-100','overflow-y-scroll');
 
     const innerDiv1 = document.createElement('div');
     innerDiv1.classList.add('text-center', 'text-white', 'font-mono', 'bg-[#c1121f]', 'py-3', 'mt-0', 'mb-0', 'text-base','border-b-[2px]', 'border-black');
@@ -182,6 +240,7 @@ window.onload = () => {
     div.appendChild(innerDiv1);
 
     const innerDiv2 = document.createElement('div');
+    //
     innerDiv2.classList.add('mx-auto', 'px-4', 'py-2', 'w-full', 'h-full');
     innerDiv2.ondrop = (event) => drop(event);
     innerDiv2.ondragover = (event) => allowDrop(event);
