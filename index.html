@@ -14,7 +14,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Course Trajectory Calculator</title>
+    <title>Course Planner</title>
 </head>
 
 
@@ -45,9 +45,9 @@
             <div class="flex">
                 <div class="flex flex-col p-3 bg-[#003049] border border-black shadow-lg mr-4 w-[20%] h-[100vh]">
                     <div class="mx-auto w-100 d-flex flex-column">
-                        <h3 class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] font-mono text-2xl font-semibold text-white">Course Planner</h3>
+                        <h3 class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] font-mono text-2xl font-semibold text-white text-center underline underline-offset-4">Course Planner</h3>
                         <br>
-                        <select class="rounded border border-slate-500 w-full my-3 font-mono text-sm" name="major" id="major" onchange="updateCourses()">
+                        <select class="rounded border border-slate-500 w-full mt-2 mb-3 font-mono text-sm" name="major" id="major" onchange="updateCourses()">
                             <option selected>Select a Major</option>
                             <option value="US">Computer Science</option>
                             <option value="CA">Computer Science + Math - Cryptography</option>
