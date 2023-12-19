@@ -174,7 +174,7 @@ window.onload = () => {
     chosenCourses[sem] = [];
 
     const div = document.createElement('div');
-    div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full','shadow');
+    div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full','shadow','bg-slate-100');
 
     const innerDiv1 = document.createElement('div');
     innerDiv1.classList.add('text-center', 'text-white', 'font-mono', 'bg-[#c1121f]', 'py-3', 'mt-0', 'mb-0', 'text-base','border-b-[2px]', 'border-black');
