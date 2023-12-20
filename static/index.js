@@ -94,8 +94,9 @@ function drop(ev) {
   }
   
   console.log('target: '+target.id);
+  console.log((parseInt(target.getAttribute('credits'))+parseInt(course.credits)));
   // insert to courseContainer or all pre-requisites satisfied
-  if (!flag && (parseInt(target.getAttribute('credits'),10)+parseInt(course.credits),10)<=20) {
+  if (!flag && (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=22) {
     var flagend = 0;
     if (ogSem !== 'courseContainer') {
       tempChosenCourses = {... chosenCourses};
@@ -135,7 +136,7 @@ function drop(ev) {
         if (index > -1) {
           const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
           const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
-          prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits'),10) - course.credits);
+          prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
           console.log(prevSemtarget);
           if (prevSemdiv) {
             prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
@@ -154,12 +155,17 @@ function drop(ev) {
       const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
       console.log(innerDiv1);
       if (innerDiv1) {
-        innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue,10) + parseInt(course.credits,10)}`;
+        innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
       }
-      target.setAttribute('credits',parseInt(attributeValue,10) + parseInt(course.credits,10));
+      target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
+      console.log(target);
     }
   }else{
-    alert('alert2\n'+'course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!');
+    if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>22) {
+      alert('course cap exceeded');
+    }else{
+      alert('alert2\n'+'course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
+    }
   }
 }
 
