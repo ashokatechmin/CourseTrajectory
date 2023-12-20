@@ -1,0 +1,112 @@
+[ 
+
+
+        {
+            "name": "Statistical Inference",
+            "code": ["MAT-3102"],
+            "pre_reqs": [],
+            "semester": "Spring",
+            "sem_no": 7,
+            "credits": 4
+        },
+
+        {
+            "name": "Fourier analysis",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Introduction to combinatorics",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Galois' dream",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Introduction to algebraic combinatorics",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Topological spaces",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Measure theory",
+            "code": ["MAT-4102"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Probability and Statistics","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Functional analysis",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Random graphs",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Topics in analysis",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Mathematical foundations of data sciences",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Algebraic number theory",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Topics in stochastic processes",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        }
+
+        
+
+]
