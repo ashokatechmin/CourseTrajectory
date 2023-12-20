@@ -1,4 +1,5 @@
 /* For all scrollbars */
+
 ::-webkit-scrollbar {
   width: 7px; /* Adjust scrollbar width as needed */
 }
@@ -10,7 +11,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #000000;
+  background: #D3D3D3;
 }
 
 /* For horizontal scrollbars */
@@ -25,7 +26,11 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb:horizontal {
-  background: #000000;
+  background: #D3D3D3;
+}
+/* Add this style for overflow handling */
+.overflow-auto {
+  overflow: auto;
 }
 
 body {
