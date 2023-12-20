@@ -10,7 +10,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #000000;
+  background: #D3D3D3;
 }
 
 /* For horizontal scrollbars */
@@ -25,7 +25,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb:horizontal {
-  background: #000000;
+  background: #D3D3D3;
 }
 
 body {
