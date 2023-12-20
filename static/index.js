@@ -54,7 +54,6 @@ function check_prereqs(coursename,sem){
   const course = mainCourseData.find((course) => course.name === coursename);
   var pre_reqs = course.pre_reqs;
   var flag = pre_reqs.length;
-  console.log("flag: "+flag);
   for (let i = 1; i <=sem; i++) {
     pre_reqs = pre_reqs.filter(coursename => !tempChosenCourses[i].includes(coursename))
     flag = pre_reqs.length;
@@ -77,13 +76,11 @@ function drop(ev) {
       return;
     }
   }
-  
   // Retrieve course name using courseId
   const course = mainCourseData.find((course) => course.name === courseName);
 
   var pre_reqs = course.pre_reqs;
   var flag = pre_reqs.length;
-  console.log("flag: "+flag);
   
   const sem = target.id.replace('sem', '');
   if (sem!=='courseContainer') {
@@ -96,41 +93,48 @@ function drop(ev) {
     flag = 0;
   }
   
-
   console.log('target: '+target.id);
   // insert to courseContainer or all pre-requisites satisfied
   if (!flag) {
-    let flagfin = 0;
+    var flagend = 0;
     if (ogSem !== 'courseContainer') {
-      tempChosenCourses = { ...chosenCourses };
+      tempChosenCourses = {... chosenCourses};
       // Temporarily remove the dropped course
       tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
       if (sem!=='courseContainer') {
         tempChosenCourses[sem].push(courseName);
       }
       for (let i = 1; i <= 8; i++) {
-        chosenCourses[i].forEach(coursename => {
+        tempChosenCourses[i].forEach(coursename => {
           // Use tempChosenCourses inside check_prereqs
-          const [flag1, pre_reqs1] = check_prereqs(coursename, i);
-          if (flag1 && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
-            flagfin = 1;
+          const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
+          console.log('flagcourse: '+flagcourse);
+          if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
+            flagend = 1;
             alert('alert1:\n'+'course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
           }
         });
       }
     }
-    console.log('flagfin: '+flagfin);
-    if (!flagfin) {
+    console.log('flagend: '+flagend);
+    if (!flagend) {
       // target sem div
       if (sem !== 'courseContainer') {
-        chosenCourses[sem].push(courseName);
-        console.log('course: '+courseName+' sem: '+sem);
+        console.log('ogSem: '+ogSem+' sem: '+sem);
+        chosenCourses[sem].forEach(element => {
+          console.log('in block: '+element);
+        });
+        if (!chosenCourses[sem].includes(courseName)) {
+          console.log('call1');
+          chosenCourses[sem].push(courseName);
+        }
       }
-      if (ogSem !== 'courseContainer') {
+      if (ogSem !== 'courseContainer' && ogSem!=sem) {
         // remove the course from the original container in chosenCourses
         const index = chosenCourses[ogSem].indexOf(courseName);
         if (index > -1) {
           chosenCourses[ogSem].splice(index, 1);
+          console.log('call2');
         }
       }
       console.log(chosenCourses);
