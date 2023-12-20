@@ -1,0 +1,99 @@
+[ 
+        {
+            "name": "Calculus",
+            "code": ["MAT-1000"],
+            "pre_reqs": [],
+            "semester": "Monsoon",
+            "sem_no": 1,
+            "credits": 4
+        },
+        {
+            "name": "Linear Algebra",
+            "code": ["MAT-1001","CS-2210"],
+            "pre_reqs": ["Calculus"],
+            "semester": "Spring",
+            "sem_no": 2,
+            "credits": 4
+        },
+        {
+            "name": "Multivariate Calculus",
+            "code": ["MAT-1004"],
+            "pre_reqs": ["Calculus"],
+            "semester": "Spring",
+            "sem_no": 2,
+            "credits": 4
+        },
+        {
+            "name": "Algebra 1",
+            "code": ["MAT-2001","CS-2250"],
+            "pre_reqs": ["Calculus"],
+            "semester": "Monsoon",
+            "sem_no": 3,
+            "credits": 4
+        },
+        { 
+            "name": "Probability and Statistics",
+            "code": ["MAT-2020","CS-1209"],
+            "pre_reqs": ["Calculus"],
+            "semester": "Monsoon",
+            "sem_no": 3,
+            "credits": 4
+        },
+        {
+            "name": "Real Analysis",
+            "code": ["MAT-2003"],
+            "pre_reqs": ["Calculus"],
+            "semester": "Monsoon",
+            "sem_no": 3,
+            "credits": 4
+        },
+        {
+            "name": "Algebra 2",
+            "code": ["MAT-2002"],
+            "pre_reqs": ["Algebra 1"],
+            "semester": "Spring",
+            "sem_no": 4,
+            "credits": 4
+        },
+        {
+            "name": "Metric and Topological Spaces",
+            "code": ["MAT-2026"],
+            "pre_reqs": ["Calculus", "Real Analysis"],
+            "semester": "Spring",
+            "sem_no": 4,
+            "credits": 4
+        },
+        {
+            "name": "Complex Analysis",
+            "code": ["MAT-3018"],
+            "pre_reqs": ["Calculus", "Multivariable Calculus", "Real Analysis", "Linear Algebra"],
+            "semester": "Monsoon",
+            "sem_no": 5,
+            "credits": 4
+        },
+        {
+            "name": "Mathematical Modeling (Differential Equations)",
+            "code": ["MAT-3013"],
+            "pre_reqs": ["Calculus", "Multivariable Calculus", "Real Analysis", "Linear Algebra"],
+            "semester": "Monsoon",
+            "sem_no": 5,
+            "credits": 4
+        },
+        {
+            "name": "Linear Algebra and Matrix Analysis",
+            "code": ["MAT-3120"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra"],
+            "semester": "Monsoon",
+            "sem_no": 5,
+            "credits": 4
+        },
+        {
+            "name": "Elementary Differential Geometry",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        }
+        
+]

@@ -244,16 +244,16 @@ window.onload = () => {
 
     const div = document.createElement('div');
     //
-    div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full', 'shadow', 'bg-slate-100','overflow-y-scroll');
+    div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full', 'shadow', 'bg-slate-100','overflow-hidden');
 
     const innerDiv1 = document.createElement('div');
-    innerDiv1.classList.add('text-center', 'text-white', 'font-mono', 'bg-[#c1121f]', 'py-3', 'mt-0', 'mb-0', 'text-base','border-b-[2px]', 'border-black');
+    innerDiv1.classList.add('text-center', 'text-white', 'font-mono', 'bg-[#c1121f]', 'py-2', 'mt-0', 'mb-0', 'text-base','border-b-[2px]', 'border-black');
     innerDiv1.textContent = `Semester ${sem}`;
     div.appendChild(innerDiv1);
 
     const innerDiv2 = document.createElement('div');
     //
-    innerDiv2.classList.add('mx-auto', 'px-4', 'py-2', 'w-full', 'h-full');
+    innerDiv2.classList.add('mx-auto', 'px-4', 'py-5', 'w-full', 'h-full','overflow-y-scroll');
     innerDiv2.ondrop = (event) => drop(event);
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
