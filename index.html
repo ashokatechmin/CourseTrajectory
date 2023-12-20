@@ -48,12 +48,12 @@
                         <h3 class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] font-mono text-2xl font-semibold text-white text-center underline underline-offset-4">Course Planner</h3>
                         <br>
                         <select class="rounded border border-slate-500 w-full mt-2 mb-3 font-mono text-sm" name="major" id="major" onchange="updateCourses()">
-                            <option selected>Select a Major</option>
-                            <option value="US">Computer Science</option>
-                            <option value="CA">Computer Science + Math - Cryptography</option>
-                            <option value="FR">Computer Science + Math - Machine Learning</option>
-                            <option value="FR">Economics</option>
-                            <option value="FR">Psychology</option>
+                            <option value="default" selected>Select a Major</option>
+                            <option value="cs">Computer Science</option>
+                            <option value="cs_mat_crypt">Computer Science + Math - Cryptography</option>
+                            <option value="cs_mat_ml">Computer Science + Math - Machine Learning</option>
+                            <option value="eco">Economics</option>
+                            <option value="psych">Psychology</option>
                         </select>
                         <label for="courseQuery" class="font-mono text-white text-sm mt-1">Search Course Name or Code:</label>
                         <input type="text" class="border-[1px] py-1 px-2 w-full mt-3 mb-4" onkeyup="updateCourses()" id="courseQuery" placeholder="Course..."/>

@@ -10,7 +10,8 @@ const getCourseData = async () => {
   return mainCourseData;
 };
 
-const getCourses = async ({ query }) => {
+const getCourses = async ({ query,major }) => {
+  console.log(major);
   const courses = [];
   const coursesData = await getCourseData();
   const keys = ['name', 'code'];
@@ -95,8 +96,12 @@ function drop(ev) {
   
   console.log('target: '+target.id);
   console.log((parseInt(target.getAttribute('credits'))+parseInt(course.credits)));
+  var credit_check = true;
+  if (sem !== 'courseContainer') {
+    credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=22;
+  }
   // insert to courseContainer or all pre-requisites satisfied
-  if (!flag && (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=22) {
+  if (!flag && credit_check) {
     var flagend = 0;
     if (ogSem !== 'courseContainer') {
       tempChosenCourses = {... chosenCourses};
@@ -170,14 +175,9 @@ function drop(ev) {
 }
 
 async function updateCourses() {
-  // if (tag == 'search') {
-  //   const query = document.querySelector('#courseQuery').value;
-  // }
-  // else if (tag == 'maj-change') {
-  //   const query = document.querySelector('#courseQuery').value;
-  // }
+  const major = document.querySelector('#major').value;
   const query = document.querySelector('#courseQuery').value;
-  const courses = await getCourses({ query });
+  const courses = await getCourses({ query,major });
 
   const container = document.querySelector('#courseContainer');
   container.innerHTML = '';
