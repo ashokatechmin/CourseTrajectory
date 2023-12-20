@@ -95,7 +95,7 @@ function drop(ev) {
   
   console.log('target: '+target.id);
   // insert to courseContainer or all pre-requisites satisfied
-  if (!flag) {
+  if (!flag && (parseInt(target.getAttribute('credits'),10)+parseInt(course.credits),10)<=20) {
     var flagend = 0;
     if (ogSem !== 'courseContainer') {
       tempChosenCourses = {... chosenCourses};
@@ -129,11 +129,20 @@ function drop(ev) {
           chosenCourses[sem].push(courseName);
         }
       }
-      if (ogSem !== 'courseContainer' && ogSem!=sem) {
+      if (ogSem !== 'courseContainer') {
         // remove the course from the original container in chosenCourses
         const index = chosenCourses[ogSem].indexOf(courseName);
         if (index > -1) {
-          chosenCourses[ogSem].splice(index, 1);
+          const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
+          const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
+          prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits'),10) - course.credits);
+          console.log(prevSemtarget);
+          if (prevSemdiv) {
+            prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
+          }
+          if (ogSem!=sem) {
+            chosenCourses[ogSem].splice(index, 1);
+          }
           console.log('call2');
         }
       }
@@ -141,6 +150,13 @@ function drop(ev) {
     
       //target.appendChild(elem);
       target.insertBefore(elem, target.firstChild);
+      const attributeValue = target.getAttribute('credits');
+      const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
+      console.log(innerDiv1);
+      if (innerDiv1) {
+        innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue,10) + parseInt(course.credits,10)}`;
+      }
+      target.setAttribute('credits',parseInt(attributeValue,10) + parseInt(course.credits,10));
     }
   }else{
     alert('alert2\n'+'course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!');
@@ -234,14 +250,7 @@ window.onload = () => {
 
   semContainer.classList.add(`grid-cols-${noCols}`, `grid-rows-${noRows}`);
 
-  // create the semesters in a way so that 1, ..., n is converted into an array like: [1, 3, 5, 7, 2, 4, 6, 8]
-  // this is done so that the semesters are displayed in a zig-zag manner
   const sems = Array.from({ length: noSems }, (_, i) => i + 1);
-  // const semsZigZag = [];
-  // for (let i = 0; i < noRows; i++) {
-  //   semsZigZag.push(...sems.filter((sem) => (sem - 1) % noRows === i));
-  // }
-  // console.log(semsZigZag);
 
   for (const sem of sems) {
     chosenCourses[sem] = [];
@@ -252,17 +261,18 @@ window.onload = () => {
 
     const innerDiv1 = document.createElement('div');
     innerDiv1.classList.add('text-center', 'text-white', 'font-mono', 'bg-[#c1121f]', 'py-2', 'mt-0', 'mb-0', 'text-base','border-b-[2px]', 'border-black');
-    innerDiv1.textContent = `Semester ${sem}`;
-    div.appendChild(innerDiv1);
-
+    innerDiv1.setAttribute('id',`Semester-${sem}`)
+    // Add attribute to innerDiv2 and display its value in innerDiv1
     const innerDiv2 = document.createElement('div');
-    //
     innerDiv2.classList.add('mx-auto', 'px-4', 'py-5', 'w-full', 'h-full','overflow-y-scroll');
     innerDiv2.ondrop = (event) => drop(event);
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
+    innerDiv2.setAttribute('credits', '0');
+    innerDiv1.textContent = `Semester ${sem}\nCredits: ${innerDiv2.getAttribute('credits')}`; // Display attribute value in innerDiv1
 
     innerDiv2.setAttribute('droppable', 'true');
+    div.appendChild(innerDiv1);
     div.appendChild(innerDiv2);
 
     semContainer.appendChild(div);
