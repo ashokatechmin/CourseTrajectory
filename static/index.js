@@ -186,7 +186,7 @@ async function updateCourses() {
     }
 
     const div = document.createElement('div');
-    div.classList.add('m-1', 'p-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
+    div.classList.add('m-1', 'pt-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
     div.setAttribute('name', 'courseDiv');
     div.setAttribute('draggable', 'true');
     div.ondragstart = (event) => drag(event);
@@ -203,7 +203,7 @@ async function updateCourses() {
     courseCode.textContent = course.code;
 
     const courseCredits = document.createElement('p');
-    courseCredits.classList.add('text-center', 'm-0','mt-2','font-mono','text-sm');
+    courseCredits.classList.add('text-center', 'm-0','mt-2','py-1','font-mono','text-sm','bg-slate-200');
     courseCredits.textContent = 'Credits: '+course.credits;
 
     const coursePrereqs = document.createElement('div');
