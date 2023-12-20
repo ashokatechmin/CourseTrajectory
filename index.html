@@ -49,11 +49,11 @@
                         <br>
                         <select class="rounded border border-slate-500 w-full mt-2 mb-3 font-mono text-sm" name="major" id="major" onchange="updateCourses()">
                             <option value="default" selected>Select a Major</option>
-                            <option value="cs">Computer Science</option>
-                            <option value="cs_mat_crypt">Computer Science + Math - Cryptography</option>
-                            <option value="cs_mat_ml">Computer Science + Math - Machine Learning</option>
-                            <option value="eco">Economics</option>
-                            <option value="psych">Psychology</option>
+                            <option value="./courses/cs_maj.json">Computer Science</option>
+                            <option value="./courses/cs_major_math_crypt.json">Computer Science + Math - Cryptography</option>
+                            <option value="./courses/cs_major_math_ml.json">Computer Science + Math - Machine Learning</option>
+                            <option value="./courses/eco.json">Economics</option>
+                            <option value="./courses/psych.json">Psychology</option>
                         </select>
                         <label for="courseQuery" class="font-mono text-white text-sm mt-1">Search Course Name or Code:</label>
                         <input type="text" class="border-[1px] py-1 px-2 w-full mt-3 mb-4" onkeyup="updateCourses()" id="courseQuery" placeholder="Course..."/>

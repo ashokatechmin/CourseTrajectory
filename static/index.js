@@ -1,19 +1,43 @@
 let mainCourseData = null;
 let chosenCourses = {};
 let tempChosenCourses = {};
+let ogPath = 'default';
 
-const getCourseData = async () => {
-  if (mainCourseData) {
+const getCourseData = async (path) => {
+  if (path===ogPath && mainCourseData) {
+    ogPath = path;
+    return mainCourseData;
+  }else{
+    for (let sem = 1; sem <= 8; sem++) {
+      chosenCourses[sem] = [];
+      const innerDiv1 = document.querySelector(`#Semester-${sem}`);
+      const innerDiv2 = document.querySelector(`#sem${sem}`);
+      if (innerDiv1){
+        innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}`;
+      }
+      innerDiv2.setAttribute('credits','0');
+      if (innerDiv2) {
+        while (innerDiv2.firstChild) {
+          innerDiv2.removeChild(innerDiv2.firstChild);
+        }
+      }
+      console.log(innerDiv2);
+    }
+
+    if (path==='default') {
+      mainCourseData = await fetch('./courses/courses.json').then((res) => res.json());
+    }
+    else{
+      mainCourseData = await fetch(path).then((res) => res.json());
+    }
     return mainCourseData;
   }
-  mainCourseData = await fetch('./courses/cs_maj.json').then((res) => res.json());
-  return mainCourseData;
 };
 
 const getCourses = async ({ query,major }) => {
   console.log(major);
   const courses = [];
-  const coursesData = await getCourseData();
+  const coursesData = await getCourseData(major);
   const keys = ['name', 'code'];
 
   for (const course of coursesData) {
