@@ -1,5 +1,6 @@
 let mainCourseData = null;
 let chosenCourses = {};
+let tempChosenCourses = {};
 
 const getCourseData = async () => {
   if (mainCourseData) {
@@ -49,22 +50,18 @@ function drag(ev) {
   ev.dataTransfer.setData('elementData', JSON.stringify({ courseName: target.id, ogSem: sem }));
 }
 
-// function check_prereqs(coursename,sem){
-//   const course = mainCourseData.find((course) => course.name === coursename);
-//   var pre_reqs = course.pre_reqs;
-//   var flag = pre_reqs.length;
-//   console.log("flag: "+flag);
-//   // pre_reqs.forEach(prereq => {
-//   //   console.log("pre-req: "+prereq);
-//   // });
-  
-//   for (let i = 1; i <=sem; i++) {
-//     pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
-//     flag = pre_reqs.length;
-//     // if flag=0 then all pre-reqs are satisfied
-//   }
-//   return [flag,pre_reqs];
-// }
+function check_prereqs(coursename,sem){
+  const course = mainCourseData.find((course) => course.name === coursename);
+  var pre_reqs = course.pre_reqs;
+  var flag = pre_reqs.length;
+  console.log("flag: "+flag);
+  for (let i = 1; i <=sem; i++) {
+    pre_reqs = pre_reqs.filter(coursename => !tempChosenCourses[i].includes(coursename))
+    flag = pre_reqs.length;
+    // if flag=0 then all pre-reqs are satisfied
+  }
+  return [flag,pre_reqs];
+}
 
 function drop(ev) {
   ev.preventDefault();
@@ -80,23 +77,6 @@ function drop(ev) {
       return;
     }
   }
-
-  // const sem = target.id.replace('sem', '');
-  // var flag = 0;
-  // var pre_reqs = null;
-  // var flagfin = 0;
-  // for (let i = 1; i <= sem; i++) {
-  //   chosenCourses[i].forEach(coursename => {
-  //     const [flag,pre_reqs] = check_prereqs(coursename,i);
-  //     if (flag) {
-  //       alert('course: '+coursename+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!')
-  //       flagfin = 1;
-  //     }
-  //   });
-  // }
-
-  
-  // check_prereqs(course,sem)
   
   // Retrieve course name using courseId
   const course = mainCourseData.find((course) => course.name === courseName);
@@ -104,35 +84,62 @@ function drop(ev) {
   var pre_reqs = course.pre_reqs;
   var flag = pre_reqs.length;
   console.log("flag: "+flag);
-  // pre_reqs.forEach(prereq => {
-  //   console.log("pre-req: "+prereq);
-  // });
   
   const sem = target.id.replace('sem', '');
-  for (let i = 1; i <=sem; i++) {
-    pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
-    flag = pre_reqs.length;
-    // if flag=0 then all pre-reqs are satisfied
+  if (sem!=='courseContainer') {
+    for (let i = 1; i <=sem; i++) {
+      pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
+      flag = pre_reqs.length;
+      // if flag=0 then all pre-reqs are satisfied
+    }
+  }else{
+    flag = 0;
   }
   
-  if (!flag) {
-    // target sem div
-    if (sem !== 'courseContainer') {
-      chosenCourses[sem].push(courseName);
-    }
 
+  console.log('target: '+target.id);
+  // insert to courseContainer or all pre-requisites satisfied
+  if (!flag) {
+    let flagfin = 0;
     if (ogSem !== 'courseContainer') {
-      // remove the course from the original container in chosenCourses
-      const index = chosenCourses[ogSem].indexOf(courseName);
-      if (index > -1) {
-        chosenCourses[ogSem].splice(index, 1);
+      tempChosenCourses = { ...chosenCourses };
+      // Temporarily remove the dropped course
+      tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
+      if (sem!=='courseContainer') {
+        tempChosenCourses[sem].push(courseName);
+      }
+      for (let i = 1; i <= 8; i++) {
+        chosenCourses[i].forEach(coursename => {
+          // Use tempChosenCourses inside check_prereqs
+          const [flag1, pre_reqs1] = check_prereqs(coursename, i);
+          if (flag1 && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
+            flagfin = 1;
+            alert('alert1:\n'+'course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
+          }
+        });
       }
     }
-    console.log(chosenCourses);
-
-    target.appendChild(elem);
+    console.log('flagfin: '+flagfin);
+    if (!flagfin) {
+      // target sem div
+      if (sem !== 'courseContainer') {
+        chosenCourses[sem].push(courseName);
+        console.log('course: '+courseName+' sem: '+sem);
+      }
+      if (ogSem !== 'courseContainer') {
+        // remove the course from the original container in chosenCourses
+        const index = chosenCourses[ogSem].indexOf(courseName);
+        if (index > -1) {
+          chosenCourses[ogSem].splice(index, 1);
+        }
+      }
+      console.log(chosenCourses);
+    
+      //target.appendChild(elem);
+      target.insertBefore(elem, target.firstChild);
+    }
   }else{
-    alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!');
+    alert('alert2\n'+'course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!');
   }
 }
 
@@ -175,6 +182,10 @@ async function updateCourses() {
     courseCode.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
     courseCode.textContent = course.code;
 
+    const courseCredits = document.createElement('p');
+    courseCredits.classList.add('text-center', 'm-0','mt-2','font-mono','text-sm');
+    courseCredits.textContent = 'Credits: '+course.credits;
+
     const coursePrereqs = document.createElement('div');
     coursePrereqs.classList.add('text-center', 'm-0', 'font-mono', 'text-sm', 'relative');
 
@@ -206,6 +217,7 @@ async function updateCourses() {
     div.appendChild(courseName);
     div.appendChild(courseCode);
     div.appendChild(coursePrereqs);
+    div.appendChild(courseCredits);
     container.appendChild(div);
   });
 }
