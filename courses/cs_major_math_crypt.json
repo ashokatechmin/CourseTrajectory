@@ -45,7 +45,7 @@
         "code": [""],
         "pre_reqs": [],
         "semester": "",
-        "sem_no": ,
+        "sem_no": 0,
         "credits": 4
     },
     {
@@ -74,7 +74,7 @@
     },
     {
         "name": "Linear Algebra",
-        "code": ["MAT-1001"],
+        "code": ["MAT-1001","CS-2210"],
         "pre_reqs": ["Calculus"],
         "semester": "Monsoon",
         "sem_no": 3,
@@ -90,34 +90,34 @@
     },
     {
         "name": "Algebra 1",
-        "code": [""],
+        "code": ["MAT-2001","CS-2250"],
         "pre_reqs": ["Calculus"],
-        "semester": "",
-        "sem_no": ,
+        "semester": "Monsoon",
+        "sem_no": 3,
         "credits": 4
     },
     {
         "name": "Multivariate Calculus",
-        "code": [""],
+        "code": ["MAT-1004"],
         "pre_reqs": ["Calculus"],
-        "semester": "",
-        "sem_no": ,
+        "semester": "Spring",
+        "sem_no": 2,
         "credits": 4
     },
     {
         "name": "Statistical Inference",
-        "code": [""],
+        "code": ["MAT-3102"],
         "pre_reqs": [],
-        "semester": "",
-        "sem_no": ,
+        "semester": "Spring",
+        "sem_no": 7,
         "credits": 4
     },
     {
         "name": "Real Analysis",
-        "code": [""],
+        "code": ["MAT-2003"],
         "pre_reqs": ["Calculus"],
-        "semester": "",
-        "sem_no": ,
+        "semester": "Monsoon",
+        "sem_no": 3,
         "credits": 4
     },
    
@@ -126,7 +126,7 @@
         "code": [""],
         "pre_reqs": [],
         "semester": "",
-        "sem_no": ,
+        "sem_no":0,
         "credits": 4
     },
     {
@@ -134,17 +134,17 @@
         "code": [""],
         "pre_reqs": [],
         "semester": "",
-        "sem_no": ,
+        "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "",
-        "code": [""],
-        "pre_reqs": [],
-        "semester": "",
-        "sem_no": ,
-        "credits": 
-    },
+        "name": "Capstone Project",
+        "code": ["tbd-4"],
+        "pre_reqs": ["Data Science and Management"],
+        "semester": "Monsoon",
+        "sem_no": 7,
+        "credits": 4
+        }
 
 
   ]
