@@ -57,13 +57,16 @@
                             <option value="./courses/psych.json">Psychology</option>
                         </select>
                         <label for="courseQuery" class="font-mono text-white text-sm mt-1">Search Course Name or Code:</label>
-                        <input type="text" class="border-[1px] py-1 px-2 w-full mt-3 mb-4" onkeyup="updateCourses()" id="courseQuery" placeholder="Course..."/>
+                        <input type="text" class="border-[1px] py-1 px-2 w-full mt-3 mb-3" onkeyup="updateCourses()" id="courseQuery" placeholder="Course..."/>
+                        <button onclick="rec_courses()" class="font-mono text-sm mt-2 mb-4 px-1 py-2 bg-cyan-500 rounded-md shadow hover:bg-cyan-600">
+                            Recommend Courses/Clear
+                          </button>
                     </div>
                     <div id="courseContainer" class="overflow-y-scroll" ondrop="drop(event)"
                         ondragover="allowDrop(event)" droppable="true">
                     </div>
                 </div>
-                <div id="semContainer" class="grid grid-cols-4 gap-3 w-4/5 mt-1 mb-1 mx-auto overflow-hidden h-[99vh]">
+                <div id="semContainer" class="grid grid-cols-4 gap-3 w-4/5 mt-2 mb-1 mx-auto overflow-hidden h-[98vh]">
                 </div>
             </div>
         </div>
