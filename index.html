@@ -14,6 +14,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="./static/icon.png">
     <title>Course Planner</title>
 </head>
 
@@ -48,12 +49,12 @@
                         <h3 class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] font-mono text-2xl font-semibold text-white text-center underline underline-offset-4">Course Planner</h3>
                         <br>
                         <select class="rounded border border-slate-500 w-full mt-2 mb-3 font-mono text-sm" name="major" id="major" onchange="updateCourses()">
-                            <option selected>Select a Major</option>
-                            <option value="US">Computer Science</option>
-                            <option value="CA">Computer Science + Math - Cryptography</option>
-                            <option value="FR">Computer Science + Math - Machine Learning</option>
-                            <option value="FR">Economics</option>
-                            <option value="FR">Psychology</option>
+                            <option value="default" selected>Select a Major</option>
+                            <option value="./courses/cs_maj.json">Computer Science</option>
+                            <option value="./courses/cs_major_math_crypt.json">Computer Science + Math - Cryptography</option>
+                            <option value="./courses/cs_major_math_ml.json">Computer Science + Math - Machine Learning</option>
+                            <option value="./courses/eco.json">Economics</option>
+                            <option value="./courses/psych.json">Psychology</option>
                         </select>
                         <label for="courseQuery" class="font-mono text-white text-sm mt-1">Search Course Name or Code:</label>
                         <input type="text" class="border-[1px] py-1 px-2 w-full mt-3 mb-4" onkeyup="updateCourses()" id="courseQuery" placeholder="Course..."/>

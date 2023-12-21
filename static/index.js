@@ -1,17 +1,43 @@
 let mainCourseData = null;
 let chosenCourses = {};
+let tempChosenCourses = {};
+let ogPath = 'default';
 
-const getCourseData = async () => {
-  if (mainCourseData) {
+const getCourseData = async (path) => {
+  if (path===ogPath && mainCourseData) {
+    ogPath = path;
+    return mainCourseData;
+  }else{
+    for (let sem = 1; sem <= 8; sem++) {
+      chosenCourses[sem] = [];
+      const innerDiv1 = document.querySelector(`#Semester-${sem}`);
+      const innerDiv2 = document.querySelector(`#sem${sem}`);
+      if (innerDiv1){
+        innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}`;
+      }
+      innerDiv2.setAttribute('credits','0');
+      if (innerDiv2) {
+        while (innerDiv2.firstChild) {
+          innerDiv2.removeChild(innerDiv2.firstChild);
+        }
+      }
+      console.log(innerDiv2);
+    }
+
+    if (path==='default') {
+      mainCourseData = await fetch('./courses/courses.json').then((res) => res.json());
+    }
+    else{
+      mainCourseData = await fetch(path).then((res) => res.json());
+    }
     return mainCourseData;
   }
-  mainCourseData = await fetch('./courses/cs_maj.json').then((res) => res.json());
-  return mainCourseData;
 };
 
-const getCourses = async ({ query }) => {
+const getCourses = async ({ query,major }) => {
+  console.log(major);
   const courses = [];
-  const coursesData = await getCourseData();
+  const coursesData = await getCourseData(major);
   const keys = ['name', 'code'];
 
   for (const course of coursesData) {
@@ -49,22 +75,17 @@ function drag(ev) {
   ev.dataTransfer.setData('elementData', JSON.stringify({ courseName: target.id, ogSem: sem }));
 }
 
-// function check_prereqs(coursename,sem){
-//   const course = mainCourseData.find((course) => course.name === coursename);
-//   var pre_reqs = course.pre_reqs;
-//   var flag = pre_reqs.length;
-//   console.log("flag: "+flag);
-//   // pre_reqs.forEach(prereq => {
-//   //   console.log("pre-req: "+prereq);
-//   // });
-  
-//   for (let i = 1; i <=sem; i++) {
-//     pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
-//     flag = pre_reqs.length;
-//     // if flag=0 then all pre-reqs are satisfied
-//   }
-//   return [flag,pre_reqs];
-// }
+function check_prereqs(coursename,sem){
+  const course = mainCourseData.find((course) => course.name === coursename);
+  var pre_reqs = course.pre_reqs;
+  var flag = pre_reqs.length;
+  for (let i = 1; i <=sem; i++) {
+    pre_reqs = pre_reqs.filter(coursename => !tempChosenCourses[i].includes(coursename))
+    flag = pre_reqs.length;
+    // if flag=0 then all pre-reqs are satisfied
+  }
+  return [flag,pre_reqs];
+}
 
 function drop(ev) {
   ev.preventDefault();
@@ -80,71 +101,107 @@ function drop(ev) {
       return;
     }
   }
-
-  // const sem = target.id.replace('sem', '');
-  // var flag = 0;
-  // var pre_reqs = null;
-  // var flagfin = 0;
-  // for (let i = 1; i <= sem; i++) {
-  //   chosenCourses[i].forEach(coursename => {
-  //     const [flag,pre_reqs] = check_prereqs(coursename,i);
-  //     if (flag) {
-  //       alert('course: '+coursename+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!')
-  //       flagfin = 1;
-  //     }
-  //   });
-  // }
-
-  
-  // check_prereqs(course,sem)
-  
   // Retrieve course name using courseId
   const course = mainCourseData.find((course) => course.name === courseName);
 
   var pre_reqs = course.pre_reqs;
   var flag = pre_reqs.length;
-  console.log("flag: "+flag);
-  // pre_reqs.forEach(prereq => {
-  //   console.log("pre-req: "+prereq);
-  // });
   
   const sem = target.id.replace('sem', '');
-  for (let i = 1; i <=sem; i++) {
-    pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
-    flag = pre_reqs.length;
-    // if flag=0 then all pre-reqs are satisfied
+  if (sem!=='courseContainer') {
+    for (let i = 1; i <=sem; i++) {
+      pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
+      flag = pre_reqs.length;
+      // if flag=0 then all pre-reqs are satisfied
+    }
+  }else{
+    flag = 0;
   }
   
-  if (!flag) {
-    // target sem div
-    if (sem !== 'courseContainer') {
-      chosenCourses[sem].push(courseName);
-    }
-
+  console.log('target: '+target.id);
+  console.log((parseInt(target.getAttribute('credits'))+parseInt(course.credits)));
+  var credit_check = true;
+  if (sem !== 'courseContainer') {
+    credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=22;
+  }
+  // insert to courseContainer or all pre-requisites satisfied
+  if (!flag && credit_check) {
+    var flagend = 0;
     if (ogSem !== 'courseContainer') {
-      // remove the course from the original container in chosenCourses
-      const index = chosenCourses[ogSem].indexOf(courseName);
-      if (index > -1) {
-        chosenCourses[ogSem].splice(index, 1);
+      tempChosenCourses = {... chosenCourses};
+      // Temporarily remove the dropped course
+      tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
+      if (sem!=='courseContainer') {
+        tempChosenCourses[sem].push(courseName);
+      }
+      for (let i = 1; i <= 8; i++) {
+        tempChosenCourses[i].forEach(coursename => {
+          // Use tempChosenCourses inside check_prereqs
+          const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
+          console.log('flagcourse: '+flagcourse);
+          if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
+            flagend = 1;
+            alert('alert1:\n'+'course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
+          }
+        });
       }
     }
-    console.log(chosenCourses);
-
-    target.appendChild(elem);
+    console.log('flagend: '+flagend);
+    if (!flagend) {
+      // target sem div
+      if (sem !== 'courseContainer') {
+        console.log('ogSem: '+ogSem+' sem: '+sem);
+        chosenCourses[sem].forEach(element => {
+          console.log('in block: '+element);
+        });
+        if (!chosenCourses[sem].includes(courseName)) {
+          console.log('call1');
+          chosenCourses[sem].push(courseName);
+        }
+      }
+      if (ogSem !== 'courseContainer') {
+        // remove the course from the original container in chosenCourses
+        const index = chosenCourses[ogSem].indexOf(courseName);
+        if (index > -1) {
+          const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
+          const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
+          prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
+          console.log(prevSemtarget);
+          if (prevSemdiv) {
+            prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
+          }
+          if (ogSem!=sem) {
+            chosenCourses[ogSem].splice(index, 1);
+          }
+          console.log('call2');
+        }
+      }
+      console.log(chosenCourses);
+    
+      //target.appendChild(elem);
+      target.insertBefore(elem, target.firstChild);
+      const attributeValue = target.getAttribute('credits');
+      const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
+      console.log(innerDiv1);
+      if (innerDiv1) {
+        innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
+      }
+      target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
+      console.log(target);
+    }
   }else{
-    alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied!');
+    if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>22) {
+      alert('course cap exceeded');
+    }else{
+      alert('alert2\n'+'course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
+    }
   }
 }
 
 async function updateCourses() {
-  // if (tag == 'search') {
-  //   const query = document.querySelector('#courseQuery').value;
-  // }
-  // else if (tag == 'maj-change') {
-  //   const query = document.querySelector('#courseQuery').value;
-  // }
+  const major = document.querySelector('#major').value;
   const query = document.querySelector('#courseQuery').value;
-  const courses = await getCourses({ query });
+  const courses = await getCourses({ query,major });
 
   const container = document.querySelector('#courseContainer');
   container.innerHTML = '';
@@ -159,7 +216,7 @@ async function updateCourses() {
     }
 
     const div = document.createElement('div');
-    div.classList.add('m-1', 'p-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
+    div.classList.add('m-1', 'pt-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
     div.setAttribute('name', 'courseDiv');
     div.setAttribute('draggable', 'true');
     div.ondragstart = (event) => drag(event);
@@ -174,6 +231,10 @@ async function updateCourses() {
     const courseCode = document.createElement('p');
     courseCode.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
     courseCode.textContent = course.code;
+
+    const courseCredits = document.createElement('p');
+    courseCredits.classList.add('text-center', 'm-0','mt-2','py-1','font-mono','text-sm','bg-slate-200');
+    courseCredits.textContent = 'Credits: '+course.credits;
 
     const coursePrereqs = document.createElement('div');
     coursePrereqs.classList.add('text-center', 'm-0', 'font-mono', 'text-sm', 'relative');
@@ -206,6 +267,7 @@ async function updateCourses() {
     div.appendChild(courseName);
     div.appendChild(courseCode);
     div.appendChild(coursePrereqs);
+    div.appendChild(courseCredits);
     container.appendChild(div);
   });
 }
@@ -218,14 +280,7 @@ window.onload = () => {
 
   semContainer.classList.add(`grid-cols-${noCols}`, `grid-rows-${noRows}`);
 
-  // create the semesters in a way so that 1, ..., n is converted into an array like: [1, 3, 5, 7, 2, 4, 6, 8]
-  // this is done so that the semesters are displayed in a zig-zag manner
   const sems = Array.from({ length: noSems }, (_, i) => i + 1);
-  // const semsZigZag = [];
-  // for (let i = 0; i < noRows; i++) {
-  //   semsZigZag.push(...sems.filter((sem) => (sem - 1) % noRows === i));
-  // }
-  // console.log(semsZigZag);
 
   for (const sem of sems) {
     chosenCourses[sem] = [];
@@ -236,17 +291,18 @@ window.onload = () => {
 
     const innerDiv1 = document.createElement('div');
     innerDiv1.classList.add('text-center', 'text-white', 'font-mono', 'bg-[#c1121f]', 'py-2', 'mt-0', 'mb-0', 'text-base','border-b-[2px]', 'border-black');
-    innerDiv1.textContent = `Semester ${sem}`;
-    div.appendChild(innerDiv1);
-
+    innerDiv1.setAttribute('id',`Semester-${sem}`)
+    // Add attribute to innerDiv2 and display its value in innerDiv1
     const innerDiv2 = document.createElement('div');
-    //
     innerDiv2.classList.add('mx-auto', 'px-4', 'py-5', 'w-full', 'h-full','overflow-y-scroll');
     innerDiv2.ondrop = (event) => drop(event);
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
+    innerDiv2.setAttribute('credits', '0');
+    innerDiv1.textContent = `Semester ${sem}\nCredits: ${innerDiv2.getAttribute('credits')}`; // Display attribute value in innerDiv1
 
     innerDiv2.setAttribute('droppable', 'true');
+    div.appendChild(innerDiv1);
     div.appendChild(innerDiv2);
 
     semContainer.appendChild(div);

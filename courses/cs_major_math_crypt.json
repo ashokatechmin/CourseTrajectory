@@ -1,5 +1,12 @@
 [
-    
+    {
+        "name": "Calculus",
+        "code": ["MAT-1000"],
+        "pre_reqs": [],
+        "semester": "Monsoon",
+        "sem_no": 1,
+        "credits": 4
+    },
     {
         "name": "Introduction to Computer Science",
         "code": ["CS-1102"],
@@ -78,14 +85,6 @@
         "pre_reqs": ["Calculus"],
         "semester": "Monsoon",
         "sem_no": 3,
-        "credits": 4
-    },
-    {
-        "name": "Calculus",
-        "code": ["MAT-1000"],
-        "pre_reqs": [],
-        "semester": "Monsoon",
-        "sem_no": 1,
         "credits": 4
     },
     {
