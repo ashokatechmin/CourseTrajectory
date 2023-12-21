@@ -139,7 +139,7 @@
     {
         "name": "Capstone Project",
         "code": ["tbd-4"],
-        "pre_reqs": ["Data Science and Management"],
+        "pre_reqs": ["Statistical Inference"],
         "semester": "Monsoon",
         "sem_no": 7,
         "credits": 4

@@ -3,8 +3,8 @@ let chosenCourses = {};
 let tempChosenCourses = {};
 let ogPath = 'default';
 
-const getCourseData = async (path) => {
-  if (path===ogPath && mainCourseData) {
+const getCourseData = async (path,exec) => {
+  if (path===ogPath && mainCourseData && !exec) {
     ogPath = path;
     return mainCourseData;
   }else{
@@ -18,6 +18,8 @@ const getCourseData = async (path) => {
       innerDiv2.setAttribute('credits','0');
       if (innerDiv2) {
         while (innerDiv2.firstChild) {
+          console.log('child:');
+          console.log(innerDiv2.firstChild);
           innerDiv2.removeChild(innerDiv2.firstChild);
         }
       }
@@ -34,10 +36,10 @@ const getCourseData = async (path) => {
   }
 };
 
-const getCourses = async ({ query,major }) => {
+const getCourses = async ({ query,major,exec }) => {
   console.log(major);
   const courses = [];
-  const coursesData = await getCourseData(major);
+  const coursesData = await getCourseData(major,exec);
   const keys = ['name', 'code'];
 
   for (const course of coursesData) {
@@ -198,10 +200,10 @@ function drop(ev) {
   }
 }
 
-async function updateCourses() {
+async function updateCourses(exec=0) {
   const major = document.querySelector('#major').value;
   const query = document.querySelector('#courseQuery').value;
-  const courses = await getCourses({ query,major });
+  const courses = await getCourses({ query,major,exec });
 
   const container = document.querySelector('#courseContainer');
   container.innerHTML = '';
@@ -248,7 +250,7 @@ async function updateCourses() {
     if (course.pre_reqs.length !=0) {
       collapsibleContent.textContent = course.pre_reqs; // Assign prerequisites content here
     }else{
-      collapsibleContent.textContent = 'none';
+      collapsibleContent.textContent = 'NA';
     }
 
     collapsibleHeader.addEventListener('click', () => {
@@ -310,4 +312,38 @@ window.onload = () => {
 
   // updateCourses('maj-change');
   updateCourses();
+};
+
+function rec_courses(){
+  const courseContainer = document.querySelector('#courseContainer');
+  if(Object.values(chosenCourses).slice(1, 9).every(arr => arr.length === 0)){
+    // add courses to semesters
+    for (let i = courseContainer.children.length - 1; i >= 0; i--) {
+      const courseDiv = courseContainer.children[i];
+      console.log('div');
+      console.log('course: '+courseDiv.getAttribute('id'));
+      const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
+      const semester = parseInt(course.sem_no);
+      if (semester) {
+          console.log(semester);
+          console.log('course: ' + chosenCourses[parseInt(course.sem_no)]);
+          const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
+          const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
+          chosenCourses[parseInt(course.sem_no)].push(course.name);
+          semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
+          if (semesertDivCredit) {
+            semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+          }
+          semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
+
+        // Verify if courseDiv is still a child of courseContainer
+        if (courseDiv.parentNode === courseContainer) {
+            courseContainer.removeChild(courseDiv);
+        }
+      }
+    }
+  }else{
+    // clear
+    updateCourses(1);
+  }
 };
