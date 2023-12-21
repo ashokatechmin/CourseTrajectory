@@ -68,7 +68,7 @@
             "name": "Development Economics",
             "code": ["ECO-3500"],
             "pre_reqs": ["ECO-202 or ECO-2101", "ECO-2400"],
-            "semester": "Spring",
+            "semester": "Monsoon",
             "sem_no": 5,
             "credits": 4
         },
@@ -76,112 +76,112 @@
             "name": "Decision Theory",
             "code": ["ECO-3105"],
             "pre_reqs": ["ECO-2101", "ECO-2102"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Organizational Economics",
             "code": ["ECO-3107"],
             "pre_reqs": ["ECO-2101", "ECO-2102"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Monetary Theory",
             "code": ["ECO-3200"],
             "pre_reqs": ["ECO-2101", "ECO-2201","ECO-2202"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economic History of Modern India",
             "code": ["ECO 3503"],
             "pre_reqs": ["ECO-2101", "ECO-2201","ECO-2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Industrial Organization",
             "code": ["ECO 3600"],
             "pre_reqs": ["ECO-2102", "ECO-2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Pricing Theory and Public Policy",
             "code": ["ECO 3602"],
             "pre_reqs": ["ECO-2101", "ECO-2102"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Urban Economics",
             "code": ["ECO 3605"],
             "pre_reqs": ["ECO-2101", "ECO-2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Health Economics",
             "code": ["ECO 3650"],
             "pre_reqs": ["ECO-2101", "ECO-2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economics of Gender",
             "code": ["ECO 3660"],
             "pre_reqs": ["ECO-2101", "ECO-2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Political Economy",
             "code": ["ECO 3680"],
             "pre_reqs": ["ECO-2101", "ECO-2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Environmental Economics",
             "code": ["ECO 3700"],
             "pre_reqs": ["ECO-2102", "ECO-2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Capstone Project",
             "code": ["ECO 4998"],
             "pre_reqs": [],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Financial Markets and Institutions",
             "code": ["FIN 3002/ECO 3207"],
             "pre_reqs": ["ECO 2201","ECO 2202"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Advanced Financial Management",
             "code": ["FIN 3010"],
             "pre_reqs": ["ECO 2201","ECO 2400"],
-            "semester": "Spring",
-            "sem_no": 5,
+            "semester": "Monsoon",
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -189,7 +189,7 @@
             "code": ["ECO 3100"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -197,7 +197,7 @@
             "code": ["ECO 3101"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -205,7 +205,7 @@
             "code": ["ECO 3206"],
             "pre_reqs": ["ECO 2201","ECO 2202"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -213,7 +213,7 @@
             "code": ["ECO 3301"],
             "pre_reqs": ["ECO 2101","ECO 2202"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -221,7 +221,7 @@
             "code": ["ECO 3400"],
             "pre_reqs": ["ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -229,7 +229,7 @@
             "code": ["ECO 3402"],
             "pre_reqs": ["ECO 2202","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -237,7 +237,7 @@
             "code": ["ECO 3502"],
             "pre_reqs": ["ECO 2101","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -245,7 +245,7 @@
             "code": ["ECO 3610"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -253,7 +253,7 @@
             "code": ["ECO 3620"],
             "pre_reqs": ["ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -261,7 +261,7 @@
             "code": ["ECO 3630"],
             "pre_reqs": ["ECO 2101","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -269,7 +269,7 @@
             "code": ["ECO 3660"],
             "pre_reqs": ["ECO 2101","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -277,7 +277,7 @@
             "code": ["ECO 3670"],
             "pre_reqs": ["ECO 2101","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -285,7 +285,7 @@
             "code": ["ECO 3680"],
             "pre_reqs": ["ECO 2102","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -293,7 +293,7 @@
             "code": ["ECO 3710"],
             "pre_reqs": ["ECO 2102","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -301,7 +301,7 @@
             "code": ["ECO 4999"],
             "pre_reqs": ["ECO 2102","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -309,7 +309,7 @@
             "code": ["FIN 2001"],
             "pre_reqs": ["ECO 2101"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -317,7 +317,7 @@
             "code": ["FIN 3001/ ECO 3203"],
             "pre_reqs": ["ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -325,7 +325,7 @@
             "code": ["FIN 3003"],
             "pre_reqs": ["ECO 2001"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -333,7 +333,7 @@
             "code": ["FIN 3030/ECO 3303"],
             "pre_reqs": ["ECO 2101","ECO 2201","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -341,7 +341,7 @@
             "code": ["FIN 3031/ ECO 3304"],
             "pre_reqs": ["ECO 2201","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -349,7 +349,7 @@
             "code": ["3035"],
             "pre_reqs": ["ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         },
         {
@@ -357,7 +357,7 @@
             "code": ["FIN 3040/ECO 3205"],
             "pre_reqs": ["ECO 2101","ECO 2201","ECO 2400"],
             "semester": "Spring",
-            "sem_no": 5,
+            "sem_no": 0,
             "credits": 4
         }
 
