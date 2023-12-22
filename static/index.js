@@ -18,12 +18,9 @@ const getCourseData = async (path,exec) => {
       innerDiv2.setAttribute('credits','0');
       if (innerDiv2) {
         while (innerDiv2.firstChild) {
-          console.log('child:');
-          console.log(innerDiv2.firstChild);
           innerDiv2.removeChild(innerDiv2.firstChild);
         }
       }
-      console.log(innerDiv2);
     }
 
     if (path==='default') {
@@ -37,7 +34,6 @@ const getCourseData = async (path,exec) => {
 };
 
 const getCourses = async ({ query,major,exec }) => {
-  console.log(major);
   const courses = [];
   const coursesData = await getCourseData(major,exec);
   const keys = ['name', 'code'];
@@ -117,8 +113,6 @@ function drop(ev) {
     flag = 0;
   }
   
-  console.log('target: '+target.id);
-  console.log((parseInt(target.getAttribute('credits'))+parseInt(course.credits)));
   var credit_check = true;
   if (sem !== 'courseContainer') {
     credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=22;
@@ -137,7 +131,6 @@ function drop(ev) {
         tempChosenCourses[i].forEach(coursename => {
           // Use tempChosenCourses inside check_prereqs
           const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
-          console.log('flagcourse: '+flagcourse);
           if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
             flagend = 1;
             alert('alert1:\n'+'course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
@@ -145,12 +138,10 @@ function drop(ev) {
         });
       }
     }
-    console.log('flagend: '+flagend);
     if (!flagend) {
       // target sem div
       if (sem !== 'courseContainer') {
         if (!chosenCourses[sem].includes(courseName)) {
-          console.log('call1');
           chosenCourses[sem].push(courseName);
         }
       }
@@ -161,14 +152,12 @@ function drop(ev) {
           const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
           const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
           prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
-          console.log(prevSemtarget);
           if (prevSemdiv) {
             prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
           }
           if (ogSem!=sem) {
             chosenCourses[ogSem].splice(index, 1);
           }
-          console.log('call2');
         }
       }
       console.log(chosenCourses);
@@ -177,12 +166,10 @@ function drop(ev) {
       target.insertBefore(elem, target.firstChild);
       const attributeValue = target.getAttribute('credits');
       const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
-      console.log(innerDiv1);
       if (innerDiv1) {
         innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
       }
       target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
-      console.log(target);
     }
   }else{
     if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>22) {
@@ -205,7 +192,6 @@ async function updateCourses(exec=0) {
   selectedCourses = Array.from(selectedCourses).map((course) => course.id);
 
   courses.forEach((course) => {
-    console.log(course.name);
     if (selectedCourses.includes(course.code)) {
       return;
     }
@@ -311,13 +297,9 @@ function rec_courses(){
     // add courses to semesters
     for (let i = courseContainer.children.length - 1; i >= 0; i--) {
       const courseDiv = courseContainer.children[i];
-      console.log('div');
-      console.log('course: '+courseDiv.getAttribute('id'));
       const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
       const semester = parseInt(course.sem_no);
       if (semester) {
-          console.log(semester);
-          console.log('course: ' + chosenCourses[parseInt(course.sem_no)]);
           const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
           const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
           chosenCourses[parseInt(course.sem_no)].push(course.name);
