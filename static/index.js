@@ -56,9 +56,6 @@ const getCourses = async ({ query,major,exec }) => {
         }
       }
     }
-    // if (keys.some((key) => course[key].toLowerCase().includes(query))) {
-    //   courses.push(course);
-    //   }
   }
 
   return courses;
@@ -152,10 +149,6 @@ function drop(ev) {
     if (!flagend) {
       // target sem div
       if (sem !== 'courseContainer') {
-        console.log('ogSem: '+ogSem+' sem: '+sem);
-        chosenCourses[sem].forEach(element => {
-          console.log('in block: '+element);
-        });
         if (!chosenCourses[sem].includes(courseName)) {
           console.log('call1');
           chosenCourses[sem].push(courseName);
@@ -309,8 +302,6 @@ window.onload = () => {
 
     semContainer.appendChild(div);
   }
-
-  // updateCourses('maj-change');
   updateCourses();
 };
 
@@ -335,8 +326,6 @@ function rec_courses(){
             semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
           }
           semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
-
-        // Verify if courseDiv is still a child of courseContainer
         if (courseDiv.parentNode === courseContainer) {
             courseContainer.removeChild(courseDiv);
         }
