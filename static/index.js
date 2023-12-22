@@ -127,7 +127,7 @@ function drop(ev) {
   if (!flag && credit_check) {
     var flagend = 0;
     if (ogSem !== 'courseContainer') {
-      tempChosenCourses = {... chosenCourses};
+      tempChosenCourses = JSON.parse(JSON.stringify(chosenCourses));
       // Temporarily remove the dropped course
       tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
       if (sem!=='courseContainer') {
