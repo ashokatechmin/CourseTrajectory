@@ -133,7 +133,7 @@ function drop(ev) {
           const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
           if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
             flagend = 1;
-            alert('alert1:\n'+'course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
+            alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
           }
         });
       }
@@ -175,7 +175,7 @@ function drop(ev) {
     if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>22) {
       alert('course cap exceeded');
     }else{
-      alert('alert2\n'+'course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
+      alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
     }
   }
 }
