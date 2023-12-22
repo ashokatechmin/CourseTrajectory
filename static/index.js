@@ -133,7 +133,7 @@ function drop(ev) {
           const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
           if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
             flagend = 1;
-            alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
+            alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied');
           }
         });
       }
