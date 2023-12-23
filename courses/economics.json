@@ -27,7 +27,7 @@
         {
             "name": "Microeconomic Theory I",
             "code": ["ECO-2101"],
-            "pre_reqs": ["ECO-1001", "ECO-1010"],
+            "pre_reqs": ["Introduction to Economics", "Mathematics for Economists"],
             "semester": "Spring",
             "sem_no": 3,
             "credits": 4
