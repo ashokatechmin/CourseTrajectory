@@ -3,7 +3,7 @@
         {
             "name": "Introduction to Economics",
             "code": ["ECO-1001"],
-            "pre_reqs": ["MAT-1000 (if needed)"],
+            "pre_reqs": ["Calculus (if needed)"],
             "semester": "Spring",
             "sem_no": 2,
             "credits": 4
@@ -11,7 +11,7 @@
         {
             "name": "Mathematics for Economists",
             "code": ["ECO-1010"],
-            "pre_reqs": ["MAT-1000 (if needed)"],
+            "pre_reqs": ["Calculus (if needed)"],
             "semester": "Spring",
             "sem_no": 2,
             "credits": 4
@@ -19,7 +19,7 @@
         {
             "name": "Statistics for Economists",
             "code": ["ECO-1400"],
-            "pre_reqs": ["ECO-1001", "ECO-1010"],
+            "pre_reqs": ["Introduction to Economics", "Mathematics for Economists"],
             "semester": "Spring",
             "sem_no": 3,
             "credits": 4
@@ -35,7 +35,7 @@
         {
             "name": "Macroeconomic Theory I",
             "code": ["ECO-2201"],
-            "pre_reqs": ["ECO-1001", "ECO-1010"],
+            "pre_reqs": ["Introduction to Economics", "Mathematics for Economists"],
             "semester": "Spring",
             "sem_no": 3,
             "credits": 4
@@ -43,7 +43,7 @@
         {
             "name": "Microeconomic Theory II",
             "code": ["ECO-2102"],
-            "pre_reqs": ["ECO-2101 or ECO-202"],
+            "pre_reqs": ["Microeconomic Theory I"],
             "semester": "Spring",
             "sem_no": 4,
             "credits": 4
@@ -51,7 +51,7 @@
         {
             "name": "Macroeconomic Theory II",
             "code": ["ECO-2202"],
-            "pre_reqs": ["ECO-2201 or ECO-201"],
+            "pre_reqs": ["Macroeconomic Theory I"],
             "semester": "Spring",
             "sem_no": 4,
             "credits": 4
@@ -59,7 +59,7 @@
         {
             "name": "Econometrics",
             "code": ["ECO-2400"],
-            "pre_reqs": ["ECO-1400"],
+            "pre_reqs": ["Statistics for Economists"],
             "semester": "Spring",
             "sem_no": 4,
             "credits": 4
@@ -67,7 +67,7 @@
         {
             "name": "Development Economics",
             "code": ["ECO-3000"],
-            "pre_reqs": ["ECO-202 or ECO-2101", "ECO-2400"],
+            "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
             "sem_no": 5,
             "credits": 4
@@ -75,7 +75,7 @@
         {
             "name": "Decision Theory",
             "code": ["ECO-3100"],
-            "pre_reqs": ["ECO-2101", "ECO-2102"],
+            "pre_reqs": ["Microeconomic Theory I", "Microeconomic Theory II"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
@@ -83,7 +83,7 @@
         {
             "name": "Organizational Economics",
             "code": ["ECO-3107"],
-            "pre_reqs": ["ECO-2101", "ECO-2102"],
+            "pre_reqs": ["Microeconomic Theory I", "Microeconomic Theory II"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
@@ -91,78 +91,78 @@
         {
             "name": "Monetary Theory",
             "code": ["ECO-3200"],
-            "pre_reqs": ["ECO-2101", "ECO-2201","ECO-2202"],
+            "pre_reqs": ["Microeconomic Theory I", "Macroeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economic History of Modern India",
-            "code": ["ECO 3003"],
-            "pre_reqs": ["ECO-2101", "ECO-2201","ECO-2400"],
+            "code": ["ECO-3003"],
+            "pre_reqs": ["Microeconomic Theory I", "Macroeconomic Theory I","Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Industrial Organization",
-            "code": ["ECO 3600"],
-            "pre_reqs": ["ECO-2102", "ECO-2400"],
+            "code": ["ECO-3600"],
+            "pre_reqs": ["Microeconomic Theory II", "Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Pricing Theory and Public Policy",
-            "code": ["ECO 3602"],
-            "pre_reqs": ["ECO-2101", "ECO-2102"],
+            "code": ["ECO-3602"],
+            "pre_reqs": ["Microeconomic Theory I", "Microeconomic Theory II"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Urban Economics",
-            "code": ["ECO 3600"],
-            "pre_reqs": ["ECO-2101", "ECO-2400"],
+            "code": ["ECO-3600"],
+            "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Health Economics",
-            "code": ["ECO 3600"],
-            "pre_reqs": ["ECO-2101", "ECO-2400"],
+            "code": ["ECO-3600"],
+            "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economics of Gender",
-            "code": ["ECO 3660"],
-            "pre_reqs": ["ECO-2101", "ECO-2400"],
+            "code": ["ECO-3660"],
+            "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Political Economy",
-            "code": ["ECO 3680"],
-            "pre_reqs": ["ECO-2101", "ECO-2400"],
+            "code": ["ECO-3680"],
+            "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Environmental Economics",
-            "code": ["ECO 3700"],
-            "pre_reqs": ["ECO-2102", "ECO-2400"],
+            "code": ["ECO-3700"],
+            "pre_reqs": ["Microeconomic Theory II", "Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Capstone Project",
-            "code": ["ECO 4998"],
+            "code": ["ECO-4998"],
             "pre_reqs": [],
             "semester": "Monsoon",
             "sem_no": 0,
@@ -170,23 +170,23 @@
         },
         {
             "name": "Financial Markets and Institutions",
-            "code": ["FIN 3002/ECO 3207"],
-            "pre_reqs": ["ECO 2201","ECO 2202"],
+            "code": ["FIN-3002/ECO-3207"],
+            "pre_reqs": ["Microeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Advanced Financial Management",
-            "code": ["FIN 3010"],
-            "pre_reqs": ["ECO 2201","ECO 2400"],
+            "code": ["FIN-3010"],
+            "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Monsoon",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Game Theory and Applications",
-            "code": ["ECO 3100"],
+            "code": ["ECO-3100"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
             "sem_no": 0,
@@ -194,7 +194,7 @@
         },
         {
             "name": "Economics of Information",
-            "code": ["ECO 3101"],
+            "code": ["ECO-3101"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
             "sem_no": 0,
@@ -202,47 +202,47 @@
         },
         {
             "name": "Macroeconomic Policy",
-            "code": ["ECO 3206"],
-            "pre_reqs": ["ECO 2201","ECO 2202"],
+            "code": ["ECO-3206"],
+            "pre_reqs": ["Microeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "International Trade",
-            "code": ["ECO 3301"],
-            "pre_reqs": ["ECO 2101","ECO 2202"],
+            "code": ["ECO-3301"],
+            "pre_reqs": ["Microeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Advanced Econometrics",
-            "code": ["ECO 3400"],
-            "pre_reqs": ["ECO 2400"],
+            "code": ["ECO-3400"],
+            "pre_reqs": ["Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economic Forecasting & Analysis",
-            "code": ["ECO 3402"],
-            "pre_reqs": ["ECO 2202","ECO 2400"],
+            "code": ["ECO-3402"],
+            "pre_reqs": ["Macroeconomic Theory II","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Social Policy in India",
-            "code": ["ECO 3002"],
-            "pre_reqs": ["ECO 2101","ECO 2400"],
+            "code": ["ECO-3002"],
+            "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Experimental Economics",
-            "code": ["ECO 3610"],
+            "code": ["ECO-3610"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
             "sem_no": 0,
@@ -250,79 +250,79 @@
         },
         {
             "name": "Behavioral Economics",
-            "code": ["ECO 3620"],
-            "pre_reqs": ["ECO 2400"],
+            "code": ["ECO-3620"],
+            "pre_reqs": ["Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Public Economics",
-            "code": ["ECO 3630"],
-            "pre_reqs": ["ECO 2101","ECO 2400"],
+            "code": ["ECO-3630"],
+            "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economics of Gender",
-            "code": ["ECO 3660"],
-            "pre_reqs": ["ECO 2101","ECO 2400"],
+            "code": ["ECO-3660"],
+            "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economics of Discrimination",
-            "code": ["ECO 3670"],
-            "pre_reqs": ["ECO 2101","ECO 2400"],
+            "code": ["ECO-3670"],
+            "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Political Economy",
-            "code": ["ECO 3680"],
-            "pre_reqs": ["ECO 2102","ECO 2400"],
+            "code": ["ECO-3680"],
+            "pre_reqs": ["ECO 2102","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Economics of Technology",
-            "code": ["ECO 3710"],
-            "pre_reqs": ["ECO 2102","ECO 2400"],
+            "code": ["ECO-3710"],
+            "pre_reqs": ["ECO 2102","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Capstone Thesis",
-            "code": ["ECO 4999"],
-            "pre_reqs": ["ECO 2102","ECO 2400"],
+            "code": ["ECO-4999"],
+            "pre_reqs": ["ECO 2102","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Introduction to Finance",
-            "code": ["FIN 2001"],
-            "pre_reqs": ["ECO 2101"],
+            "code": ["FIN-2001"],
+            "pre_reqs": ["Microeconomic Theory I"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Financial Markets and Asset Pricing",
-            "code": ["FIN 3001/ ECO 3203"],
-            "pre_reqs": ["ECO 2400"],
+            "code": ["FIN-3001/ ECO-3203"],
+            "pre_reqs": ["Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Derivatives and Risk Management",
-            "code": ["FIN 3003"],
+            "code": ["FIN-3003"],
             "pre_reqs": ["ECO 2001"],
             "semester": "Spring",
             "sem_no": 0,
@@ -330,16 +330,16 @@
         },
         {
             "name": "International Finance",
-            "code": ["FIN 3030/ECO 3303"],
-            "pre_reqs": ["ECO 2101","ECO 2201","ECO 2400"],
+            "code": ["FIN-3030/ECO-3303"],
+            "pre_reqs": ["Microeconomic Theory I","Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Empirical Monetary Policy and Finance",
-            "code": ["FIN 3031/ ECO 3304"],
-            "pre_reqs": ["ECO 2201","ECO 2400"],
+            "code": ["FIN-3031/ ECO-3304"],
+            "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
@@ -347,15 +347,15 @@
         {
             "name": "Computational Finance",
             "code": ["3030"],
-            "pre_reqs": ["ECO 2400"],
+            "pre_reqs": ["Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
             "name": "Finance and the Economy",
-            "code": ["FIN 3040/ECO 3200"],
-            "pre_reqs": ["ECO 2101","ECO 2201","ECO 2400"],
+            "code": ["FIN-3040/ECO-3200"],
+            "pre_reqs": ["Microeconomic Theory I","Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
             "sem_no": 0,
             "credits": 4
