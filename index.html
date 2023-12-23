@@ -49,17 +49,17 @@
                         <h3 class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] font-mono text-2xl font-semibold text-white text-center underline underline-offset-4">Course Planner</h3>
                         <br>
                         <select class="rounded border border-slate-500 w-full mt-2 mb-3 font-mono text-sm" name="major" id="major" onchange="updateCourses()">
-                            <option value="default" selected>Select a Major</option>
+                            <option value="default" selected>All Courses</option>
                             <option value="./courses/cs_maj.json">Computer Science</option>
                             <option value="./courses/cs_major_math_crypt.json">Computer Science + Math - Cryptography</option>
                             <option value="./courses/cs_major_math_ml.json">Computer Science + Math - Machine Learning</option>
-                            <option value="./courses/eco.json">Economics</option>
+                            <option value="./courses/economics.json">Economics</option>
                             <option value="./courses/psych.json">Psychology</option>
                         </select>
                         <label for="courseQuery" class="font-mono text-white text-sm mt-1">Search Course Name or Code:</label>
                         <input type="text" class="border-[1px] py-1 px-2 w-full mt-3 mb-3" onkeyup="updateCourses()" id="courseQuery" placeholder="Course name/code"/>
                         <button onclick="rec_courses()" class="font-mono text-sm mt-2 mb-4 px-1 py-2 bg-cyan-500 rounded-md shadow hover:bg-cyan-600">
-                            Recommend Courses/Clear
+                            Recommend Trajectory/Clear
                           </button>
                     </div>
                     <div id="courseContainer" class="overflow-y-scroll" ondrop="drop(event)"

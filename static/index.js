@@ -3,29 +3,29 @@ let chosenCourses = {};
 let tempChosenCourses = {};
 let ogPath = 'default';
 
-const getCourseData = async (path,exec) => {
+const getCourseData = async (query,path,exec) => {
   if (path===ogPath && mainCourseData && !exec) {
     ogPath = path;
     return mainCourseData;
   }else{
-    for (let sem = 1; sem <= 8; sem++) {
-      chosenCourses[sem] = [];
-      const innerDiv1 = document.querySelector(`#Semester-${sem}`);
-      const innerDiv2 = document.querySelector(`#sem${sem}`);
-      if (innerDiv1){
-        innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}`;
-      }
-      innerDiv2.setAttribute('credits','0');
-      if (innerDiv2) {
-        while (innerDiv2.firstChild) {
-          console.log('child:');
-          console.log(innerDiv2.firstChild);
-          innerDiv2.removeChild(innerDiv2.firstChild);
+    // empty query on same path || clear || select diff major
+    if ((!query && path===ogPath) || exec || path!==ogPath) {
+      for (let sem = 1; sem <= 8; sem++) {
+        chosenCourses[sem] = [];
+        const innerDiv1 = document.querySelector(`#Semester-${sem}`);
+        const innerDiv2 = document.querySelector(`#sem${sem}`);
+        if (innerDiv1){
+          innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}`;
+        }
+        innerDiv2.setAttribute('credits','0');
+        if (innerDiv2) {
+          while (innerDiv2.firstChild) {
+            innerDiv2.removeChild(innerDiv2.firstChild);
+          }
         }
       }
-      console.log(innerDiv2);
     }
-
+    ogPath = path;
     if (path==='default') {
       mainCourseData = await fetch('./courses/courses.json').then((res) => res.json());
     }
@@ -37,9 +37,8 @@ const getCourseData = async (path,exec) => {
 };
 
 const getCourses = async ({ query,major,exec }) => {
-  console.log(major);
   const courses = [];
-  const coursesData = await getCourseData(major,exec);
+  const coursesData = await getCourseData(query,major,exec);
   const keys = ['name', 'code'];
 
   for (const course of coursesData) {
@@ -56,9 +55,6 @@ const getCourses = async ({ query,major,exec }) => {
         }
       }
     }
-    // if (keys.some((key) => course[key].toLowerCase().includes(query))) {
-    //   courses.push(course);
-    //   }
   }
 
   return courses;
@@ -120,8 +116,6 @@ function drop(ev) {
     flag = 0;
   }
   
-  console.log('target: '+target.id);
-  console.log((parseInt(target.getAttribute('credits'))+parseInt(course.credits)));
   var credit_check = true;
   if (sem !== 'courseContainer') {
     credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=22;
@@ -130,7 +124,7 @@ function drop(ev) {
   if (!flag && credit_check) {
     var flagend = 0;
     if (ogSem !== 'courseContainer') {
-      tempChosenCourses = {... chosenCourses};
+      tempChosenCourses = JSON.parse(JSON.stringify(chosenCourses));
       // Temporarily remove the dropped course
       tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
       if (sem!=='courseContainer') {
@@ -140,24 +134,17 @@ function drop(ev) {
         tempChosenCourses[i].forEach(coursename => {
           // Use tempChosenCourses inside check_prereqs
           const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
-          console.log('flagcourse: '+flagcourse);
           if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
             flagend = 1;
-            alert('alert1:\n'+'course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied!');
+            alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied');
           }
         });
       }
     }
-    console.log('flagend: '+flagend);
     if (!flagend) {
       // target sem div
       if (sem !== 'courseContainer') {
-        console.log('ogSem: '+ogSem+' sem: '+sem);
-        chosenCourses[sem].forEach(element => {
-          console.log('in block: '+element);
-        });
         if (!chosenCourses[sem].includes(courseName)) {
-          console.log('call1');
           chosenCourses[sem].push(courseName);
         }
       }
@@ -168,14 +155,12 @@ function drop(ev) {
           const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
           const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
           prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
-          console.log(prevSemtarget);
           if (prevSemdiv) {
             prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
           }
           if (ogSem!=sem) {
             chosenCourses[ogSem].splice(index, 1);
           }
-          console.log('call2');
         }
       }
       console.log(chosenCourses);
@@ -184,93 +169,90 @@ function drop(ev) {
       target.insertBefore(elem, target.firstChild);
       const attributeValue = target.getAttribute('credits');
       const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
-      console.log(innerDiv1);
       if (innerDiv1) {
         innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
       }
       target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
-      console.log(target);
     }
   }else{
     if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>22) {
       alert('course cap exceeded');
     }else{
-      alert('alert2\n'+'course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
+      alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
     }
   }
 }
 
 async function updateCourses(exec=0) {
   const major = document.querySelector('#major').value;
-  const query = document.querySelector('#courseQuery').value;
+  query = document.querySelector('#courseQuery').value;
   const courses = await getCourses({ query,major,exec });
 
   const container = document.querySelector('#courseContainer');
+  let selectedCourses = [];
   container.innerHTML = '';
-
-  let selectedCourses = document.getElementsByName('courseDiv');
-  selectedCourses = Array.from(selectedCourses).map((course) => course.id);
-
+  Object.values(chosenCourses).forEach(semCourses => {
+    if (semCourses.length!=0){
+      selectedCourses = selectedCourses.concat(semCourses);
+    }
+  })
   courses.forEach((course) => {
-    console.log(course.name);
-    if (selectedCourses.includes(course.code)) {
-      return;
+    if (!selectedCourses.includes(course.name)) {
+      const div = document.createElement('div');
+      div.classList.add('m-1', 'pt-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
+      div.setAttribute('name', 'courseDiv');
+      div.setAttribute('draggable', 'true');
+      div.ondragstart = (event) => drag(event);
+      // set div id as course name
+      div.setAttribute('id', course.name);
+      // div.setAttribute('id', course.code);
+  
+      const courseName = document.createElement('p');
+      courseName.classList.add('text-center', 'm-0','mb-2', 'font-medium','font-mono','text-base','underline', 'underline-offset-4');
+      courseName.textContent = course.name;
+  
+      const courseCode = document.createElement('p');
+      courseCode.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
+      courseCode.textContent = course.code;
+  
+      const courseCredits = document.createElement('p');
+      courseCredits.classList.add('text-center', 'm-0','mt-2','py-1','font-mono','text-sm','bg-slate-200');
+      courseCredits.textContent = 'Credits: '+course.credits;
+  
+      const coursePrereqs = document.createElement('div');
+      coursePrereqs.classList.add('text-center', 'm-0', 'font-mono', 'text-sm', 'relative');
+  
+      const collapsibleHeader = document.createElement('button');
+      collapsibleHeader.classList.add('border', 'border-gray-300', 'rounded-md', 'py-1', 'px-3', 'text-xs', 'bg-cyan-500', 'shadow-sm', 'focus:outline-none');
+      collapsibleHeader.textContent = 'view prerequisites';
+  
+      const collapsibleContent = document.createElement('div');
+      collapsibleContent.classList.add('hidden', 'border', 'border-gray-300', 'shadow-lg', 'py-2', 'z-10', 'max-h-32', 'overflow-y-auto','text-xs');
+      if (course.pre_reqs.length !=0) {
+        collapsibleContent.textContent = course.pre_reqs; // Assign prerequisites content here
+      }else{
+        collapsibleContent.textContent = 'NA';
+      }
+  
+      collapsibleHeader.addEventListener('click', () => {
+          collapsibleContent.classList.toggle('hidden');
+          if (!collapsibleContent.classList.contains('hidden')) {
+              collapsibleContent.style.maxHeight = collapsibleContent.scrollHeight + 'px';
+          } else {
+              collapsibleContent.style.maxHeight = null;
+          }
+      });
+  
+      coursePrereqs.appendChild(collapsibleHeader);
+      coursePrereqs.appendChild(collapsibleContent);
+      
+      // append
+      div.appendChild(courseName);
+      div.appendChild(courseCode);
+      div.appendChild(coursePrereqs);
+      div.appendChild(courseCredits);
+      container.appendChild(div);
     }
-
-    const div = document.createElement('div');
-    div.classList.add('m-1', 'pt-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
-    div.setAttribute('name', 'courseDiv');
-    div.setAttribute('draggable', 'true');
-    div.ondragstart = (event) => drag(event);
-    // set div id as course name
-    div.setAttribute('id', course.name);
-    // div.setAttribute('id', course.code);
-
-    const courseName = document.createElement('p');
-    courseName.classList.add('text-center', 'm-0','mb-2', 'font-medium','font-mono','text-base','underline', 'underline-offset-4');
-    courseName.textContent = course.name;
-
-    const courseCode = document.createElement('p');
-    courseCode.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
-    courseCode.textContent = course.code;
-
-    const courseCredits = document.createElement('p');
-    courseCredits.classList.add('text-center', 'm-0','mt-2','py-1','font-mono','text-sm','bg-slate-200');
-    courseCredits.textContent = 'Credits: '+course.credits;
-
-    const coursePrereqs = document.createElement('div');
-    coursePrereqs.classList.add('text-center', 'm-0', 'font-mono', 'text-sm', 'relative');
-
-    const collapsibleHeader = document.createElement('button');
-    collapsibleHeader.classList.add('border', 'border-gray-300', 'rounded-md', 'py-1', 'px-3', 'text-xs', 'bg-cyan-500', 'shadow-sm', 'focus:outline-none');
-    collapsibleHeader.textContent = 'view prerequisites';
-
-    const collapsibleContent = document.createElement('div');
-    collapsibleContent.classList.add('hidden', 'border', 'border-gray-300', 'shadow-lg', 'py-2', 'z-10', 'max-h-32', 'overflow-y-auto','text-xs');
-    if (course.pre_reqs.length !=0) {
-      collapsibleContent.textContent = course.pre_reqs; // Assign prerequisites content here
-    }else{
-      collapsibleContent.textContent = 'NA';
-    }
-
-    collapsibleHeader.addEventListener('click', () => {
-        collapsibleContent.classList.toggle('hidden');
-        if (!collapsibleContent.classList.contains('hidden')) {
-            collapsibleContent.style.maxHeight = collapsibleContent.scrollHeight + 'px';
-        } else {
-            collapsibleContent.style.maxHeight = null;
-        }
-    });
-
-    coursePrereqs.appendChild(collapsibleHeader);
-    coursePrereqs.appendChild(collapsibleContent);
-    
-    // append
-    div.appendChild(courseName);
-    div.appendChild(courseCode);
-    div.appendChild(coursePrereqs);
-    div.appendChild(courseCredits);
-    container.appendChild(div);
   });
 }
 
@@ -309,38 +291,56 @@ window.onload = () => {
 
     semContainer.appendChild(div);
   }
-
-  // updateCourses('maj-change');
   updateCourses();
 };
 
 function rec_courses(){
-  const courseContainer = document.querySelector('#courseContainer');
-  if(Object.values(chosenCourses).slice(1, 9).every(arr => arr.length === 0)){
-    // add courses to semesters
-    for (let i = courseContainer.children.length - 1; i >= 0; i--) {
-      const courseDiv = courseContainer.children[i];
-      console.log('div');
-      console.log('course: '+courseDiv.getAttribute('id'));
-      const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
-      const semester = parseInt(course.sem_no);
-      if (semester) {
-          console.log(semester);
-          console.log('course: ' + chosenCourses[parseInt(course.sem_no)]);
-          const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
-          const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
-          chosenCourses[parseInt(course.sem_no)].push(course.name);
-          semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
-          if (semesertDivCredit) {
-            semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+  if(Object.values(chosenCourses).every(arr => arr.length === 0)){
+    if (query) {
+      document.querySelector('#courseQuery').value = '';
+      updateCourses().then(() =>{
+        const courseContainer = document.querySelector('#courseContainer');
+        // add courses to semesters
+        for (let i = courseContainer.children.length - 1; i >= 0; i--) {
+          const courseDiv = courseContainer.children[i];
+          const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
+          const semester = parseInt(course.sem_no);
+          if (semester) {
+              const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
+              const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
+              chosenCourses[parseInt(course.sem_no)].push(course.name);
+              semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
+              if (semesertDivCredit) {
+                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+              }
+              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
+            if (courseDiv.parentNode === courseContainer) {
+                courseContainer.removeChild(courseDiv);
+            }
           }
-          semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
-
-        // Verify if courseDiv is still a child of courseContainer
-        if (courseDiv.parentNode === courseContainer) {
-            courseContainer.removeChild(courseDiv);
         }
-      }
+      });
+    } else{
+        const courseContainer = document.querySelector('#courseContainer');
+        // add courses to semesters
+        for (let i = courseContainer.children.length - 1; i >= 0; i--) {
+          const courseDiv = courseContainer.children[i];
+          const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
+          const semester = parseInt(course.sem_no);
+          if (semester) {
+              const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
+              const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
+              chosenCourses[parseInt(course.sem_no)].push(course.name);
+              semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
+              if (semesertDivCredit) {
+                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+              }
+              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
+            if (courseDiv.parentNode === courseContainer) {
+                courseContainer.removeChild(courseDiv);
+            }
+          }
+        }
     }
   }else{
     // clear
