@@ -106,112 +106,123 @@ function drop(ev) {
   var flag = pre_reqs.length;
   
   const sem = target.id.replace('sem', '');
+  const doubleSemCourses = ["Calculus","Introduction to Computer Science"];
+  // correct semester || no mentioned semester || offered in both semsters
+  // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
   if (sem!=='courseContainer') {
     for (let i = 1; i <=sem; i++) {
       pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
       flag = pre_reqs.length;
       // if flag=0 then all pre-reqs are satisfied
     }
+    check = true && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2));
   }else{
     flag = 0;
+    check = true;
   }
   
-  var credit_check = true;
-  if (sem !== 'courseContainer') {
-    credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=22;
-  }
-  // insert to courseContainer or all pre-requisites satisfied
-  if (!flag && credit_check) {
-    var flagend = 0;
-    if (ogSem !== 'courseContainer') {
-      tempChosenCourses = JSON.parse(JSON.stringify(chosenCourses));
-      // Temporarily remove the dropped course
-      tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
-      if (sem!=='courseContainer') {
-        tempChosenCourses[sem].push(courseName);
-      }
-      for (let i = 1; i <= 8; i++) {
-        tempChosenCourses[i].forEach(coursename => {
-          // Use tempChosenCourses inside check_prereqs
-          const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
-          if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
-            flagend = 1;
-            alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied');
-          }
-        });
-      }
+  if (check){
+    var credit_check = true;
+    const semCreds = [16,22,26,22,26,26,26,26];
+    if (sem !== 'courseContainer') {
+      credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=semCreds[sem-1];
     }
-    if (!flagend) {
-      // target sem div
-      if (sem !== 'courseContainer') {
-        if (!chosenCourses[sem].includes(courseName)) {
-          chosenCourses[sem].push(courseName);
-        }
-      }
+    // insert to courseContainer or all pre-requisites satisfied
+    if (!flag && credit_check) {
+      var flagend = 0;
       if (ogSem !== 'courseContainer') {
-        // remove the course from the original container in chosenCourses
-        const index = chosenCourses[ogSem].indexOf(courseName);
-        if (index > -1) {
-          const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
-          const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
-          prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
-          if (prevSemdiv) {
-            prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
-          }
-          if (ogSem!=sem) {
-            chosenCourses[ogSem].splice(index, 1);
-          }
+        tempChosenCourses = JSON.parse(JSON.stringify(chosenCourses));
+        // Temporarily remove the dropped course
+        tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
+        if (sem!=='courseContainer') {
+          tempChosenCourses[sem].push(courseName);
+        }
+        for (let i = 1; i <= 8; i++) {
+          tempChosenCourses[i].forEach(coursename => {
+            // Use tempChosenCourses inside check_prereqs
+            const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
+            if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
+              flagend = 1;
+              alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied');
+            }
+          });
         }
       }
-      console.log(chosenCourses);
-    
-      //target.appendChild(elem);
-      target.insertBefore(elem, target.firstChild);
-      const attributeValue = target.getAttribute('credits');
-      const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
-      if (innerDiv1) {
-        innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
-      }
-      target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
-      if(ogSem === 'courseContainer'){
-        const closeBtn = document.createElement('button');
-        closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
-        closeBtn.textContent = 'X';
-        closeBtn.title = 'remove this course';
-        closeBtn.onclick = () => {
-          // Your function to execute goes here
-          target.removeChild(elem);
-          const index = chosenCourses[sem].indexOf(courseName);
-          const courseContainer = document.getElementById('courseContainer')
-          courseContainer.insertBefore(elem,courseContainer.firstChild);
-          chosenCourses[sem].splice(index, 1);
-          const Semdiv = target.parentNode.parentNode.querySelector(`#Semester-${sem}`);
-          const Semtarget = target.parentNode.parentNode.querySelector(`#sem${sem}`);
-          Semtarget.setAttribute('credits',parseInt(Semtarget.getAttribute('credits')) - course.credits);
-          if (Semdiv) {
-            Semdiv.textContent = `Semester ${sem}\n Credits: ${Semtarget.getAttribute('credits')}`;
+      if (!flagend) {
+        // target sem div
+        if (sem !== 'courseContainer') {
+          if (!chosenCourses[sem].includes(courseName)) {
+            chosenCourses[sem].push(courseName);
           }
-          elem.removeChild(closeBtn);
-          elem.removeChild(vSpace);
-        };
-
-        const vSpace = document.createElement('div');
-        vSpace.classList.add('h-2');
-        elem.insertBefore(vSpace, elem.firstChild);
-        elem.insertBefore(closeBtn, elem.firstChild);
+        }
+        if (ogSem !== 'courseContainer') {
+          // remove the course from the original container in chosenCourses
+          const index = chosenCourses[ogSem].indexOf(courseName);
+          if (index > -1) {
+            const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
+            const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
+            prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
+            if (prevSemdiv) {
+              prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
+            }
+            if (ogSem!=sem) {
+              chosenCourses[ogSem].splice(index, 1);
+            }
+          }
+        }
+        console.log(chosenCourses);
+      
+        //target.appendChild(elem);
+        target.insertBefore(elem, target.firstChild);
+        const attributeValue = target.getAttribute('credits');
+        const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
+        if (innerDiv1) {
+          innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
+        }
+        target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
+        if(ogSem === 'courseContainer'){
+          const closeBtn = document.createElement('button');
+          closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
+          closeBtn.textContent = 'X';
+          closeBtn.title = 'remove this course';
+          closeBtn.onclick = () => {
+            // Your function to execute goes here
+            target.removeChild(elem);
+            const index = chosenCourses[sem].indexOf(courseName);
+            const courseContainer = document.getElementById('courseContainer')
+            courseContainer.insertBefore(elem,courseContainer.firstChild);
+            chosenCourses[sem].splice(index, 1);
+            const Semdiv = target.parentNode.parentNode.querySelector(`#Semester-${sem}`);
+            const Semtarget = target.parentNode.parentNode.querySelector(`#sem${sem}`);
+            Semtarget.setAttribute('credits',parseInt(Semtarget.getAttribute('credits')) - course.credits);
+            if (Semdiv) {
+              Semdiv.textContent = `Semester ${sem}\n Credits: ${Semtarget.getAttribute('credits')}`;
+            }
+            elem.removeChild(closeBtn);
+            elem.removeChild(vSpace);
+          };
+  
+          const vSpace = document.createElement('div');
+          vSpace.classList.add('h-2');
+          elem.insertBefore(vSpace, elem.firstChild);
+          elem.insertBefore(closeBtn, elem.firstChild);
+        }
+        if(sem === 'courseContainer'){
+          // remove closeBtn and vspace
+          elem.removeChild(elem.firstChild);
+          elem.removeChild(elem.firstChild);
+        }
       }
-      if(sem === 'courseContainer'){
-        // remove closeBtn and vspace
-        elem.removeChild(elem.firstChild);
-        elem.removeChild(elem.firstChild);
+    }else{
+      if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>semCreds[sem-1]) {
+        alert('exceeding course cap '+semCreds[sem-1]);
+      }else{
+        alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
       }
     }
   }else{
-    if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>22) {
-      alert('course cap exceeded');
-    }else{
-      alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
-    }
+    const semName = ["Monsoon","Spring"];
+    alert('course: '+courseName+' not offered in '+semName[(sem-1)%2]);
   }
 }
 
