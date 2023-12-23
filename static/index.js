@@ -8,7 +8,8 @@ const getCourseData = async (query,path,exec) => {
     ogPath = path;
     return mainCourseData;
   }else{
-    if (!query && path!=ogPath) {
+    // empty query on same path || clear || select diff major
+    if ((!query && path===ogPath) || exec || path!==ogPath) {
       for (let sem = 1; sem <= 8; sem++) {
         chosenCourses[sem] = [];
         const innerDiv1 = document.querySelector(`#Semester-${sem}`);
@@ -294,26 +295,52 @@ window.onload = () => {
 };
 
 function rec_courses(){
-  const courseContainer = document.querySelector('#courseContainer');
-  if(Object.values(chosenCourses).slice(1, 9).every(arr => arr.length === 0)){
-    // add courses to semesters
-    for (let i = courseContainer.children.length - 1; i >= 0; i--) {
-      const courseDiv = courseContainer.children[i];
-      const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
-      const semester = parseInt(course.sem_no);
-      if (semester) {
-          const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
-          const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
-          chosenCourses[parseInt(course.sem_no)].push(course.name);
-          semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
-          if (semesertDivCredit) {
-            semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+  if(Object.values(chosenCourses).every(arr => arr.length === 0)){
+    if (query) {
+      document.querySelector('#courseQuery').value = '';
+      updateCourses().then(() =>{
+        const courseContainer = document.querySelector('#courseContainer');
+        // add courses to semesters
+        for (let i = courseContainer.children.length - 1; i >= 0; i--) {
+          const courseDiv = courseContainer.children[i];
+          const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
+          const semester = parseInt(course.sem_no);
+          if (semester) {
+              const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
+              const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
+              chosenCourses[parseInt(course.sem_no)].push(course.name);
+              semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
+              if (semesertDivCredit) {
+                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+              }
+              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
+            if (courseDiv.parentNode === courseContainer) {
+                courseContainer.removeChild(courseDiv);
+            }
           }
-          semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
-        if (courseDiv.parentNode === courseContainer) {
-            courseContainer.removeChild(courseDiv);
         }
-      }
+      });
+    } else{
+        const courseContainer = document.querySelector('#courseContainer');
+        // add courses to semesters
+        for (let i = courseContainer.children.length - 1; i >= 0; i--) {
+          const courseDiv = courseContainer.children[i];
+          const course = mainCourseData.find((course) => course.name === courseDiv.getAttribute('id'));
+          const semester = parseInt(course.sem_no);
+          if (semester) {
+              const semesterDiv = document.querySelector(`#sem${course.sem_no}`);
+              const semesertDivCredit = document.querySelector(`#Semester-${course.sem_no}`);
+              chosenCourses[parseInt(course.sem_no)].push(course.name);
+              semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
+              if (semesertDivCredit) {
+                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+              }
+              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
+            if (courseDiv.parentNode === courseContainer) {
+                courseContainer.removeChild(courseDiv);
+            }
+          }
+        }
     }
   }else{
     // clear
