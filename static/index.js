@@ -173,6 +173,38 @@ function drop(ev) {
         innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
       }
       target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
+      if(ogSem === 'courseContainer'){
+        const closeBtn = document.createElement('button');
+        closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
+        closeBtn.textContent = 'X';
+        closeBtn.title = 'remove this course';
+        closeBtn.onclick = () => {
+          // Your function to execute goes here
+          target.removeChild(elem);
+          const index = chosenCourses[sem].indexOf(courseName);
+          const courseContainer = document.getElementById('courseContainer')
+          courseContainer.insertBefore(elem,courseContainer.firstChild);
+          chosenCourses[sem].splice(index, 1);
+          const Semdiv = target.parentNode.parentNode.querySelector(`#Semester-${sem}`);
+          const Semtarget = target.parentNode.parentNode.querySelector(`#sem${sem}`);
+          Semtarget.setAttribute('credits',parseInt(Semtarget.getAttribute('credits')) - course.credits);
+          if (Semdiv) {
+            Semdiv.textContent = `Semester ${sem}\n Credits: ${Semtarget.getAttribute('credits')}`;
+          }
+          elem.removeChild(closeBtn);
+          elem.removeChild(vSpace);
+        };
+
+        const vSpace = document.createElement('div');
+        vSpace.classList.add('h-2');
+        elem.insertBefore(vSpace, elem.firstChild);
+        elem.insertBefore(closeBtn, elem.firstChild);
+      }
+      if(sem === 'courseContainer'){
+        // remove closeBtn and vspace
+        elem.removeChild(elem.firstChild);
+        elem.removeChild(elem.firstChild);
+      }
     }
   }else{
     if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>22) {
@@ -208,7 +240,8 @@ async function updateCourses(exec=0) {
       // div.setAttribute('id', course.code);
   
       const courseName = document.createElement('p');
-      courseName.classList.add('text-center', 'm-0','mb-2', 'font-medium','font-mono','text-base','underline', 'underline-offset-4');
+      courseName.classList.add('text-center', 'mb-2', 'font-medium','font-mono','text-base','underline', 'underline-offset-4');
+      courseName.style.clear = 'both';
       courseName.textContent = course.name;
   
       const courseCode = document.createElement('p');
