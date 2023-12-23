@@ -350,6 +350,26 @@ function rec_courses(){
             if (courseDiv.parentNode === courseContainer) {
                 courseContainer.removeChild(courseDiv);
             }
+            const closeBtn = document.createElement('button');
+            closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
+            closeBtn.textContent = 'X';
+            closeBtn.title = 'remove this course';
+            closeBtn.onclick = () => {
+              semesterDiv.removeChild(courseDiv);
+              const index = chosenCourses[semester].indexOf(courseName);
+              courseContainer.insertBefore(courseDiv,courseContainer.firstChild);
+              chosenCourses[semester].splice(index, 1);
+              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) - course.credits);
+              if (semesertDivCredit) {
+                semesertDivCredit.textContent = `Semester ${semester}\n Credits: ${semesterDiv.getAttribute('credits')}`;
+              }
+              courseDiv.removeChild(closeBtn);
+              courseDiv.removeChild(vSpace);
+            };
+            const vSpace = document.createElement('div');
+            vSpace.classList.add('h-2');
+            courseDiv.insertBefore(vSpace, courseDiv.firstChild);
+            courseDiv.insertBefore(closeBtn, courseDiv.firstChild);
           }
         }
       });
@@ -372,6 +392,26 @@ function rec_courses(){
             if (courseDiv.parentNode === courseContainer) {
                 courseContainer.removeChild(courseDiv);
             }
+            const closeBtn = document.createElement('button');
+            closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
+            closeBtn.textContent = 'X';
+            closeBtn.title = 'remove this course';
+            closeBtn.onclick = () => {
+              semesterDiv.removeChild(courseDiv);
+              const index = chosenCourses[semester].indexOf(courseName);
+              courseContainer.insertBefore(courseDiv,courseContainer.firstChild);
+              chosenCourses[semester].splice(index, 1);
+              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) - course.credits);
+              if (semesertDivCredit) {
+                semesertDivCredit.textContent = `Semester ${semester}\n Credits: ${semesterDiv.getAttribute('credits')}`;
+              }
+              courseDiv.removeChild(closeBtn);
+              courseDiv.removeChild(vSpace);
+            };
+            const vSpace = document.createElement('div');
+            vSpace.classList.add('h-2');
+            courseDiv.insertBefore(vSpace, courseDiv.firstChild);
+            courseDiv.insertBefore(closeBtn, courseDiv.firstChild);
           }
         }
     }
