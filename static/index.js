@@ -2,6 +2,7 @@ let mainCourseData = null;
 let chosenCourses = {};
 let tempChosenCourses = {};
 let ogPath = 'default';
+const semName = ["Monsoon","Spring"];
 
 const getCourseData = async (query,path,exec) => {
   if (path===ogPath && mainCourseData && !exec) {
@@ -106,7 +107,7 @@ function drop(ev) {
   var flag = pre_reqs.length;
   
   const sem = target.id.replace('sem', '');
-  const doubleSemCourses = ["Calculus","Introduction to Computer Science"];
+  const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics"];
   // correct semester || no mentioned semester || offered in both semsters
   // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
   if (sem!=='courseContainer') {
@@ -180,38 +181,6 @@ function drop(ev) {
           innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
         }
         target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
-        if(ogSem === 'courseContainer'){
-          const closeBtn = document.createElement('button');
-          closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
-          closeBtn.textContent = 'X';
-          closeBtn.title = 'remove this course';
-          closeBtn.onclick = () => {
-            // Your function to execute goes here
-            target.removeChild(elem);
-            const index = chosenCourses[sem].indexOf(courseName);
-            const courseContainer = document.getElementById('courseContainer')
-            courseContainer.insertBefore(elem,courseContainer.firstChild);
-            chosenCourses[sem].splice(index, 1);
-            const Semdiv = target.parentNode.parentNode.querySelector(`#Semester-${sem}`);
-            const Semtarget = target.parentNode.parentNode.querySelector(`#sem${sem}`);
-            Semtarget.setAttribute('credits',parseInt(Semtarget.getAttribute('credits')) - course.credits);
-            if (Semdiv) {
-              Semdiv.textContent = `Semester ${sem}\n Credits: ${Semtarget.getAttribute('credits')}`;
-            }
-            elem.removeChild(closeBtn);
-            elem.removeChild(vSpace);
-          };
-  
-          const vSpace = document.createElement('div');
-          vSpace.classList.add('h-2');
-          elem.insertBefore(vSpace, elem.firstChild);
-          elem.insertBefore(closeBtn, elem.firstChild);
-        }
-        if(sem === 'courseContainer'){
-          // remove closeBtn and vspace
-          elem.removeChild(elem.firstChild);
-          elem.removeChild(elem.firstChild);
-        }
       }
     }else{
       if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>semCreds[sem-1]) {
@@ -221,7 +190,7 @@ function drop(ev) {
       }
     }
   }else{
-    const semName = ["Monsoon","Spring"];
+    
     alert('course: '+courseName+' not offered in '+semName[(sem-1)%2]);
   }
 }
@@ -327,7 +296,7 @@ window.onload = () => {
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
     innerDiv2.setAttribute('credits', '0');
-    innerDiv1.textContent = `Semester ${sem}\nCredits: ${innerDiv2.getAttribute('credits')}`; // Display attribute value in innerDiv1
+    innerDiv1.textContent = `Semester ${sem} Credits: ${innerDiv2.getAttribute('credits')}`; // Display attribute value in innerDiv1
 
     innerDiv2.setAttribute('droppable', 'true');
     div.appendChild(innerDiv1);
@@ -361,26 +330,6 @@ function rec_courses(){
             if (courseDiv.parentNode === courseContainer) {
                 courseContainer.removeChild(courseDiv);
             }
-            const closeBtn = document.createElement('button');
-            closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
-            closeBtn.textContent = 'X';
-            closeBtn.title = 'remove this course';
-            closeBtn.onclick = () => {
-              semesterDiv.removeChild(courseDiv);
-              const index = chosenCourses[semester].indexOf(courseName);
-              courseContainer.insertBefore(courseDiv,courseContainer.firstChild);
-              chosenCourses[semester].splice(index, 1);
-              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) - course.credits);
-              if (semesertDivCredit) {
-                semesertDivCredit.textContent = `Semester ${semester}\n Credits: ${semesterDiv.getAttribute('credits')}`;
-              }
-              courseDiv.removeChild(closeBtn);
-              courseDiv.removeChild(vSpace);
-            };
-            const vSpace = document.createElement('div');
-            vSpace.classList.add('h-2');
-            courseDiv.insertBefore(vSpace, courseDiv.firstChild);
-            courseDiv.insertBefore(closeBtn, courseDiv.firstChild);
           }
         }
       });
@@ -403,26 +352,6 @@ function rec_courses(){
             if (courseDiv.parentNode === courseContainer) {
                 courseContainer.removeChild(courseDiv);
             }
-            const closeBtn = document.createElement('button');
-            closeBtn.classList.add('rounded-lg', 'pt-1', 'pr-2', 'text-xs', 'bg-slate-100', 'focus:outline-none','float-right');
-            closeBtn.textContent = 'X';
-            closeBtn.title = 'remove this course';
-            closeBtn.onclick = () => {
-              semesterDiv.removeChild(courseDiv);
-              const index = chosenCourses[semester].indexOf(courseName);
-              courseContainer.insertBefore(courseDiv,courseContainer.firstChild);
-              chosenCourses[semester].splice(index, 1);
-              semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) - course.credits);
-              if (semesertDivCredit) {
-                semesertDivCredit.textContent = `Semester ${semester}\n Credits: ${semesterDiv.getAttribute('credits')}`;
-              }
-              courseDiv.removeChild(closeBtn);
-              courseDiv.removeChild(vSpace);
-            };
-            const vSpace = document.createElement('div');
-            vSpace.classList.add('h-2');
-            courseDiv.insertBefore(vSpace, courseDiv.firstChild);
-            courseDiv.insertBefore(closeBtn, courseDiv.firstChild);
           }
         }
     }
