@@ -148,7 +148,7 @@
 
 
     {
-      "name": "Formal Logic (e)",
+      "name": "Formal Logic(e)",
       "code": ["cs_elec_tbd-1"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -156,7 +156,7 @@
       "credits": 4
   },
   {
-      "name": "Numerical Algorithms and Optimization (e)",
+      "name": "Numerical Algorithms and Optimization(e)",
       "code": ["cs_elec_tbd-2"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -164,7 +164,7 @@
       "credits": 4
   },
   {
-      "name": "Advanced Algorithm (e)",
+      "name": "Advanced Algorithm(e)",
       "code": ["cs_elec_tbd-3"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -172,7 +172,7 @@
       "credits": 4
   },
   {
-      "name": "Graph Algorithms (e)",
+      "name": "Graph Algorithms(e)",
       "code": ["cs_elec_tbd-4"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -180,7 +180,7 @@
       "credits": 4
   },
   {
-      "name": "Approximation Algorithms (e)",
+      "name": "Approximation Algorithms(e)",
       "code": ["cs_elec_tbd-5"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -188,7 +188,7 @@
       "credits": 4
   },
   {
-      "name": "Randomized Algorithms (e)",
+      "name": "Randomized Algorithms(e)",
       "code": ["cs_elec_tbd-6"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -196,7 +196,7 @@
       "credits": 4
   },
   {
-      "name": "Quantum Algorithms (e)",
+      "name": "Quantum Algorithms(e)",
       "code": ["cs_elec_tbd-7"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -204,7 +204,7 @@
       "credits": 4
   },
   {
-      "name": "Advanced Machine Learning (e)",
+      "name": "Advanced Machine Learning(e)",
       "code": ["cs_elec_tbd-8"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -212,7 +212,7 @@
       "credits": 4
   },
   {
-      "name": "Natural Language Processing (e)",
+      "name": "Natural Language Processing(e)",
       "code": ["cs_elec_tbd-9"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -220,7 +220,7 @@
       "credits": 4
   },
   {
-      "name": "Computer Vision (e)",
+      "name": "Computer Vision(e)",
       "code": ["cs_elec_tbd-10"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -228,7 +228,7 @@
       "credits": 4
   },
   {
-      "name": "AI for Social Good (e)",
+      "name": "AI for Social Good(e)",
       "code": ["cs_elec_tbd-11"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -236,7 +236,7 @@
       "credits": 4
   },
   {
-      "name": "Machine Learning in Economics (e)",
+      "name": "Machine Learning in Economics(e)",
       "code": ["cs_elec_tbd-12"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -244,7 +244,7 @@
       "credits": 4
   },
   {
-      "name": "Machine Learning in Healthcare (e)",
+      "name": "Machine Learning in Healthcare(e)",
       "code": ["cs_elec_tbd-13"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -252,7 +252,7 @@
       "credits": 4
   },
   {
-      "name": "Computational Radiology (e)",
+      "name": "Computational Radiology(e)",
       "code": ["cs_elec_tbd-14"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -260,7 +260,7 @@
       "credits": 4
   },
   {
-      "name": "Machine Learning in Natural Sciences (e)",
+      "name": "Machine Learning in Natural Sciences(e)",
       "code": ["cs_elec_tbd-15"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -268,7 +268,7 @@
       "credits": 4
   },
   {
-      "name": "System Security and Privacy (e)",
+      "name": "System Security and Privacy(e)",
       "code": ["cs_elec_tbd-16"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -276,7 +276,7 @@
       "credits": 4
   },
   {
-      "name": "Cryptography (e)",
+      "name": "Cryptography(e)",
       "code": ["cs_elec_tbd-17"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -284,7 +284,7 @@
       "credits": 4
   },
   {
-      "name": "Post-Quantum Cryptography (e)",
+      "name": "Post-Quantum Cryptography(e)",
       "code": ["cs_elec_tbd-18"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -292,7 +292,7 @@
       "credits": 4
   },
   {
-      "name": "Digitalisation and Privacy (e)",
+      "name": "Digitalisation and Privacy(e)",
       "code": ["cs_elec_tbd-19"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -300,7 +300,7 @@
       "credits": 4
   },
   {
-      "name": "Database Management Systems (e)",
+      "name": "Database Management Systems(e)",
       "code": ["cs_elec_tbd-20"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -308,7 +308,7 @@
       "credits": 4
   },
   {
-      "name": "Operating Systems (e)",
+      "name": "Operating Systems(e)",
       "code": ["cs_elec_tbd-21"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -316,7 +316,7 @@
       "credits": 4
   },
   {
-      "name": "Computer Architecture (e)",
+      "name": "Computer Architecture(e)",
       "code": ["cs_elec_tbd-22"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -324,7 +324,7 @@
       "credits": 4
   },
   {
-      "name": "Advanced Networks (e)",
+      "name": "Advanced Networks(e)",
       "code": ["cs_elec_tbd-23"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -332,7 +332,7 @@
       "credits": 4
   },
   {
-      "name": "Software Engineering (e)",
+      "name": "Software Engineering(e)",
       "code": ["cs_elec_tbd-24"],
       "pre_reqs": [],
       "semester": "Spring",
@@ -340,7 +340,7 @@
       "credits": 4
   },
   {
-      "name": "Embedded Systems (e)",
+      "name": "Embedded Systems(e)",
       "code": ["cs_elec_tbd-25"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -348,7 +348,7 @@
       "credits": 4
   },
   {
-      "name": "Ethics of Digitalisation (e)",
+      "name": "Ethics of Digitalisation(e)",
       "code": ["cs_elec_tbd-26"],
       "pre_reqs": [],
       "semester": "Monsoon",
@@ -356,7 +356,7 @@
       "credits": 4
   },
   {
-      "name": "Ethics of AI (e)",
+      "name": "Ethics of AI(e)",
       "code": ["cs_elec_tbd-27"],
       "pre_reqs": [],
       "semester": "Spring",
@@ -364,7 +364,7 @@
       "credits": 4
   },
   {
-      "name": "Science Technology and Society (e)",
+      "name": "Science Technology and Society(e)",
       "code": ["cs_elec_tbd-28"],
       "pre_reqs": [],
       "semester": "Spring",

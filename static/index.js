@@ -108,23 +108,13 @@ function drop(ev) {
   var flag = pre_reqs.length;
   
   const sem = target.id.replace('sem', '');
-  
+  // const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics"];
+  // correct semester || no mentioned semester || offered in both semsters
   // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
-  
-  // semester and pre-req name if in same semester as main course
-  const pre_reqDict = {};
   if (sem!=='courseContainer') {
-    const oGflag = flag;
-    const oGpre_req = pre_reqs;
     for (let i = 1; i <=sem; i++) {
       pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
       flag = pre_reqs.length;
-      // the pre-req is in semester sem
-      if ((i == sem) && oGflag!=flag){
-        pre_reqDict[sem] = oGpre_req.filter((el) => !pre_reqs.includes(el));
-      }
-      oGflag = JSON.parse(JSON.stringify(flag));
-      oGpre_req = JSON.parse(JSON.stringify(pre_reqs));
       // if flag=0 then all pre-reqs are satisfied
     }
     check = true && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2));
@@ -132,7 +122,7 @@ function drop(ev) {
     flag = 0;
     check = true;
   }
-
+  
   if (check){
     var credit_check = true;
     const semCreds = [16,22,26,22,26,26,26,26];
@@ -144,7 +134,7 @@ function drop(ev) {
       var flagend = 0;
       if (ogSem !== 'courseContainer') {
         tempChosenCourses = JSON.parse(JSON.stringify(chosenCourses));
-        // temporarily remove the dropped course
+        // Temporarily remove the dropped course
         tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
         if (sem!=='courseContainer') {
           tempChosenCourses[sem].push(courseName);
@@ -179,10 +169,6 @@ function drop(ev) {
             }
             if (ogSem!=sem) {
               chosenCourses[ogSem].splice(index, 1);
-              // remove pre-req waiver bg
-              if(prevSemtarget.classList.contains('bg-slate-200')){
-                prevSemtarget.classList.remove('bg-slate-200');
-              }
             }
           }
         }
@@ -196,7 +182,6 @@ function drop(ev) {
           innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}\r\n${semName[(sem-1)%2]}`;
         }
         target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
-        target.classList.add('bg-slate-200');
       }
     }else{
       if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>semCreds[sem-1]) {
@@ -251,7 +236,7 @@ async function updateCourses(exec=0) {
 
       const courseSemesters = document.createElement('p');
       courseSemesters.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
-      courseSemesters.textContent = `Semesters: ${course.name in doubleSemCourses ? semName : course.sem_no === 0 ? course.semester : semName[(course.sem_no - 1) % 2]}`;
+      courseSemesters.textContent = `Semesters: ${doubleSemCourses.includes(course.name) ? semName : course.sem_no === 0 ? course.semester : semName[(course.sem_no - 1) % 2]}`;
       
       const coursePrereqs = document.createElement('div');
       coursePrereqs.classList.add('text-center', 'm-0', 'font-mono', 'text-sm', 'relative');
