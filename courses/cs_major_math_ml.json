@@ -83,7 +83,7 @@
             "name": "Linear Algebra",
             "code": ["MAT-1001","CS-2210"],
             "pre_reqs": ["Calculus"],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 3,
             "credits": 4
         },

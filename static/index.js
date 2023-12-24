@@ -3,7 +3,7 @@ let chosenCourses = {};
 let tempChosenCourses = {};
 let ogPath = 'default';
 const semName = ["Monsoon","Spring"];
-const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics"];
+const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics","Linear Algebra"];
 
 const getCourseData = async (query,path,exec) => {
   if (path===ogPath && mainCourseData && !exec) {
@@ -192,7 +192,7 @@ function drop(ev) {
       }
     }else{
       
-      alert('course: '+courseName+' not offered in '+semName[(sem-1)%2]);
+      alert('course: '+courseName+'is not offered in '+semName[(sem-1)%2]);
     }
   }else{
     alert(`Only Calculus and FC's are allowed in Semester 1`);
@@ -375,3 +375,43 @@ function rec_courses(){
     }
   }
 };
+
+function downloadCSV() {
+  let csvContent = '';
+  const semesterKeys = Object.keys(chosenCourses);
+
+  csvContent += semesterKeys.map(key => `Semester ${key}`).join(',') + '\n';
+
+  const maxCourses = Math.max(...semesterKeys.map(key => chosenCourses[key].length));
+
+  for (let i = 0; i < maxCourses; i++) {
+    semesterKeys.forEach((key, index) => {
+      csvContent += (i < chosenCourses[key].length) ? `${chosenCourses[key][i]}` : '';
+      csvContent += (index !== semesterKeys.length - 1) ? ',' : '\n';
+    });
+  }
+
+  const csvBlob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const csvUrl = URL.createObjectURL(csvBlob);
+
+  const csvLink = document.createElement('a');
+  csvLink.href = csvUrl;
+  csvLink.setAttribute('download', 'courses.csv');
+  document.body.appendChild(csvLink);
+  csvLink.click();
+
+  let xlsxContent = 'sep=,\r\n';
+  const rows = csvContent.split('\n').map(row => row.split(','));
+  rows.forEach(row => {
+    xlsxContent += row.map(cell => `"${cell}"`).join(',') + '\r\n';
+  });
+
+  const xlsxBlob = new Blob([xlsxContent], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  const xlsxUrl = URL.createObjectURL(xlsxBlob);
+
+  const xlsxLink = document.createElement('a');
+  xlsxLink.href = xlsxUrl;
+  xlsxLink.setAttribute('download', 'courses.xlsx');
+  document.body.appendChild(xlsxLink);
+  xlsxLink.click();
+}
