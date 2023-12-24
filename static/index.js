@@ -192,7 +192,7 @@ function drop(ev) {
       }
     }else{
       
-      alert('course: '+courseName+'is not offered in '+semName[(sem-1)%2]);
+      alert('course: '+courseName+' is not offered in '+semName[(sem-1)%2]);
     }
   }else{
     alert(`Only Calculus and FC's are allowed in Semester 1`);
