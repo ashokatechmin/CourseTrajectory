@@ -3,6 +3,7 @@ let chosenCourses = {};
 let tempChosenCourses = {};
 let ogPath = 'default';
 const semName = ["Monsoon","Spring"];
+const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics"];
 
 const getCourseData = async (query,path,exec) => {
   if (path===ogPath && mainCourseData && !exec) {
@@ -16,7 +17,7 @@ const getCourseData = async (query,path,exec) => {
         const innerDiv1 = document.querySelector(`#Semester-${sem}`);
         const innerDiv2 = document.querySelector(`#sem${sem}`);
         if (innerDiv1){
-          innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}`;
+          innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}\r\n${semName[(sem-1)%2]}`;
         }
         innerDiv2.setAttribute('credits','0');
         if (innerDiv2) {
@@ -107,7 +108,7 @@ function drop(ev) {
   var flag = pre_reqs.length;
   
   const sem = target.id.replace('sem', '');
-  const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics"];
+  // const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics"];
   // correct semester || no mentioned semester || offered in both semsters
   // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
   if (sem!=='courseContainer') {
@@ -164,7 +165,7 @@ function drop(ev) {
             const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
             prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
             if (prevSemdiv) {
-              prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}`;
+              prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}\r\n${semName[(ogSem-1)%2]}`;
             }
             if (ogSem!=sem) {
               chosenCourses[ogSem].splice(index, 1);
@@ -178,7 +179,7 @@ function drop(ev) {
         const attributeValue = target.getAttribute('credits');
         const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
         if (innerDiv1) {
-          innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}`;
+          innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}\r\n${semName[(sem-1)%2]}`;
         }
         target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
       }
@@ -211,7 +212,7 @@ async function updateCourses(exec=0) {
   courses.forEach((course) => {
     if (!selectedCourses.includes(course.name)) {
       const div = document.createElement('div');
-      div.classList.add('m-1', 'pt-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
+      div.classList.add('m-1', 'p-[3px]', 'bg-slate-100', 'shadow','border-2','border-[#003049]');
       div.setAttribute('name', 'courseDiv');
       div.setAttribute('draggable', 'true');
       div.ondragstart = (event) => drag(event);
@@ -227,11 +228,16 @@ async function updateCourses(exec=0) {
       const courseCode = document.createElement('p');
       courseCode.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
       courseCode.textContent = course.code;
-  
+
+      
       const courseCredits = document.createElement('p');
-      courseCredits.classList.add('text-center', 'm-0','mt-2','py-1','font-mono','text-sm','bg-slate-200');
-      courseCredits.textContent = 'Credits: '+course.credits;
-  
+      courseCredits.classList.add('text-center', 'm-0','my-2','py-1','font-mono','text-sm','bg-slate-200');
+      courseCredits.textContent = `Credits: ${course.credits}`;
+
+      const courseSemesters = document.createElement('p');
+      courseSemesters.classList.add('text-center', 'm-0','mb-2','font-mono','text-sm');
+      courseSemesters.textContent = `Semesters: ${course.name in doubleSemCourses ? semName : course.sem_no === 0 ? course.semester : semName[(course.sem_no - 1) % 2]}`;
+      
       const coursePrereqs = document.createElement('div');
       coursePrereqs.classList.add('text-center', 'm-0', 'font-mono', 'text-sm', 'relative');
   
@@ -264,6 +270,7 @@ async function updateCourses(exec=0) {
       div.appendChild(courseCode);
       div.appendChild(coursePrereqs);
       div.appendChild(courseCredits);
+      div.appendChild(courseSemesters);
       container.appendChild(div);
     }
   });
@@ -281,7 +288,6 @@ window.onload = () => {
 
   for (const sem of sems) {
     chosenCourses[sem] = [];
-
     const div = document.createElement('div');
     //
     div.classList.add('p-0', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full', 'shadow', 'bg-slate-100','overflow-hidden');
@@ -296,7 +302,7 @@ window.onload = () => {
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
     innerDiv2.setAttribute('credits', '0');
-    innerDiv1.textContent = `Semester ${sem} Credits: ${innerDiv2.getAttribute('credits')}`; // Display attribute value in innerDiv1
+    innerDiv1.textContent = `Semester ${sem} Credits: ${innerDiv2.getAttribute('credits')}\r\n${semName[(sem-1)%2]}`; // Display attribute value in innerDiv1
 
     innerDiv2.setAttribute('droppable', 'true');
     div.appendChild(innerDiv1);
@@ -308,7 +314,8 @@ window.onload = () => {
 };
 
 function rec_courses(){
-  if(Object.values(chosenCourses).every(arr => arr.length === 0)){
+  const major = document.getElementById('major').value;
+  if(Object.values(chosenCourses).every(arr => arr.length === 0) && major!=='default'){
     if (query) {
       document.querySelector('#courseQuery').value = '';
       updateCourses().then(() =>{
@@ -324,7 +331,7 @@ function rec_courses(){
               chosenCourses[parseInt(course.sem_no)].push(course.name);
               semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
               if (semesertDivCredit) {
-                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}\r\n${semName[(sem-1)%2]}`;
               }
               semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
             if (courseDiv.parentNode === courseContainer) {
@@ -346,7 +353,7 @@ function rec_courses(){
               chosenCourses[parseInt(course.sem_no)].push(course.name);
               semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
               if (semesertDivCredit) {
-                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}`;
+                semesertDivCredit.textContent = `Semester ${semester}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}\r\n${semName[(semester-1)%2]}`;
               }
               semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
             if (courseDiv.parentNode === courseContainer) {
@@ -357,6 +364,10 @@ function rec_courses(){
     }
   }else{
     // clear
-    updateCourses(1);
+    if (major==='default'){
+      alert('Course recommendation not available for all courses.\nKindly select a major and try again.');
+    }else{
+      updateCourses(1);
+    }
   }
 };

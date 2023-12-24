@@ -4,7 +4,7 @@
   "code": ["MAT-1000"],
   "pre_reqs": [],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 1,
   "credits": 4
   },
   {
@@ -12,7 +12,7 @@
   "code": ["CS-1102"],
   "pre_reqs": ["Calculus"],
   "semester": "Spring",
-  "sem_no": 0,
+  "sem_no": 2,
   "credits": 4
   },
   {
@@ -20,7 +20,7 @@
   "code": ["CS-1104"],
   "pre_reqs": ["Calculus"],
   "semester": "Spring",
-  "sem_no": 0,
+  "sem_no": 2,
   "credits": 4
   },
   {
@@ -28,7 +28,7 @@
   "code": ["MAT-2020","CS-1209"],
   "pre_reqs": ["Calculus"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 3,
   "credits": 4
   },
   {
@@ -36,7 +36,7 @@
   "code": ["MAT-1001"],
   "pre_reqs": ["Calculus"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 3,
   "credits": 4
   },
   {
@@ -44,7 +44,7 @@
   "code": ["CS-1203"],
   "pre_reqs": ["Introduction to Computer Science","Discrete Mathematics"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 3,
   "credits": 4
   },
   {
@@ -52,7 +52,7 @@
   "code": ["CS-1349"],
   "pre_reqs": ["Data Structures and Algorithms"],
   "semester": "Spring",
-  "sem_no": 0,
+  "sem_no": 4,
   "credits": 4
   },
   {
@@ -60,7 +60,7 @@
   "code": ["CS-1216"],
   "pre_reqs": ["Introduction to Computer Science"],
   "semester": "Spring",
-  "sem_no": 0,
+  "sem_no": 4,
   "credits": 4
   },
   {
@@ -68,7 +68,7 @@
   "code": ["tbd-1"],
   "pre_reqs": ["Data Structures and Algorithms","Computer Organisation and Systems"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 5,
   "credits": 4
   },
   {
@@ -76,7 +76,7 @@
   "code": ["CS-1390"],
   "pre_reqs": ["Probability and Statistics","Data Structures and Algorithms"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 5,
   "credits": 4
   },
   {
@@ -84,7 +84,7 @@
   "code": ["CS-1340"],
   "pre_reqs": ["Data Structures and Algorithms"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 5,
   "credits": 2
   },
   {
@@ -92,7 +92,7 @@
   "code": ["tbd-2"],
   "pre_reqs": ["Data Structures and Algorithms","Probability and Statistics"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 5,
   "credits": 2
   },
   {
@@ -100,7 +100,7 @@
   "code": ["CS-1205"],
   "pre_reqs": ["Data Structures and Algorithms","Linear Algebra"],
   "semester": "Spring",
-  "sem_no": 0,
+  "sem_no": 6,
   "credits": 4
   },
   {
@@ -108,7 +108,7 @@
   "code": ["tbd-3"],
   "pre_reqs": ["Data Structures and Algorithms","Introduction to Machine Learning"],
   "semester": "Spring",
-  "sem_no": 0,
+  "sem_no": 6,
   "credits": 4
   },
   {
@@ -116,7 +116,7 @@
   "code": ["tbd-4"],
   "pre_reqs": ["Data Science and Management"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 7,
   "credits": 4
   },
   {
@@ -124,7 +124,7 @@
   "code": ["tbd-5"],
   "pre_reqs": ["Data Structures and Algorithms","Theory of Computation"],
   "semester": "Monsoon",
-  "sem_no": 0,
+  "sem_no": 7,
   "credits": 4
   },
   {
@@ -132,7 +132,7 @@
     "code": ["tbd-6"],
     "pre_reqs": [],
     "semester": "",
-    "sem_no": 0,
+    "sem_no":0,
     "credits": 4
   },
   {
