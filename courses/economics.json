@@ -3,7 +3,7 @@
         {
             "name": "Introduction to Economics",
             "code": ["ECO-1001"],
-            "pre_reqs": ["Calculus (if needed)"],
+            "pre_reqs": [],
             "semester": "Spring",
             "sem_no": 2,
             "credits": 4
@@ -11,7 +11,7 @@
         {
             "name": "Mathematics for Economists",
             "code": ["ECO-1010"],
-            "pre_reqs": ["Calculus (if needed)"],
+            "pre_reqs": [],
             "semester": "Spring",
             "sem_no": 2,
             "credits": 4
