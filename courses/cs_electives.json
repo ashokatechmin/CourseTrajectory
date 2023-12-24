@@ -189,15 +189,15 @@
         "pre_reqs": [],
         "semester": "Spring",
         "sem_no": 5,
-        "credits": 3
+        "credits": 4
     },
     {
         "name": "Embedded Systems (e)",
         "code": ["cs_elec_tbd-25"],
         "pre_reqs": [],
-        "semester": "Autumn",
+        "semester": "Monsoon",
         "sem_no": 6,
-        "credits": 3
+        "credits": 4
     },
     {
         "name": "Ethics of Digitalisation (e)",
@@ -205,15 +205,15 @@
         "pre_reqs": [],
         "semester": "Monsoon",
         "sem_no": 5,
-        "credits": 2
+        "credits": 4
     },
     {
         "name": "Ethics of AI (e)",
         "code": ["cs_elec_tbd-27"],
         "pre_reqs": [],
-        "semester": "Autumn",
+        "semester": "Spring",
         "sem_no": 6,
-        "credits": 3
+        "credits": 4
     },
     {
         "name": "Science Technology and Society (e)",
