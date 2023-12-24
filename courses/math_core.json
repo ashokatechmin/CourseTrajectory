@@ -94,6 +94,194 @@
             "semester": "Spring",
             "sem_no": 6,
             "credits": 4
+        },
+
+
+
+
+
+        {
+            "name": "Statistical Inference (e)",
+            "code": ["MAT-3102"],
+            "pre_reqs": [],
+            "semester": "Spring",
+            "sem_no": 7,
+            "credits": 4
+        },
+        {
+            "name": "Fourier analysis (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Introduction to combinatorics (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Galois' dream (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Introduction to algebraic combinatorics (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Topological spaces (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Measure theory (e)",
+            "code": ["MAT-4102"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Probability and Statistics","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Functional analysis (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Random graphs (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Topics in analysis (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Mathematical foundations of data sciences (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Algebraic number theory (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+        {
+            "name": "Topics in stochastic processes (e)",
+            "code": ["MAT-3000"],
+            "pre_reqs": ["Calculus", "Real Analysis", "Linear Algebra","Metric and Topological Spaces"],
+            "semester": "Spring",
+            "sem_no": 6,
+            "credits": 4
+        },
+
+
+
+
+
+        {
+            "name": "Introduction to Critical Thinking",
+            "code": ["CT-0001"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Indian Civilisations",
+            "code": ["FC-0201"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Mind and Behaviour",
+            "code": ["FC-0503"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Quantitative Reasoning and Mathematical Thinking",
+            "code": ["FC-0306"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Environmental Studies",
+            "code": ["FC-0102"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Principles of Science",
+            "code": ["FC-0801"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Literature and the World",
+            "code": ["FC-0701"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Great Books",
+            "code": ["FC-0601"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
+        },
+        {
+            "name": "Economy, Politics and Society",
+            "code": ["FC-0412"],
+            "pre_reqs": [""],
+            "semester": "Monsoon, Spring", 
+            "sem_no": 0,
+            "credits": 4
         }
+
+
         
 ]
