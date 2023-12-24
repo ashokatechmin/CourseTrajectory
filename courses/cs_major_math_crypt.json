@@ -57,7 +57,7 @@
     },
     {
         "name": "Information Security",
-        "code": ["tbd-2"],
+        "code": ["cs_tbd-2"],
         "pre_reqs": ["Data Structures and Algorithms","Probability and Statistics"],
         "semester": "Monsoon",
         "sem_no": 5,
@@ -138,7 +138,7 @@
     },
     {
         "name": "Capstone Project",
-        "code": ["tbd-4"],
+        "code": ["cs_tbd-4"],
         "pre_reqs": ["Statistical Inference"],
         "semester": "Monsoon",
         "sem_no": 7,
