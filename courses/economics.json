@@ -73,7 +73,7 @@
             "credits": 4
         },
         {
-            "name": "Decision Theory (e)",
+            "name": "Decision Theory(e)",
             "code": ["ECO-3100"],
             "pre_reqs": ["Microeconomic Theory I", "Microeconomic Theory II"],
             "semester": "Monsoon",
@@ -81,7 +81,7 @@
             "credits": 4
         },
         {
-            "name": "Organizational Economics (e)",
+            "name": "Organizational Economics(e)",
             "code": ["ECO-3107"],
             "pre_reqs": ["Microeconomic Theory I", "Microeconomic Theory II"],
             "semester": "Monsoon",
@@ -89,7 +89,7 @@
             "credits": 4
         },
         {
-            "name": "Monetary Theory (e)",
+            "name": "Monetary Theory(e)",
             "code": ["ECO-3200"],
             "pre_reqs": ["Microeconomic Theory I", "Macroeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Monsoon",
@@ -97,7 +97,7 @@
             "credits": 4
         },
         {
-            "name": "Economic History of Modern India (e)",
+            "name": "Economic History of Modern India(e)",
             "code": ["ECO-3003"],
             "pre_reqs": ["Microeconomic Theory I", "Macroeconomic Theory I","Econometrics"],
             "semester": "Monsoon",
@@ -105,7 +105,7 @@
             "credits": 4
         },
         {
-            "name": "Industrial Organization (e)",
+            "name": "Industrial Organization(e)",
             "code": ["ECO-3600"],
             "pre_reqs": ["Microeconomic Theory II", "Econometrics"],
             "semester": "Monsoon",
@@ -113,7 +113,7 @@
             "credits": 4
         },
         {
-            "name": "Pricing Theory and Public Policy (e)",
+            "name": "Pricing Theory and Public Policy(e)",
             "code": ["ECO-3602"],
             "pre_reqs": ["Microeconomic Theory I", "Microeconomic Theory II"],
             "semester": "Monsoon",
@@ -121,7 +121,7 @@
             "credits": 4
         },
         {
-            "name": "Urban Economics (e)",
+            "name": "Urban Economics(e)",
             "code": ["ECO-3600"],
             "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
@@ -129,7 +129,7 @@
             "credits": 4
         },
         {
-            "name": "Health Economics (e)",
+            "name": "Health Economics(e)",
             "code": ["ECO-3600"],
             "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
@@ -137,7 +137,7 @@
             "credits": 4
         },
         {
-            "name": "Economics of Gender (e)",
+            "name": "Economics of Gender(e)",
             "code": ["ECO-3660"],
             "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
@@ -145,7 +145,7 @@
             "credits": 4
         },
         {
-            "name": "Political Economy (e)",
+            "name": "Political Economy(e)",
             "code": ["ECO-3680"],
             "pre_reqs": ["Microeconomic Theory I", "Econometrics"],
             "semester": "Monsoon",
@@ -153,7 +153,7 @@
             "credits": 4
         },
         {
-            "name": "Environmental Economics (e)",
+            "name": "Environmental Economics(e)",
             "code": ["ECO-3700"],
             "pre_reqs": ["Microeconomic Theory II", "Econometrics"],
             "semester": "Monsoon",
@@ -161,7 +161,7 @@
             "credits": 4
         },
         {
-            "name": "Capstone Project (e)",
+            "name": "Capstone Project(e)",
             "code": ["ECO-4998"],
             "pre_reqs": [],
             "semester": "Monsoon",
@@ -169,7 +169,7 @@
             "credits": 4
         },
         {
-            "name": "Financial Markets and Institutions (e)",
+            "name": "Financial Markets and Institutions(e)",
             "code": ["FIN-3002/ECO-3207"],
             "pre_reqs": ["Microeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Monsoon",
@@ -177,7 +177,7 @@
             "credits": 4
         },
         {
-            "name": "Advanced Financial Management (e)",
+            "name": "Advanced Financial Management(e)",
             "code": ["FIN-3010"],
             "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Monsoon",
@@ -185,7 +185,7 @@
             "credits": 4
         },
         {
-            "name": "Game Theory and Applications (e)",
+            "name": "Game Theory and Applications(e)",
             "code": ["ECO-3100"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
@@ -193,7 +193,7 @@
             "credits": 4
         },
         {
-            "name": "Economics of Information (e)",
+            "name": "Economics of Information(e)",
             "code": ["ECO-3101"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
@@ -201,7 +201,7 @@
             "credits": 4
         },
         {
-            "name": "Macroeconomic Policy (e)",
+            "name": "Macroeconomic Policy(e)",
             "code": ["ECO-3206"],
             "pre_reqs": ["Microeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Spring",
@@ -209,7 +209,7 @@
             "credits": 4
         },
         {
-            "name": "International Trade (e)",
+            "name": "International Trade(e)",
             "code": ["ECO-3301"],
             "pre_reqs": ["Microeconomic Theory I","Macroeconomic Theory II"],
             "semester": "Spring",
@@ -217,7 +217,7 @@
             "credits": 4
         },
         {
-            "name": "Advanced Econometrics (e)",
+            "name": "Advanced Econometrics(e)",
             "code": ["ECO-3400"],
             "pre_reqs": ["Econometrics"],
             "semester": "Spring",
@@ -225,7 +225,7 @@
             "credits": 4
         },
         {
-            "name": "Economic Forecasting & Analysis (e)",
+            "name": "Economic Forecasting & Analysis(e)",
             "code": ["ECO-3402"],
             "pre_reqs": ["Macroeconomic Theory II","Econometrics"],
             "semester": "Spring",
@@ -233,7 +233,7 @@
             "credits": 4
         },
         {
-            "name": "Social Policy in India (e)",
+            "name": "Social Policy in India(e)",
             "code": ["ECO-3002"],
             "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
@@ -241,7 +241,7 @@
             "credits": 4
         },
         {
-            "name": "Experimental Economics (e)",
+            "name": "Experimental Economics(e)",
             "code": ["ECO-3610"],
             "pre_reqs": ["ECO 2102"],
             "semester": "Spring",
@@ -249,7 +249,7 @@
             "credits": 4
         },
         {
-            "name": "Behavioral Economics (e)",
+            "name": "Behavioral Economics(e)",
             "code": ["ECO-3620"],
             "pre_reqs": ["Econometrics"],
             "semester": "Spring",
@@ -257,7 +257,7 @@
             "credits": 4
         },
         {
-            "name": "Public Economics (e)",
+            "name": "Public Economics(e)",
             "code": ["ECO-3630"],
             "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
@@ -265,7 +265,7 @@
             "credits": 4
         },
         {
-            "name": "Economics of Gender (e)",
+            "name": "Economics of Gender(e)",
             "code": ["ECO-3660"],
             "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
@@ -273,7 +273,7 @@
             "credits": 4
         },
         {
-            "name": "Economics of Discrimination (e)",
+            "name": "Economics of Discrimination(e)",
             "code": ["ECO-3670"],
             "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
@@ -281,7 +281,7 @@
             "credits": 4
         },
         {
-            "name": "Political Economy (e)",
+            "name": "Political Economy(e)",
             "code": ["ECO-3680"],
             "pre_reqs": ["ECO 2102","Econometrics"],
             "semester": "Spring",
@@ -289,7 +289,7 @@
             "credits": 4
         },
         {
-            "name": "Economics of Technology (e)",
+            "name": "Economics of Technology(e)",
             "code": ["ECO-3710"],
             "pre_reqs": ["ECO 2102","Econometrics"],
             "semester": "Spring",
@@ -297,7 +297,7 @@
             "credits": 4
         },
         {
-            "name": "Capstone Thesis (e)",
+            "name": "Capstone Thesis(e)",
             "code": ["ECO-4999"],
             "pre_reqs": ["ECO 2102","Econometrics"],
             "semester": "Spring",
@@ -305,7 +305,7 @@
             "credits": 4
         },
         {
-            "name": "Introduction to Finance (e)",
+            "name": "Introduction to Finance(e)",
             "code": ["FIN-2001"],
             "pre_reqs": ["Microeconomic Theory I"],
             "semester": "Spring",
@@ -313,7 +313,7 @@
             "credits": 4
         },
         {
-            "name": "Financial Markets and Asset Pricing (e)",
+            "name": "Financial Markets and Asset Pricing(e)",
             "code": ["FIN-3001/ ECO-3203"],
             "pre_reqs": ["Econometrics"],
             "semester": "Spring",
@@ -321,7 +321,7 @@
             "credits": 4
         },
         {
-            "name": "Derivatives and Risk Management (e)",
+            "name": "Derivatives and Risk Management(e)",
             "code": ["FIN-3003"],
             "pre_reqs": ["ECO 2001"],
             "semester": "Spring",
@@ -329,7 +329,7 @@
             "credits": 4
         },
         {
-            "name": "International Finance (e)",
+            "name": "International Finance(e)",
             "code": ["FIN-3030/ECO-3303"],
             "pre_reqs": ["Microeconomic Theory I","Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
@@ -337,7 +337,7 @@
             "credits": 4
         },
         {
-            "name": "Empirical Monetary Policy and Finance (e)",
+            "name": "Empirical Monetary Policy and Finance(e)",
             "code": ["FIN-3031/ ECO-3304"],
             "pre_reqs": ["Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
@@ -345,7 +345,7 @@
             "credits": 4
         },
         {
-            "name": "Computational Finance (e)",
+            "name": "Computational Finance(e)",
             "code": ["3030"],
             "pre_reqs": ["Econometrics"],
             "semester": "Spring",
@@ -353,7 +353,7 @@
             "credits": 4
         },
         {
-            "name": "Finance and the Economy (e)",
+            "name": "Finance and the Economy(e)",
             "code": ["FIN-3040/ECO-3200"],
             "pre_reqs": ["Microeconomic Theory I","Microeconomic Theory I","Econometrics"],
             "semester": "Spring",
@@ -362,77 +362,74 @@
         },
 
 
-
-
-        
         {
-            "name": "Introduction to Critical Thinking",
+            "name": "Introduction to Critical Thinking(FC)",
             "code": ["CT-0001"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Indian Civilisations",
+            "name": "Indian Civilisations(FC)",
             "code": ["FC-0201"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Mind and Behaviour",
+            "name": "Mind and Behaviour(FC)",
             "code": ["FC-0503"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Quantitative Reasoning and Mathematical Thinking",
+            "name": "Quantitative Reasoning and Mathematical Thinking(FC)",
             "code": ["FC-0306"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Environmental Studies",
+            "name": "Environmental Studies(FC)",
             "code": ["FC-0102"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Principles of Science",
+            "name": "Principles of Science(FC)",
             "code": ["FC-0801"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Literature and the World",
+            "name": "Literature and the World(FC)",
             "code": ["FC-0701"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Great Books",
+            "name": "Great Books(FC)",
             "code": ["FC-0601"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Economy, Politics and Society",
+            "name": "Economy, Politics and Society(FC)",
             "code": ["FC-0412"],
-            "pre_reqs": [""],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring", 
             "sem_no": 0,
             "credits": 4

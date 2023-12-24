@@ -17,7 +17,7 @@ const getCourseData = async (query,path,exec) => {
         const innerDiv1 = document.querySelector(`#Semester-${sem}`);
         const innerDiv2 = document.querySelector(`#sem${sem}`);
         if (innerDiv1){
-          innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}\r\n${semName[(sem-1)%2]}`;
+          innerDiv1.textContent = `Semester ${sem}\n Credits: ${0}\r\n(${semName[(sem-1)%2]})`;
         }
         innerDiv2.setAttribute('credits','0');
         if (innerDiv2) {
@@ -108,91 +108,94 @@ function drop(ev) {
   var flag = pre_reqs.length;
   
   const sem = target.id.replace('sem', '');
-  // const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics"];
-  // correct semester || no mentioned semester || offered in both semsters
-  // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
-  if (sem!=='courseContainer') {
-    for (let i = 1; i <=sem; i++) {
-      pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
-      flag = pre_reqs.length;
-      // if flag=0 then all pre-reqs are satisfied
-    }
-    check = true && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2));
-  }else{
-    flag = 0;
-    check = true;
-  }
-  
-  if (check){
-    var credit_check = true;
-    const semCreds = [16,22,22,22,22,22,22,22];
-    if (sem !== 'courseContainer') {
-      credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=semCreds[sem-1];
-    }
-    // insert to courseContainer or all pre-requisites satisfied
-    if (!flag && credit_check) {
-      var flagend = 0;
-      if (ogSem !== 'courseContainer') {
-        tempChosenCourses = JSON.parse(JSON.stringify(chosenCourses));
-        // Temporarily remove the dropped course
-        tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
-        if (sem!=='courseContainer') {
-          tempChosenCourses[sem].push(courseName);
-        }
-        for (let i = 1; i <= 8; i++) {
-          tempChosenCourses[i].forEach(coursename => {
-            // Use tempChosenCourses inside check_prereqs
-            const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
-            if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
-              flagend = 1;
-              alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied');
-            }
-          });
-        }
+  const sem1Check = parseInt(sem) !== 1 || (parseInt(sem) === 1 && (course.name === 'Calculus' || course.name.slice(-4) === '(FC)'));
+  if (sem1Check) {
+    if (sem!=='courseContainer') {
+      for (let i = 1; i <=sem; i++) {
+        pre_reqs = pre_reqs.filter(coursename => !chosenCourses[i].includes(coursename))
+        flag = pre_reqs.length;
+        // if flag=0 then all pre-reqs are satisfied
       }
-      if (!flagend) {
-        // target sem div
-        if (sem !== 'courseContainer') {
-          if (!chosenCourses[sem].includes(courseName)) {
-            chosenCourses[sem].push(courseName);
-          }
-        }
+      check = true && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2));
+    }else{
+      flag = 0;
+      check = true;
+    }
+    
+    // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
+    if (check){
+      var credit_check = true;
+      const semCreds = [16,22,22,22,22,22,22,22];
+      if (sem !== 'courseContainer') {
+        credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=semCreds[sem-1];
+      }
+      // insert to courseContainer or all pre-requisites satisfied
+      if (!flag && credit_check) {
+        var flagend = 0;
         if (ogSem !== 'courseContainer') {
-          // remove the course from the original container in chosenCourses
-          const index = chosenCourses[ogSem].indexOf(courseName);
-          if (index > -1) {
-            const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
-            const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
-            prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
-            if (prevSemdiv) {
-              prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}\r\n${semName[(ogSem-1)%2]}`;
-            }
-            if (ogSem!=sem) {
-              chosenCourses[ogSem].splice(index, 1);
-            }
+          tempChosenCourses = JSON.parse(JSON.stringify(chosenCourses));
+          // Temporarily remove the dropped course
+          tempChosenCourses[ogSem] = tempChosenCourses[ogSem].filter(course => course !== courseName); 
+          if (sem!=='courseContainer') {
+            tempChosenCourses[sem].push(courseName);
+          }
+          for (let i = 1; i <= 8; i++) {
+            tempChosenCourses[i].forEach(coursename => {
+              // Use tempChosenCourses inside check_prereqs
+              const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
+              if (flagcourse && mainCourseData.find(course => course.name === coursename).pre_reqs.length !== 0) {
+                flagend = 1;
+                alert('course: ' + coursename+ '\n' + 'pre-requisites: ' + pre_reqs1+' not satisfied');
+              }
+            });
           }
         }
-        console.log(chosenCourses);
-      
-        //target.appendChild(elem);
-        target.insertBefore(elem, target.firstChild);
-        const attributeValue = target.getAttribute('credits');
-        const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
-        if (innerDiv1) {
-          innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}\r\n${semName[(sem-1)%2]}`;
+        if (!flagend) {
+          // target sem div
+          if (sem !== 'courseContainer') {
+            if (!chosenCourses[sem].includes(courseName)) {
+              chosenCourses[sem].push(courseName);
+            }
+          }
+          if (ogSem !== 'courseContainer') {
+            // remove the course from the original container in chosenCourses
+            const index = chosenCourses[ogSem].indexOf(courseName);
+            if (index > -1) {
+              const prevSemdiv = target.parentNode.parentNode.querySelector(`#Semester-${ogSem}`);
+              const prevSemtarget = target.parentNode.parentNode.querySelector(`#sem${ogSem}`);
+              prevSemtarget.setAttribute('credits',parseInt(prevSemtarget.getAttribute('credits')) - course.credits);
+              if (prevSemdiv) {
+                prevSemdiv.textContent = `Semester ${ogSem}\n Credits: ${prevSemtarget.getAttribute('credits')}\r\n(${semName[(ogSem-1)%2]})`;
+              }
+              if (ogSem!=sem) {
+                chosenCourses[ogSem].splice(index, 1);
+              }
+            }
+          }
+          console.log(chosenCourses);
+        
+          //target.appendChild(elem);
+          target.insertBefore(elem, target.firstChild);
+          const attributeValue = target.getAttribute('credits');
+          const innerDiv1 = target.parentNode.querySelector(`#Semester-${sem}`);
+          if (innerDiv1) {
+            innerDiv1.textContent = `Semester ${sem}\n Credits: ${parseInt(attributeValue) + parseInt(course.credits)}\r\n(${semName[(sem-1)%2]})`;
+          }
+          target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
         }
-        target.setAttribute('credits',parseInt(attributeValue) + parseInt(course.credits));
+      }else{
+        if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>semCreds[sem-1]) {
+          alert('exceeding course cap '+semCreds[sem-1]);
+        }else{
+          alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
+        }
       }
     }else{
-      if ((parseInt(target.getAttribute('credits'))+parseInt(course.credits))>semCreds[sem-1]) {
-        alert('exceeding course cap '+semCreds[sem-1]);
-      }else{
-        alert('course: '+courseName+'\n'+'pre-requisites: '+pre_reqs+' not satisfied');
-      }
+      
+      alert('course: '+courseName+' not offered in '+semName[(sem-1)%2]);
     }
   }else{
-    
-    alert('course: '+courseName+' not offered in '+semName[(sem-1)%2]);
+    alert(`Only Calculus and FC's are allowed in Semester 1`);
   }
 }
 
@@ -302,7 +305,7 @@ window.onload = () => {
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
     innerDiv2.setAttribute('credits', '0');
-    innerDiv1.textContent = `Semester ${sem} Credits: ${innerDiv2.getAttribute('credits')}\r\n${semName[(sem-1)%2]}`; // Display attribute value in innerDiv1
+    innerDiv1.textContent = `Semester ${sem} Credits: ${innerDiv2.getAttribute('credits')} \r\n(${semName[(sem-1)%2]})`; // Display attribute value in innerDiv1
 
     innerDiv2.setAttribute('droppable', 'true');
     div.appendChild(innerDiv1);
@@ -332,7 +335,7 @@ function rec_courses(){
               chosenCourses[parseInt(course.sem_no)].push(course.name);
               semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
               if (semesertDivCredit) {
-                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}\r\n${semName[(sem-1)%2]}`;
+                semesertDivCredit.textContent = `Semester ${course.sem_no}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}\r\n(${semName[(sem-1)%2]})`;
               }
               semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
             if (courseDiv.parentNode === courseContainer) {
@@ -354,7 +357,7 @@ function rec_courses(){
               chosenCourses[parseInt(course.sem_no)].push(course.name);
               semesterDiv.insertBefore(courseDiv, semesterDiv.firstChild);
               if (semesertDivCredit) {
-                semesertDivCredit.textContent = `Semester ${semester}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}\r\n${semName[(semester-1)%2]}`;
+                semesertDivCredit.textContent = `Semester ${semester}\n Credits: ${parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits)}\r\n(${semName[(semester-1)%2]})`;
               }
               semesterDiv.setAttribute('credits',parseInt(semesterDiv.getAttribute('credits')) + parseInt(course.credits));
             if (courseDiv.parentNode === courseContainer) {
@@ -366,7 +369,7 @@ function rec_courses(){
   }else{
     // clear
     if (major==='default' && chosenCoursesEmpt){
-      alert('Cannot recommend here\nPlease select a major and try again');
+      alert('Cannot recommend courses here\nPlease select a major and try again');
     }else{
       updateCourses(1);
     }

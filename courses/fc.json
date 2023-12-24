@@ -1,73 +1,73 @@
 [ 
 
     {
-        "name": "Introduction to Critical Thinking",
+        "name": "Introduction to Critical Thinking(FC)",
         "code": ["CT-0001"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Indian Civilisations",
+        "name": "Indian Civilisations(FC)",
         "code": ["FC-0201"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Mind and Behaviour",
+        "name": "Mind and Behaviour(FC)",
         "code": ["FC-0503"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Quantitative Reasoning and Mathematical Thinking",
+        "name": "Quantitative Reasoning and Mathematical Thinking(FC)",
         "code": ["FC-0306"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Environmental Studies",
+        "name": "Environmental Studies(FC)",
         "code": ["FC-0102"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Principles of Science",
+        "name": "Principles of Science(FC)",
         "code": ["FC-0801"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Literature and the World",
+        "name": "Literature and the World(FC)",
         "code": ["FC-0701"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Great Books",
+        "name": "Great Books(FC)",
         "code": ["FC-0601"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
     },
     {
-        "name": "Economy, Politics and Society",
+        "name": "Economy, Politics and Society(FC)",
         "code": ["FC-0412"],
-        "pre_reqs": [""],
+        "pre_reqs": [],
         "semester": "Monsoon, Spring", 
         "sem_no": 0,
         "credits": 4
