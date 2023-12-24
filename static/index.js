@@ -125,7 +125,7 @@ function drop(ev) {
   
   if (check){
     var credit_check = true;
-    const semCreds = [16,22,26,22,26,26,26,26];
+    const semCreds = [16,22,22,22,22,22,22,22];
     if (sem !== 'courseContainer') {
       credit_check = (parseInt(target.getAttribute('credits'))+parseInt(course.credits))<=semCreds[sem-1];
     }
