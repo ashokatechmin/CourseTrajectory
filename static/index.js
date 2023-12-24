@@ -315,7 +315,8 @@ window.onload = () => {
 
 function rec_courses(){
   const major = document.getElementById('major').value;
-  if(Object.values(chosenCourses).every(arr => arr.length === 0) && major!=='default'){
+  const chosenCoursesEmpt = Object.values(chosenCourses).every(arr => arr.length === 0);
+  if(chosenCoursesEmpt && major!=='default'){
     if (query) {
       document.querySelector('#courseQuery').value = '';
       updateCourses().then(() =>{
@@ -364,8 +365,8 @@ function rec_courses(){
     }
   }else{
     // clear
-    if (major==='default'){
-      alert('Course recommendation not available for all courses.\nKindly select a major and try again.');
+    if (major==='default' && chosenCoursesEmpt){
+      alert('Cannot recommend here\nPlease select a major and try again');
     }else{
       updateCourses(1);
     }
