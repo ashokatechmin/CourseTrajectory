@@ -121,9 +121,9 @@ function drop(ev) {
       flag = 0;
       check = true;
     }
-    
     // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
-    if (check){
+    // replace later if a primer / elective is offered in both semesters.
+    if (check && (!course.sem_no && course.name.slice(-4) !== '(FC)'? semName[(sem-1)%2] === course.semester : true)){
       var credit_check = true;
       const semCreds = [16,22,22,22,22,22,22,22];
       if (sem !== 'courseContainer') {

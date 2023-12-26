@@ -171,7 +171,7 @@
     "name": "Physics Primer",
     "code": ["cs_tbd-6"],
     "pre_reqs": [],
-    "semester": "",
+    "semester": "Monsoon",
     "sem_no": 0,
     "credits": 4
   },
@@ -179,7 +179,7 @@
     "name": "Biology Primer",
     "code": ["cs_tbd-7"],
     "pre_reqs": [],
-    "semester": "",
+    "semester": "Spring",
     "sem_no": 0,
     "credits": 4
   },
