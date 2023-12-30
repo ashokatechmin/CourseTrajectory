@@ -139,9 +139,10 @@ function drop(ev) {
       flag = 0;
       check = true;
     }
+    console.log(check);
     // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
     // replace later if a primer / elective is offered in both semesters.
-    if (check && (!course.sem_no && (course.name.slice(-4) !== '(FC)' && course.name.slice(0,8) !== 'Elective' && course.name.slice(0,16) !== 'Entrepreneurship')? semName[(sem-1)%2] === course.semester : true)){
+    if (check && (!course.sem_no && sem !=='courseContainer' && (course.name.slice(-4) !== '(FC)' && course.name.slice(0,8) !== 'Elective' && course.name.slice(0,16) !== 'Entrepreneurship')? semName[(sem-1)%2] === course.semester : true)){
       var credit_check = true;
       const semCreds = [16,22,22,22,22,22,22,22];
       if (sem !== 'courseContainer') {
@@ -360,7 +361,6 @@ function rec_courses(recom=0){
       document.querySelector('#courseQuery').value = '';
       updateCourses(1).then(() =>{
         const courseContainer = document.querySelector('#courseContainer');
-        console.log(courseContainer);
         // add courses to semesters
         for (let i = courseContainer.children.length - 1; i >= 0; i--) {
           const courseDiv = courseContainer.children[i];
@@ -381,7 +381,6 @@ function rec_courses(recom=0){
             }
           }
         }
-        console.log(totalcredits);
         totalCreds.setAttribute('credits',totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
       });
@@ -408,7 +407,6 @@ function rec_courses(recom=0){
             }
           }
         }
-        console.log(totalcredits);
         totalCreds.setAttribute('credits',totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
         })
@@ -422,7 +420,6 @@ function rec_courses(recom=0){
         updateCourses(1);
         totalCreds.setAttribute('credits','0');
         totalCreds.innerHTML = `Total Credits: ${credDiv.getAttribute('credits')}`;
-        console.log(totalCreds.getAttribute('credits'));
       }
     }
   }
