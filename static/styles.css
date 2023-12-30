@@ -6,7 +6,8 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #e2e8f0;
+  /* color: #caf0f8; */
 }
 
 /* Handle */
@@ -21,7 +22,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track:horizontal {
-  background: #f1f1f1;
+  background: #e2e8f0;
 }
 
 /* Handle */
@@ -35,6 +36,8 @@
 
 body {
   scrollbar-width: thin;
-  scrollbar-color: #000000 #f1f1f1; /* Handle and track colors */
+  scrollbar-color: #000000 #e2e8f0; /* Handle and track colors */
+  /* scrollbar-color: #000000 #f1f1f1; */ /* Handle and track colors */
+  
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
