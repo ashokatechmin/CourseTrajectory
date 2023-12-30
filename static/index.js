@@ -139,7 +139,7 @@ function drop(ev) {
     }
     // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
     // replace later if a primer / elective is offered in both semesters.
-    if (check && (!course.sem_no && (course.name.slice(-4) !== '(FC)' && course.name.slice(0,8) !== 'Elective')? semName[(sem-1)%2] === course.semester : true)){
+    if (check && (!course.sem_no && (course.name.slice(-4) !== '(FC)' && course.name.slice(0,8) !== 'Elective' && course.name.slice(0,16) !== 'Entrepreneurship')? semName[(sem-1)%2] === course.semester : true)){
       var credit_check = true;
       const semCreds = [16,22,22,22,22,22,22,22];
       if (sem !== 'courseContainer') {
