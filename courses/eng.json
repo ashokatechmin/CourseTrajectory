@@ -1,0 +1,461 @@
+[
+  
+    {
+      "name": "Forms of Literature",
+      "code": [
+        "ENG-1001-2"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Literary Theory",
+      "code": [
+        "ENG-1002-2"
+      ],
+      "pre_reqs": [
+        "Forms of Literature [ENG-1001] "
+      ],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Early British Literature",
+      "code": [
+        "ENG-2001-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Literature and the Age of Empire",
+      "code": [
+        "ENG-2002-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Indian Literatures",
+      "code": [
+        "ENG-2003-1"
+      ],
+      "pre_reqs": [
+        "Forms of Literature [ENG-1001] "
+      ],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to An Empire of Tales: The Alexander Narratives of the Ancient World",
+      "code": [
+        "ENG-2110-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Shakespeare: Masala Shakespeare",
+      "code": [
+        "ENG-2118-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Medieval Literature: Global Medievalisms",
+      "code": [
+        "ENG-2121-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to the Progressive Writers\u2019 Movement",
+      "code": [
+        "ENG-2313-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to African-American Literature: A Literary Introduction to Antiracist Thought",
+      "code": [
+        "ENG-2322-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Children\u2019s Literature",
+      "code": [
+        "ENG-2330-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Critical Thinking Seminar: Writing the Self",
+      "code": [
+        "ENG-2331-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Rhetoric: Rhetoric of Social Protest",
+      "code": [
+        "ENG-2360-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Postcolonial Literatures",
+      "code": [
+        "ENG-3001/ ENG-5301-1"
+      ],
+      "pre_reqs": [
+        "Forms of Literature [ENG-1001] , Introduction to Literary Theory [ENG-1002] ",
+        "Forms of Literature [ENG-1001] , Introduction to Literary Theory [ENG-1002] "
+      ],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Postcolonial Literatures",
+      "code": [
+        "ENG-3001/ ENG-5301-2"
+      ],
+      "pre_reqs": [
+        "Forms of Literature [ENG-1001] , Introduction to Literary Theory [ENG-1002] ",
+        "Forms of Literature [ENG-1001] , Introduction to Literary Theory [ENG-1002] "
+      ],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Dream Visions",
+      "code": [
+        "ENG-3102-1"
+      ],
+      "pre_reqs": [
+        "Forms of Literature [ENG-1001] , Introduction to Literary Theory [ENG-1002] "
+      ],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Studies in World Literature: Myth, Literature, and Africa in the World",
+      "code": [
+        "ENG-3352-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Studies in Literature and Film: Existentialism in Literature, Philosophy and Film",
+      "code": [
+        "ENG-3370-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Studies in Modern Literature: Modernism, Identity, and the Interrogation of Interiority",
+      "code": [
+        "ENG-3380-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Studies in Graphic Narrative: From Pulp to Literary Pop: Reading Graphic Novels Through Global Comics History",
+      "code": [
+        "ENG-3390-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Studies in Urdu Literature: The Urdu Short Story",
+      "code": [
+        "ENG-3402-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Studies in Film: Bollywood and Gender",
+      "code": [
+        "ENG-3411/ MS-2441-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Studies in Film: The Queer Eye",
+      "code": [
+        "ENG-3501/ ENG-5501-1"
+      ],
+      "pre_reqs": [
+        "Forms of Literature [ENG-1001] , Introduction to Literary Theory [ENG-1002] "
+      ],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "The Problem of Reality",
+      "code": [
+        "ENG-3875-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "English Graduate Pro-Seminar: Thesis Preparation",
+      "code": [
+        "ENG-4001-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "English Graduate Proseminar: Thesis Writing",
+      "code": [
+        "ENG-4002-1"
+      ],
+      "pre_reqs": [
+        "English Graduate Pro-Seminar: Thesis Preparation [ENG-4001] "
+      ],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "The Global Medieval: Ideas, Inventions, Archives (GM)",
+      "code": [
+        "ENG-4101-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Revealing Texts: The Qur\u02bean and its Late Antique Environment",
+      "code": [
+        "ENG-4105-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "A Second Self: a Literary History of Friendship",
+      "code": [
+        "ENG-4106-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Apparitions of Macbeth",
+      "code": [
+        "ENG-4203-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Sufism, Sexuality, Shakespeare",
+      "code": [
+        "ENG-4224-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Empire, education, and practices of reading",
+      "code": [
+        "ENG-4308-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Hermeneutics in the Twentieth Century",
+      "code": [
+        "ENG-4309-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Country and City: Beyond the Urban/Rural Divide (MLC)",
+      "code": [
+        "ENG-4311-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Reading Feeling",
+      "code": [
+        "ENG-4314-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Children\u2019s Literature",
+      "code": [
+        "ENG-4330-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Caribbean Literature",
+      "code": [
+        "ENG-4350-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Translation Theories and Multilingual Contexts (SAL)",
+      "code": [
+        "ENG-4401-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Is There A Modern Indian Literature?",
+      "code": [
+        "ENG-4405/ CW-4405-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Violence and South Asian Literature",
+      "code": [
+        "ENG-4410-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Dil Ka Batwara: The Cinematic Partition",
+      "code": [
+        "ENG-4420-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Reading Psychoanalytic Writing",
+      "code": [
+        "ENG-4812-1"
+      ],
+      "pre_reqs": [],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Graduate Seminar in Literary Theory",
+      "code": [
+        "ENG-5001-1"
+      ],
+      "pre_reqs": [],
+      "semester": "monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "MA Proseminar II: Thesis Writing",
+      "code": [
+        "ENG-5004-1"
+      ],
+      "pre_reqs": [
+        "Masters Proseminar I: Thesis Preparation [ENG-5003] "
+      ],
+      "semester": "spring",
+      "sem_no": 0,
+      "credits": 4
+    }
+  ]

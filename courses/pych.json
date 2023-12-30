@@ -1,0 +1,578 @@
+[
+    {
+      "name": "Introduction to Psychology",
+      "code": [
+        "PSY-1001-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon, Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Thinking like a Psychologist",
+      "code": [
+        "PSY-1003-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon, Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Statistics and Research Methods I",
+      "code": [
+        "PSY-2001-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon, Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Statistics and Research Methods II",
+      "code": [
+        "PSY-2002-1"
+      ],
+      "pre_reqs": [
+        "Statistics and Research Methods I [PSY-2001] , Statistics for Economics [ECO-1400] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Neuroscience/ Biological Psychology",
+      "code": [
+        "PSY-2011/ BIO-2103/ BIO-6103-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Cognitive Psychology",
+      "code": [
+        "PSY-2021-1"
+      ],
+      "pre_reqs": [
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] ",
+        "Statistics and Research Methods I [PSY-2001] , Statistics for Economics [ECO-1400] , Statistics for Economics [ECO-1400/ CS-1207] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Developmental Psychology",
+      "code": [
+        "PSY-2031-1"
+      ],
+      "pre_reqs": [
+        "Statistics and Research Methods I [PSY-2001] , Statistics for Economics [ECO-1400] , Statistics for Economics [ECO-1400/ CS-1207] ",
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Clinical Psychology",
+      "code": [
+        "PSY-2041-1"
+      ],
+      "pre_reqs": [
+        "Statistics for Economics [ECO-1400] , Statistics for Economics [ECO-1400/ CS-1207] , Statistics and Research Methods I [PSY-2001] ",
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Social Psychology",
+      "code": [
+        "PSY-2051-1"
+      ],
+      "pre_reqs": [
+        "Statistics and Research Methods I [PSY-2001] , Statistics for Economics [ECO-1400] , Statistics for Economics [ECO-1400/ CS-1207] ",
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Advanced Neuroscience",
+      "code": [
+        "PSY-3011/ BIO-3114/ BIO-4114/ BIO-6114-1"
+      ],
+      "pre_reqs": [
+        "Introduction to Neuroscience/ Biological Psychology [BIO-2103/ BIO-6103/ PSY-2001] , Introduction to Neuroscience/ Biological Psychology [PSY-2011/ BIO-2103/ BIO-6103] , Introduction to Neuroscience [PSY-2011] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Auditory and Temporal Cognition",
+      "code": [
+        "PSY-3022-1"
+      ],
+      "pre_reqs": [
+        "Introduction to Neuroscience [PSY-2011] , Introduction to Neuroscience/ Biological Psychology [PSY-2011/ BIO-2103/ BIO-6103] , Introduction to Neuroscience/ Biological Psychology [BIO-2103/ BIO-6103/ PSY-2001] ",
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Cognition in Action",
+      "code": [
+        "PSY-3024-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introductory Python for Experimental Psychologists",
+      "code": [
+        "PSY-3025-1"
+      ],
+      "pre_reqs": [
+        "Cognitive Psychology [PSY-2021] , Cognitive Psychology [PSY-4990-6] , Cognitive Psychology [PSY-4201] , Cognitive Psychology [PSY-298-4] "
+      ],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Developmental Psychopathology",
+      "code": [
+        "PSY-3031-1"
+      ],
+      "pre_reqs": [
+        "Developmental Psychology [PSY-2031] , Developmental Psychology [PSY-4990-08] , Developmental Psychology [PSY-298-1] "
+      ],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Cognitive Neuroscience : A Clinical Perspective",
+      "code": [
+        "PSY-3036/ BIO-3124/ BIO-6124-1"
+      ],
+      "pre_reqs": [
+        "Introduction to Neuroscience/ Biological Psychology [BIO-2103/ BIO-6103/ PSY-2001] , Introduction to Neuroscience [PSY-2011] , Introduction to Neuroscience/ Biological Psychology [PSY-2011/ BIO-2103/ BIO-6103] ",
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Counseling Psychology",
+      "code": [
+        "PSY-3042-1"
+      ],
+      "pre_reqs": [
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] ",
+        "Statistics and Research Methods I [PSY-2001] , Statistics for Economics [ECO-1400] , Statistics for Economics [ECO-1400/ CS-1207] ",
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] ",
+        "Statistics and Research Methods I [PSY-2001] , Statistics for Economics [ECO-1400] , Statistics for Economics [ECO-1400/ CS-1207] "
+      ],
+      "semester": "Monsoon, Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Introduction to Counseling Psychology",
+      "code": [
+        "PSY-3042-1"
+      ],
+      "pre_reqs": [
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] ",
+        "Statistics and Research Methods I [PSY-2001] , Statistics for Economics [ECO-1400] , Statistics for Economics [ECO-1400/ CS-1207] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Psychology and Law",
+      "code": [
+        "PSY-3058-1"
+      ],
+      "pre_reqs": [
+        "Statistics and Research Methods II [PSY-2002] ",
+        "Introduction to Psychology [PSY-1001] , Thinking like a Psychologist [PSY-1003] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Qualitative Research Methods",
+      "code": [
+        "PSY-3082-1"
+      ],
+      "pre_reqs": [
+        "Introduction to Neuroscience [PSY-2011] , Introduction to Neuroscience/ Biological Psychology [PSY-2011/ BIO-2103/ BIO-6103] , Cognitive Psychology [PSY-2021] , Developmental Psychology [PSY-2031] , Clinical Psychology [PSY-2041] , Social Psychology [PSY-2051] ",
+        "Statistics and Research Methods II [PSY-2002] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Applied Behaviour Science: Norms, Nudges and Law",
+      "code": [
+        "PSY-4061-1"
+      ],
+      "pre_reqs": [
+        "Statistics and Research Methods II [PSY-2002] ",
+        null
+      ],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Internship in Psychology Instruction",
+      "code": [
+        "PSY-4070-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Helping Skills",
+      "code": [
+        "PSY-4140-1"
+      ],
+      "pre_reqs": [
+        "Statistics and Research Methods II [PSY-2002] , Statistics and Research Methods II [PSY-4990-05] , Statistics and Research Methods II [PSY-4990-14] ",
+        "Introduction to Counseling Psychology [PSY-3042] , Psychotherapy: Theoretical Foundations and Research [PSY-3047] "
+      ],
+      "semester": "Spring",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Capstone Thesis",
+      "code": [
+        "PSY-4998-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Advanced Writing in Psychology",
+      "code": [
+        "PSY-5001/ PSY-4001-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Research Practicum I",
+      "code": [
+        "PSY-5160-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Theoretical study of neuronal networks for memory in zebrafish using optogenetics",
+      "code": [
+        "PSY-IS-2084-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Group Rationality in Zebrafish",
+      "code": [
+        "PSY-IS-3118-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Behavioral individuality in Zebrafish",
+      "code": [
+        "PSY-IS-3119-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Decoy effect in non-human animals",
+      "code": [
+        "PSY-IS-3120-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Research ISM at the Identity and Intergroup Relations Lab",
+      "code": [
+        "PSY-IS-3121-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Exploring unconventional methods for nicotine cessation in Wild Zebrafish",
+      "code": [
+        "PSY-IS-3122-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Developmental Social Isolation and Stress Response in Zebrafish",
+      "code": [
+        "PSY-IS-3123-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Ecological Advantages of Depression",
+      "code": [
+        "PSY-IS-3124-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Musical Cognition in Zebrafish",
+      "code": [
+        "PSY-IS-3125-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Effect of larval crowding on Sleep in Drosophila melanogaster",
+      "code": [
+        "PSY-IS-3126-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Interrogating Sexual Aggression in perpetrators : Scripts and beliefs (Social Cognitive lens)",
+      "code": [
+        "PSY-IS-3127-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "The differences in the discourse of gender dysphoria in medical and autobiographical narratives.",
+      "code": [
+        "PSY-IS-4118-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Speaking Bodies: Embodied Cognition",
+      "code": [
+        "PSY-IS-4119-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Identity and Intergroup Relations Lab- Advanced Research ISM",
+      "code": [
+        "PSY-IS-4120-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Play Behaviour in Children With ASD",
+      "code": [
+        "PSY-IS-4121-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Two-dimensional social decision making in zebrafish",
+      "code": [
+        "PSY-IS-4122-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Complex trauma project: Understanding Intimate Partner Violence through Complex Trauma Theory",
+      "code": [
+        "PSY-IS-4123-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Self-Efficacy and Locus of Control as Variables of Interest in Intimate Partner Violence Outcomes",
+      "code": [
+        "PSY-IS-4124-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Exploring Mother-child interaction through Motion-tracking",
+      "code": [
+        "PSY-IS-4125-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Backchannel Behavior in Child-Caregiver Video Calls",
+      "code": [
+        "PSY-IS-4126-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Prey perception in zebrafish larvae",
+      "code": [
+        "PSY-IS-4127-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Quantitative Cognition in Zebrafish",
+      "code": [
+        "PSY-IS-4128-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Meditation and Empathy",
+      "code": [
+        "PSY-IS-4129-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Interrogating Sexual Aggression in perpetrators : Scripts and beliefs (Social Cognitive lens)",
+      "code": [
+        "PSY-IS-4130-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Emotion Regulation and Empathy",
+      "code": [
+        "PSY-IS-4131-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "MAIN study",
+      "code": [
+        "PSY-IS-4132-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "Neuropsychology of Chronic Pain",
+      "code": [
+        "PSY-IS-4133-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    },
+    {
+      "name": "The differences in the gender dysphoria discourse in medical and autobiographical narratives.",
+      "code": [
+        "PSY-IS-5002-1"
+      ],
+      "pre_reqs": [],
+      "semester": "Monsoon",
+      "sem_no": 0,
+      "credits": 4
+    }
+  ]
