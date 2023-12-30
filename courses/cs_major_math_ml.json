@@ -24,6 +24,22 @@
         "credits": 4
     },
     {
+        "name": "Probability and Statistics",
+        "code": ["MAT-2020","CS-1209"],
+        "pre_reqs": [],
+        "semester": "Monsoon",
+        "sem_no": 3,
+        "credits": 4
+    },
+    {
+        "name": "Linear Algebra",
+        "code": ["MAT-1001","CS-2210"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 3,
+        "credits": 4
+    },
+    {
         "name": "Data Structures and Algorithms",
         "code": ["CS-1203"],
         "pre_reqs": ["Introduction to Computer Science","Discrete Mathematics"],
@@ -70,22 +86,6 @@
         "semester": "Spring",
         "sem_no": 4,
         "credits": 4
-        },
-        {
-            "name": "Probability and Statistics",
-            "code": ["MAT-2020","CS-1209"],
-            "pre_reqs": [],
-            "semester": "Monsoon",
-            "sem_no": 3,
-            "credits": 4
-        },
-        {
-            "name": "Linear Algebra",
-            "code": ["MAT-1001","CS-2210"],
-            "pre_reqs": [],
-            "semester": "Monsoon, Spring",
-            "sem_no": 3,
-            "credits": 4
         },
         {
             "name": "Algebra 1",

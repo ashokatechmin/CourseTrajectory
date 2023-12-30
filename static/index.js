@@ -27,7 +27,6 @@ const getCourseData = async (query,path,exec) => {
         }
       }
     }
-    ogPath = path;
     if (path==='default') {
       mainCourseData = await fetch('./courses/courses.json').then((res) => res.json());
       document.querySelector('#majorCredits').innerHTML = '';
@@ -40,14 +39,17 @@ const getCourseData = async (query,path,exec) => {
     }
     else{
       mainCourseData = await fetch(path).then((res) => res.json());
-      document.querySelector('#majorCredits').innerHTML = 'Non-open major credits left: n';
-      totCredits = document.querySelector('#totalCredits');
-      totCredits.setAttribute('credits','0');
-      totCredits.innerHTML = `Total Credits: ${totCredits.getAttribute('credits')}`;
-      semContainer = document.querySelector('#semContainer');
-      semContainer.classList.remove('h-[95vh]');
-      semContainer.classList.add('h-[93vh]');
+      if (path !== ogPath) {
+        document.querySelector('#majorCredits').innerHTML = 'Remaining non-open major credits: n';
+        totCredits = document.querySelector('#totalCredits');
+        totCredits.setAttribute('credits','0');
+        totCredits.innerHTML = `Total Credits: ${totCredits.getAttribute('credits')}`;
+        semContainer = document.querySelector('#semContainer');
+        semContainer.classList.remove('h-[95vh]');
+        semContainer.classList.add('h-[93vh]');
+      }
     }
+    ogPath = path;
     return mainCourseData;
   }
 };
@@ -347,16 +349,16 @@ window.onload = () => {
   credDiv.innerHTML = `Total Credits: ${totCredits}`;
 };
 
-function rec_courses(){
+function rec_courses(recom=0){
   const major = document.getElementById('major').value;
   const chosenCoursesEmpt = Object.values(chosenCourses).every(arr => arr.length === 0);
   query = document.querySelector('#courseQuery')
   totalCreds = document.querySelector('#totalCredits');
   var totalcredits = 0;
-  if(chosenCoursesEmpt && major!=='default'){
+  if(major!=='default' && recom){
     if (query) {
       document.querySelector('#courseQuery').value = '';
-      updateCourses().then(() =>{
+      updateCourses(1).then(() =>{
         const courseContainer = document.querySelector('#courseContainer');
         console.log(courseContainer);
         // add courses to semesters
@@ -384,6 +386,7 @@ function rec_courses(){
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
       });
     } else{
+        updateCourses(1).then(() =>{
         const courseContainer = document.querySelector('#courseContainer');
         // add courses to semesters
         for (let i = courseContainer.children.length - 1; i >= 0; i--) {
@@ -408,16 +411,19 @@ function rec_courses(){
         console.log(totalcredits);
         totalCreds.setAttribute('credits',totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
-    }
+        })
+      }
   }else{
     // clear
-    if (major==='default' && chosenCoursesEmpt){
+    if (major==='default' && recom){
       alert('Cannot recommend courses here\nPlease select a major and try again');
     }else{
-      updateCourses(1);
-      totalCreds.setAttribute('credits','0');
-      totalCreds.innerHTML = `Total Credits: ${credDiv.getAttribute('credits')}`;
-      console.log(totalCreds.getAttribute('credits'));
+      if(!recom){
+        updateCourses(1);
+        totalCreds.setAttribute('credits','0');
+        totalCreds.innerHTML = `Total Credits: ${credDiv.getAttribute('credits')}`;
+        console.log(totalCreds.getAttribute('credits'));
+      }
     }
   }
 };
