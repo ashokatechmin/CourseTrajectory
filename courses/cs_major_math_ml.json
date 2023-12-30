@@ -10,7 +10,7 @@
     {
         "name": "Introduction to Computer Science",
         "code": ["CS-1102"],
-        "pre_reqs": ["Calculus"],
+        "pre_reqs": [],
         "semester": "Spring",
         "sem_no": 2,
         "credits": 4
@@ -18,7 +18,7 @@
     {
         "name": "Discrete Mathematics",
         "code": ["CS-1104"],
-        "pre_reqs": ["Calculus"],
+        "pre_reqs": [],
         "semester": "Spring",
         "sem_no": 2,
         "credits": 4
@@ -74,7 +74,7 @@
         {
             "name": "Probability and Statistics",
             "code": ["MAT-2020","CS-1209"],
-            "pre_reqs": ["Calculus"],
+            "pre_reqs": [],
             "semester": "Monsoon",
             "sem_no": 3,
             "credits": 4
@@ -82,7 +82,7 @@
         {
             "name": "Linear Algebra",
             "code": ["MAT-1001","CS-2210"],
-            "pre_reqs": ["Calculus"],
+            "pre_reqs": [],
             "semester": "Monsoon, Spring",
             "sem_no": 3,
             "credits": 4
