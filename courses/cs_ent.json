@@ -1,0 +1,391 @@
+[
+    {
+        "name": "Probability and Statistics",
+        "code": ["MAT-2020","CS-1209"],
+        "pre_reqs": ["Calculus"],
+        "semester": "Monsoon",
+        "sem_no": 3,
+        "credits": 4
+    },
+    {
+        "name": "Linear Algebra",
+        "code": ["MAT-1001"],
+        "pre_reqs": ["Calculus"],
+        "semester": "Monsoon, Spring",
+        "sem_no": 3,
+        "credits": 4
+    },
+    
+    {
+        "name": "Calculus",
+        "code": ["MAT-1000"],
+        "pre_reqs": [],
+        "semester": "Monsoon",
+        "sem_no": 1,
+        "credits": 4
+    },
+    {
+        "name": "Physics Primer",
+        "code": ["cs_tbd-6"],
+        "pre_reqs": [],
+        "semester": "Monsoon",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Biology Primer",
+        "code": ["cs_tbd-7"],
+        "pre_reqs": [],
+        "semester": "Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+
+    {
+        "name": "Introduction to Computer Science",
+        "code": ["CS-1102"],
+        "pre_reqs": ["Calculus"],
+        "semester": "Spring",
+        "sem_no": 2,
+        "credits": 4
+    },
+    {
+        "name": "Discrete Mathematics",
+        "code": ["CS-1104"],
+        "pre_reqs": ["Calculus"],
+        "semester": "Spring",
+        "sem_no": 2,
+        "credits": 4
+    },
+    {
+            "name": "Data Structures and Algorithms",
+            "code": ["CS-1203"],
+            "pre_reqs": ["Introduction to Computer Science","Discrete Mathematics"],
+            "semester": "Monsoon",
+            "sem_no": 3,
+            "credits": 4
+    },
+    {
+        "name": "Introduction to Machine Learning",
+        "code": ["CS-1390"],
+        "pre_reqs": ["Probability and Statistics","Data Structures and Algorithms"],
+        "semester": "Monsoon",
+        "sem_no": 5,
+        "credits": 4
+     },
+     {
+        "name": "Information Security",
+        "code": ["cs_tbd-2"],
+        "pre_reqs": ["Data Structures and Algorithms","Probability and Statistics"],
+        "semester": "Monsoon",
+        "sem_no": 5,
+        "credits": 2
+     },
+    {
+            "name": "Computer Organisation and Systems",
+            "code": ["CS-1216"],
+            "pre_reqs": ["Introduction to Computer Science"],
+            "semester": "Spring",
+            "sem_no": 4,
+            "credits": 4
+     },
+     {
+        "name": "Design Practices in CS",
+        "code": ["cs_tbd-1"],
+        "pre_reqs": ["Data Structures and Algorithms","Computer Organisation and Systems"],
+        "semester": "Monsoon",
+        "sem_no": 5,
+        "credits": 4
+    },
+    {
+            "name": "Computer Networks",
+            "code": ["CS-1340"],
+            "pre_reqs": ["Data Structures and Algorithms"],
+            "semester": "Monsoon",
+            "sem_no": 5,
+            "credits": 2
+     },
+
+     {
+        "name": "Entrepreneurship 1",
+        "code": ["ent_elect_tbd-1"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 2",
+        "code": ["ent_elect_tbd-2"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 3",
+        "code": ["ent_elect_tbd-3"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 4",
+        "code": ["ent_elect_tbd-4"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 5",
+        "code": ["ent_elect_tbd-5"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 6",
+        "code": ["ent_elect_tbd-6"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 7",
+        "code": ["ent_elect_tbd-7"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 8",
+        "code": ["ent_elect_tbd-8"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 9",
+        "code": ["ent_elect_tbd-9"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 10",
+        "code": ["ent_elect_tbd-10"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "Entrepreneurship 11",
+        "code": ["ent_elect_tbd-11"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 2
+    },
+    {
+        "name": "Entrepreneurship 12",
+        "code": ["ent_elect_tbd-12"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 2
+    },
+    {
+        "name": "Entrepreneurship 13",
+        "code": ["ent_elect_tbd-13"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 2
+    },
+    {
+        "name": "Entrepreneurship 14",
+        "code": ["ent_elect_tbd-14"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 2
+    },
+    {
+        "name": "Entrepreneurship 15",
+        "code": ["ent_elect_tbd-15"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 2
+    },
+
+
+    {
+        "name": "CS Elective 1",
+        "code": ["cs_elec_tbd-1"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 2",
+        "code": ["cs_elec_tbd-2"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 3",
+        "code": ["cs_elec_tbd-3"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 4",
+        "code": ["cs_elec_tbd-4"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 5",
+        "code": ["cs_elec_tbd-5"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 6",
+        "code": ["cs_elec_tbd-6"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 7",
+        "code": ["cs_elec_tbd-7"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 8",
+        "code": ["cs_elec_tbd-8"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 9",
+        "code": ["cs_elec_tbd-9"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+    {
+        "name": "CS Elective 10",
+        "code": ["cs_elec_tbd-10"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring",
+        "sem_no": 0,
+        "credits": 4
+    },
+
+
+
+
+
+    {
+        "name": "Introduction to Critical Thinking(FC)",
+        "code": ["CT-0001"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Indian Civilisations(FC)",
+        "code": ["FC-0201"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Mind and Behaviour(FC)",
+        "code": ["FC-0503"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Quantitative Reasoning and Mathematical Thinking(FC)",
+        "code": ["FC-0306"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Environmental Studies(FC)",
+        "code": ["FC-0102"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Principles of Science(FC)",
+        "code": ["FC-0801"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Literature and the World(FC)",
+        "code": ["FC-0701"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Great Books(FC)",
+        "code": ["FC-0601"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        },
+        {
+        "name": "Economy, Politics and Society(FC)",
+        "code": ["FC-0412"],
+        "pre_reqs": [],
+        "semester": "Monsoon, Spring", 
+        "sem_no": 0,
+        "credits": 4
+        }
+    
+    
+    
+]

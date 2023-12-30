@@ -147,82 +147,82 @@
 
 
         {
-            "name": "Elective 1",
+            "name": "CS Elective 1",
             "code": ["cs_elec_tbd-1"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 2",
+            "name": "CS Elective 2",
             "code": ["cs_elec_tbd-2"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 3",
+            "name": "CS Elective 3",
             "code": ["cs_elec_tbd-3"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 4",
+            "name": "CS Elective 4",
             "code": ["cs_elec_tbd-4"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 5",
+            "name": "CS Elective 5",
             "code": ["cs_elec_tbd-5"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 6",
+            "name": "CS Elective 6",
             "code": ["cs_elec_tbd-6"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 7",
+            "name": "CS Elective 7",
             "code": ["cs_elec_tbd-7"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 8",
+            "name": "CS Elective 8",
             "code": ["cs_elec_tbd-8"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 9",
+            "name": "CS Elective 9",
             "code": ["cs_elec_tbd-9"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
         {
-            "name": "Elective 10",
+            "name": "CS Elective 10",
             "code": ["cs_elec_tbd-10"],
             "pre_reqs": [],
-            "semester": "Monsoon",
+            "semester": "Monsoon, Spring",
             "sem_no": 0,
             "credits": 4
         },
