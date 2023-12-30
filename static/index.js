@@ -4,6 +4,9 @@ let tempChosenCourses = {};
 let ogPath = 'default';
 const semName = ["Monsoon","Spring"];
 const doubleSemCourses = ["Calculus","Introduction to Computer Science","Computer Organisation and Systems","Probability and Statistics","Linear Algebra"];
+const majorCreds = {'default':'NA','./courses/cs_maj.json':120,'./courses/cs_major_math_crypt.json':120,'./courses/cs_major_math_ml.json':120,'./courses/cs_ent.json':120,'./courses/economics.json':120};
+// for majorCredits
+let deftag = 0;
 
 const getCourseData = async (query,path,exec) => {
   if (path===ogPath && mainCourseData && !exec) {
@@ -30,6 +33,7 @@ const getCourseData = async (query,path,exec) => {
     if (path==='default') {
       mainCourseData = await fetch('./courses/courses.json').then((res) => res.json());
       document.querySelector('#majorCredits').innerHTML = '';
+      deftag = 0;
       totCredits = document.querySelector('#totalCredits');
       totCredits.setAttribute('credits','0');
       totCredits.innerHTML = `Total Credits: ${totCredits.getAttribute('credits')}`;
@@ -40,7 +44,10 @@ const getCourseData = async (query,path,exec) => {
     else{
       mainCourseData = await fetch(path).then((res) => res.json());
       if (path !== ogPath) {
-        document.querySelector('#majorCredits').innerHTML = 'Remaining non-open major credits: n';
+        deftag = 1;
+        majorDiv = document.querySelector('#majorCredits')
+        majorDiv.setAttribute('credits',majorCreds[path]);
+        majorDiv.innerHTML = `Remaining non-open major credits: ${majorDiv.getAttribute('credits')}`;
         totCredits = document.querySelector('#totalCredits');
         totCredits.setAttribute('credits','0');
         totCredits.innerHTML = `Total Credits: ${totCredits.getAttribute('credits')}`;
@@ -124,6 +131,7 @@ function drop(ev) {
   var flag = pre_reqs.length;
   
   totalCreds = document.querySelector('#totalCredits');
+  reqMajorCreds = document.querySelector('#majorCredits');
 
   const sem = target.id.replace('sem', '');
   const sem1Check = parseInt(sem) !== 1 || (parseInt(sem) === 1 && (course.name === 'Calculus' || course.name.slice(-4) === '(FC)'));
@@ -139,7 +147,6 @@ function drop(ev) {
       flag = 0;
       check = true;
     }
-    console.log(check);
     // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
     // replace later if a primer / elective is offered in both semesters.
     if (check && (!course.sem_no && sem !=='courseContainer' && (course.name.slice(-4) !== '(FC)' && course.name.slice(0,8) !== 'Elective' && course.name.slice(0,16) !== 'Entrepreneurship')? semName[(sem-1)%2] === course.semester : true)){
@@ -178,6 +185,10 @@ function drop(ev) {
                 totalCredVal = parseInt(totalCreds.getAttribute('credits'));
                 totalCreds.setAttribute('credits',totalCredVal + course.credits);
                 totalCreds.innerHTML = `Total Credits: ${totalCreds.getAttribute('credits')}`;
+                if (deftag) {
+                  reqMajorCreds.setAttribute('credits',parseInt(reqMajorCreds.getAttribute('credits'))-course.credits);
+                  reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+                }
               }
             }
           }
@@ -197,6 +208,10 @@ function drop(ev) {
                   totalCredVal = parseInt(totalCreds.getAttribute('credits'));
                   totalCreds.setAttribute('credits',totalCredVal - course.credits);
                   totalCreds.innerHTML = `Total Credits: ${totalCreds.getAttribute('credits')}`;
+                  if (deftag) {
+                    reqMajorCreds.setAttribute('credits',parseInt(reqMajorCreds.getAttribute('credits'))+course.credits);
+                    reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+                  }
                 }
               }
             }
@@ -348,6 +363,9 @@ window.onload = () => {
   credDiv.setAttribute('credits','0')
   totCredits = credDiv.getAttribute('credits');
   credDiv.innerHTML = `Total Credits: ${totCredits}`;
+  majorDiv = document.querySelector("#majorCredits");
+  majorDiv.setAttribute('credits','0')
+  majorDiv.innerHTML = ``;
 };
 
 function rec_courses(recom=0){
@@ -355,6 +373,7 @@ function rec_courses(recom=0){
   const chosenCoursesEmpt = Object.values(chosenCourses).every(arr => arr.length === 0);
   query = document.querySelector('#courseQuery')
   totalCreds = document.querySelector('#totalCredits');
+  reqMajorCreds = document.querySelector('#majorCredits');
   var totalcredits = 0;
   if(major!=='default' && recom){
     if (query) {
@@ -383,6 +402,8 @@ function rec_courses(recom=0){
         }
         totalCreds.setAttribute('credits',totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
+        reqMajorCreds.setAttribute('credits',parseInt(reqMajorCreds.getAttribute('credits'))-totalcredits);
+        reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
       });
     } else{
         updateCourses(1).then(() =>{
@@ -409,6 +430,8 @@ function rec_courses(recom=0){
         }
         totalCreds.setAttribute('credits',totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
+        reqMajorCreds.setAttribute('credits',parseInt(reqMajorCreds.getAttribute('credits'))-totalcredits);
+        reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
         })
       }
   }else{
@@ -420,6 +443,10 @@ function rec_courses(recom=0){
         updateCourses(1);
         totalCreds.setAttribute('credits','0');
         totalCreds.innerHTML = `Total Credits: ${credDiv.getAttribute('credits')}`;
+        if (deftag) {
+          reqMajorCreds.setAttribute('credits',majorCreds[major]);
+          reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+        }
       }
     }
   }
