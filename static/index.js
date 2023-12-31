@@ -23,7 +23,7 @@ let deftag = 0;
 
 window.darkenedSems = [];
 
-const showAlert = async (message) => {
+const showAlert = async (message, title = '') => {
   // Create the overlay div
   const overlay = document.createElement('div');
   overlay.className = 'fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full';
@@ -31,6 +31,15 @@ const showAlert = async (message) => {
   // Create the popup div
   const popup = document.createElement('div');
   popup.className = 'relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white flex flex-col items-center';
+
+  // Add the title
+  if (title !== '') {
+    const titleElement = document.createElement('p');
+    titleElement.textContent = title;
+    titleElement.className = 'mb-2 text-center font-bold text-xl';
+
+    popup.appendChild(titleElement);
+  }
 
   // Add the message
   const messageElement = document.createElement('p');
@@ -481,6 +490,12 @@ window.onload = () => {
   majorDiv = document.querySelector('#majorCredits');
   majorDiv.setAttribute('credits', '0');
   majorDiv.innerHTML = ``;
+
+  showAlert(
+    (message =
+      'This platform is designed to aid in course planning and major selection at Ashoka University. Due to potential curriculum changes, verify all information independently. Use this tool as a guide, not the sole basis for academic decisions.'),
+    (title = 'Disclaimer')
+  );
 };
 
 function rec_courses(recom = 0) {
