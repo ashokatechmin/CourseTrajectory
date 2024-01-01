@@ -284,9 +284,12 @@ function drop(ev) {
                 totalCredVal = parseInt(totalCreds.getAttribute('credits'));
                 totalCreds.setAttribute('credits', totalCredVal + course.credits);
                 totalCreds.innerHTML = `Total Credits: ${totalCreds.getAttribute('credits')}`;
-                if (deftag) {
+                if (deftag && reqMajorCreds.getAttribute('credits') > 0) {
                   reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) - course.credits);
                   reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+                }
+                if (reqMajorCreds.getAttribute('credits') < 0) {
+                  reqMajorCreds.setAttribute('credits',0);
                 }
               }
             }
@@ -504,6 +507,8 @@ function rec_courses(recom = 0) {
   query = document.querySelector('#courseQuery');
   totalCreds = document.querySelector('#totalCredits');
   reqMajorCreds = document.querySelector('#majorCredits');
+  reqMajorCreds.setAttribute('credits',majorCreds[major]);
+  console.log(reqMajorCreds.getAttribute('credits'));
   var totalcredits = 0;
   if (major !== 'default' && recom) {
     if (query) {
@@ -564,8 +569,13 @@ function rec_courses(recom = 0) {
         }
         totalCreds.setAttribute('credits', totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
-        reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) - totalcredits);
-        reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+        if(reqMajorCreds.getAttribute('credits')>0){
+          reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) - totalcredits);
+          reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+        }
+        if (reqMajorCreds.getAttribute('credits')>0) {
+          reqMajorCreds.setAttribute('credits', 0);
+        }
       });
     }
   } else {
