@@ -88,6 +88,22 @@
             "sem_no": 5,
             "credits": 2
      },
+     {
+         "name": "Physics Primer",
+         "code": ["cs_tbd-6"],
+         "pre_reqs": [],
+         "semester": "Monsoon",
+         "sem_no": 0,
+         "credits": 4
+     },
+     {
+         "name": "Biology Primer",
+         "code": ["cs_tbd-7"],
+         "pre_reqs": [],
+         "semester": "Spring",
+         "sem_no": 0,
+         "credits": 4
+     },
 
      {
         "name": "Entrepreneurship 1",
@@ -208,22 +224,6 @@
         "semester": "Monsoon, Spring",
         "sem_no": 0,
         "credits": 2
-    },
-    {
-        "name": "Physics Primer",
-        "code": ["cs_tbd-6"],
-        "pre_reqs": [],
-        "semester": "Monsoon",
-        "sem_no": 0,
-        "credits": 4
-    },
-    {
-        "name": "Biology Primer",
-        "code": ["cs_tbd-7"],
-        "pre_reqs": [],
-        "semester": "Spring",
-        "sem_no": 0,
-        "credits": 4
     },
 
     {
