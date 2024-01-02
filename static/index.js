@@ -404,7 +404,7 @@ async function updateCourses(exec = 0) {
       courseName.style.clear = 'both';
       courseName.textContent = course.name;
 
-      if (course.name.slice(0, 8) === 'Elective') {
+      if (course.name.slice(0, 8) === 'Elective' || course.name.slice(0, 16) === 'Entrepreneurship') {
         courseName.contentEditable = true;
         courseName.addEventListener('click', () => {
           courseName.focus();
