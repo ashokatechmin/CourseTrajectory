@@ -66,6 +66,8 @@ const showAlert = async (message, title = '') => {
 };
 
 function updatePrerequisitesDisplay(movedCourse) {
+  console.log(movedCourse);
+
   // Iterate through all courses in the target semester
   for (let sem = 1; sem <= 8; sem++) {
     const coursesToCheck = chosenCourses[sem];
@@ -78,13 +80,12 @@ function updatePrerequisitesDisplay(movedCourse) {
         course.pre_reqs.forEach((prerequisiteCourseName) => {
           const prereqCourseElem = document.getElementById(prerequisiteCourseName);
           if (prereqCourseElem && chosenCourses[sem].includes(prerequisiteCourseName)) {
-            // Prerequisite course not completed yet, check for waiver
-            showAlert(`Course ${courseName} requires that you have completed ${prerequisiteCourseName}. Please obtain a waiver from OAA.`);
-
-            if (courseName !== movedCourse && prerequisiteCourseName !== movedCourse) {
-              // Darken the background of the prerequisite course
-              darken = true;
+            if (courseName === movedCourse || prerequisiteCourseName === movedCourse) {
+              // Prerequisite course not completed yet, check for waiver
+              showAlert(`Course ${courseName} requires that you have completed ${prerequisiteCourseName}. Please obtain a waiver from OAA.`);
             }
+            // Darken the background of the prerequisite course
+            darken = true;
           }
         });
       }
@@ -218,6 +219,7 @@ function drop(ev) {
   }
   // Retrieve course name using courseId
   const course = mainCourseData.find((course) => course.name === courseName);
+  let changed = true;
 
   var pre_reqs = course.pre_reqs;
   var flag = pre_reqs.length;
@@ -272,6 +274,7 @@ function drop(ev) {
               const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
               if (flagcourse && mainCourseData.find((course) => course.name === coursename).pre_reqs.length !== 0) {
                 flagend = 1;
+                changed = false;
                 showAlert('Course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied');
               }
             });
@@ -291,7 +294,7 @@ function drop(ev) {
                   reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
                 }
                 if (reqMajorCreds.getAttribute('credits') < 0) {
-                  reqMajorCreds.setAttribute('credits',0);
+                  reqMajorCreds.setAttribute('credits', 0);
                 }
               }
             }
@@ -335,19 +338,25 @@ function drop(ev) {
         }
       } else {
         if (parseInt(target.getAttribute('credits')) + parseInt(course.credits) > semCreds[sem - 1]) {
+          changed = false;
           showAlert('Exceeding course cap ' + semCreds[sem - 1]);
         } else {
+          changed = false;
           showAlert('Course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied');
         }
       }
     } else {
+      changed = false;
       showAlert('Course: ' + courseName + ' is not offered in ' + semName[(sem - 1) % 2]);
     }
   } else {
+    changed = false;
     showAlert(`Only Calculus and FC's are allowed in Semester 1`);
   }
 
-  updatePrerequisitesDisplay();
+  if (changed) {
+    updatePrerequisitesDisplay(courseName);
+  }
 }
 
 async function updateCourses(exec = 0) {
@@ -518,7 +527,7 @@ function rec_courses(recom = 0) {
   query = document.querySelector('#courseQuery');
   totalCreds = document.querySelector('#totalCredits');
   reqMajorCreds = document.querySelector('#majorCredits');
-  reqMajorCreds.setAttribute('credits',majorCreds[major]);
+  reqMajorCreds.setAttribute('credits', majorCreds[major]);
   console.log(reqMajorCreds.getAttribute('credits'));
   var totalcredits = 0;
   if (major !== 'default' && recom) {
@@ -580,11 +589,11 @@ function rec_courses(recom = 0) {
         }
         totalCreds.setAttribute('credits', totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
-        if(reqMajorCreds.getAttribute('credits')>0){
+        if (reqMajorCreds.getAttribute('credits') > 0) {
           reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) - totalcredits);
           reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
         }
-        if (reqMajorCreds.getAttribute('credits')>0) {
+        if (reqMajorCreds.getAttribute('credits') > 0) {
           reqMajorCreds.setAttribute('credits', 0);
         }
       });
