@@ -9,6 +9,9 @@ const doubleSemCourses = [
   'Computer Organisation and Systems',
   'Probability and Statistics',
   'Linear Algebra',
+  'Advanced Microeconomics',
+  'Advanced Macroeconomics',
+  'Advanced Econometrics',
 ];
 const majorCreds = {
   default: 'NA',
@@ -17,6 +20,7 @@ const majorCreds = {
   './courses/cs_major_math_ml.json': 116,
   './courses/cs_ent.json': 116,
   './courses/economics.json': 116,
+  './courses/econ_fin.json': 116
 };
 // for majorCredits
 let deftag = 0;
@@ -83,7 +87,7 @@ function updatePrerequisitesDisplay(movedCourse) {
           if (prereqCourseElem && chosenCourses[sem].includes(prerequisiteCourseName)) {
             if (courseName === movedCourse || prerequisiteCourseName === movedCourse) {
               // Prerequisite course not completed yet, check for waiver
-              showAlert((message=`Course: ${courseName} requires that you have completed ${prerequisiteCourseName}. \nPlease obtain a waiver from OAA.`),(title='Waiver Required'));
+              showAlert((message=`course: ${courseName} requires that you have completed ${prerequisiteCourseName}. \nPlease obtain a waiver from OAA.`),(title='Waiver Required'));
             }
             // Darken the background of the prerequisite course
             darken = true;
@@ -245,14 +249,14 @@ function drop(ev) {
       check = true;
     }
     // const check = sem ==='courseContainer' || (sem!='courseContainer' && (!course.sem_no || doubleSemCourses.includes(courseName) || (sem%2 == parseInt(course.sem_no)%2)));
-    // replace later if a primer / elective is offered in both semesters.
     if (
       check &&
       (!course.sem_no &&
       sem !== 'courseContainer' &&
       course.name.slice(-4) !== '(FC)' &&
       course.name.slice(0, 8) !== 'Elective' &&
-      course.name.slice(0, 16) !== 'Entrepreneurship'
+      course.name.slice(0, 16) !== 'Entrepreneurship' &&
+      !doubleSemCourses.includes(courseName)
         ? semName[(sem - 1) % 2] === course.semester
         : true)
     ) {
@@ -278,7 +282,7 @@ function drop(ev) {
               if (flagcourse && mainCourseData.find((course) => course.name === coursename).pre_reqs.length !== 0) {
                 flagend = 1;
                 changed = false;
-                showAlert((message='Course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied'),(title='Incomplete Pre-requisites'));
+                showAlert((message='course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied'),(title='Incomplete Pre-requisites'));
               }
             });
           }
@@ -350,12 +354,12 @@ function drop(ev) {
           showAlert('Exceeding course cap: ' + semCreds[sem - 1]);
         } else {
           changed = false;
-          showAlert((message='Course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied'),(title='Incomplete Pre-requisites'));
+          showAlert((message='course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied'),(title='Incomplete Pre-requisites'));
         }
       }
     } else {
       changed = false;
-      showAlert('Course: ' + courseName + ' is not offered in ' + semName[(sem - 1) % 2]);
+      showAlert('course: ' + courseName + ' is not offered in ' + semName[(sem - 1) % 2]);
     }
   } else {
     changed = false;
