@@ -65,9 +65,8 @@ const showAlert = async (message, title = '') => {
   document.body.appendChild(overlay);
 };
 
-function updatePrerequisitesDisplay() {
+function updatePrerequisitesDisplay(movedCourse) {
   // Iterate through all courses in the target semester
-
   for (let sem = 1; sem <= 8; sem++) {
     const coursesToCheck = chosenCourses[sem];
     let darken = false;
@@ -81,8 +80,11 @@ function updatePrerequisitesDisplay() {
           if (prereqCourseElem && chosenCourses[sem].includes(prerequisiteCourseName)) {
             // Prerequisite course not completed yet, check for waiver
             showAlert(`Course ${courseName} requires that you have completed ${prerequisiteCourseName}. Please obtain a waiver from OAA.`);
-            // Darken the background of the prerequisite course
-            darken = true;
+
+            if (courseName !== movedCourse && prerequisiteCourseName !== movedCourse) {
+              // Darken the background of the prerequisite course
+              darken = true;
+            }
           }
         });
       }
@@ -270,7 +272,7 @@ function drop(ev) {
               const [flagcourse, pre_reqs1] = check_prereqs(coursename, i);
               if (flagcourse && mainCourseData.find((course) => course.name === coursename).pre_reqs.length !== 0) {
                 flagend = 1;
-                showAlert('course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied');
+                showAlert('Course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied');
               }
             });
           }
@@ -330,13 +332,13 @@ function drop(ev) {
         }
       } else {
         if (parseInt(target.getAttribute('credits')) + parseInt(course.credits) > semCreds[sem - 1]) {
-          showAlert('exceeding course cap ' + semCreds[sem - 1]);
+          showAlert('Exceeding course cap ' + semCreds[sem - 1]);
         } else {
-          showAlert('course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied');
+          showAlert('Course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied');
         }
       }
     } else {
-      showAlert('course: ' + courseName + ' is not offered in ' + semName[(sem - 1) % 2]);
+      showAlert('Course: ' + courseName + ' is not offered in ' + semName[(sem - 1) % 2]);
     }
   } else {
     showAlert(`Only Calculus and FC's are allowed in Semester 1`);
@@ -361,56 +363,64 @@ async function updateCourses(exec = 0) {
   courses.forEach((course) => {
     if (!selectedCourses.includes(course.name)) {
       const div = document.createElement('div');
-      div.classList.add('m-1', 'p-[3px]', 'bg-slate-200', 'shadow', 'border-2', 'border-[#003049]');
+      div.classList.add('m-1', 'p-2', 'bg-white', 'shadow', 'border-3', 'border-[#003049]', 'rounded-md', 'border-blue-900');
       div.setAttribute('name', 'courseDiv');
       div.setAttribute('draggable', 'true');
+
       div.ondragstart = (event) => drag(event);
       // set div id as course name
       div.setAttribute('id', course.name);
       // div.setAttribute('id', course.code);
 
+      const topDiv = document.createElement('div');
+      topDiv.classList.add('flex', 'flex-row', 'justify-between', 'items-center', 'mb-1');
+
       const courseName = document.createElement('p');
-      courseName.classList.add('text-center', 'mb-2', 'font-medium', 'font-mono', 'text-base', 'underline', 'underline-offset-4');
+      courseName.classList.add('text-left', 'py-1', 'font-bold', 'font-mono', 'w-[57.5%]');
       courseName.style.clear = 'both';
       courseName.textContent = course.name;
+
+      const courseCredits = document.createElement('p');
+      courseCredits.classList.add('text-center', 'py-1', 'font-mono', 'text-sm', 'w-[37.5%]');
+      courseCredits.textContent = `${course.credits} Credits`;
+
+      topDiv.appendChild(courseName);
+      topDiv.appendChild(courseCredits);
 
       const courseCode = document.createElement('p');
       courseCode.classList.add('text-center', 'm-0', 'mb-2', 'font-mono', 'text-sm');
       courseCode.textContent = course.code;
 
-      const courseCredits = document.createElement('p');
-      courseCredits.classList.add('text-center', 'm-0', 'my-2', 'py-1', 'font-mono', 'text-sm', 'bg-slate-300');
-      courseCredits.textContent = `Credits: ${course.credits}`;
-
       const courseSemesters = document.createElement('p');
-      courseSemesters.classList.add('text-center', 'm-0', 'mb-2', 'font-mono', 'text-sm');
-      courseSemesters.textContent = `Semesters: ${
+      courseSemesters.classList.add('text-left', 'm-0', 'mb-2', 'font-mono', 'text-sm');
+      courseSemesters.innerHTML = `Offered In: <b>${
         doubleSemCourses.includes(course.name) ? semName : course.sem_no === 0 ? course.semester : semName[(course.sem_no - 1) % 2]
-      }`;
+      }</b>`;
 
       const coursePrereqs = document.createElement('div');
-      coursePrereqs.classList.add('text-center', 'm-0', 'font-mono', 'text-sm', 'relative');
+      coursePrereqs.classList.add('text-left', 'm-0', 'font-mono', 'text-sm', 'relative');
 
       const collapsibleHeader = document.createElement('button');
-      collapsibleHeader.classList.add(
-        'border',
-        'border-gray-300',
-        'rounded-md',
-        'py-1',
-        'px-3',
-        'text-xs',
-        'bg-cyan-500',
-        'shadow-sm',
-        'focus:outline-none'
-      );
-      collapsibleHeader.textContent = 'view prerequisites';
+      collapsibleHeader.classList.add('rounded-md', 'p-2', 'text-xs', 'bg-blue-900', 'text-white', 'shadow-sm', 'focus:outline-none');
+      collapsibleHeader.textContent = 'View Prerequisites';
 
       const collapsibleContent = document.createElement('div');
-      collapsibleContent.classList.add('hidden', 'border', 'border-gray-300', 'shadow-lg', 'py-2', 'z-10', 'max-h-32', 'overflow-y-auto', 'text-xs');
+      collapsibleContent.classList.add(
+        'hidden',
+        'border',
+        'border-gray-300',
+        'shadow-lg',
+        'p-2',
+        'z-10',
+        'max-h-32',
+        'overflow-y-auto',
+        'text-xs',
+        'mt-1'
+      );
       if (course.pre_reqs.length != 0) {
         collapsibleContent.textContent = course.pre_reqs; // Assign prerequisites content here
       } else {
-        collapsibleContent.textContent = 'NA';
+        collapsibleContent.textContent = 'None';
       }
 
       collapsibleHeader.addEventListener('click', () => {
@@ -426,11 +436,12 @@ async function updateCourses(exec = 0) {
       coursePrereqs.appendChild(collapsibleContent);
 
       // append
-      div.appendChild(courseName);
+      div.appendChild(topDiv);
+      // div.appendChild(courseName);
       // div.appendChild(courseCode);
-      div.appendChild(coursePrereqs);
-      div.appendChild(courseCredits);
+      // div.appendChild(courseCredits);
       div.appendChild(courseSemesters);
+      div.appendChild(coursePrereqs);
       container.appendChild(div);
     }
   });
@@ -469,7 +480,7 @@ window.onload = () => {
     innerDiv1.setAttribute('id', `Semester-${sem}`);
     // Add attribute to innerDiv2 and display its value in innerDiv1
     const innerDiv2 = document.createElement('div');
-    innerDiv2.classList.add('mx-auto', 'pl-4', 'pr-3', 'pt-2', 'pb-4', 'w-full', 'h-full', 'overflow-y-scroll');
+    innerDiv2.classList.add('mx-auto', 'pl-3', 'pr-1', 'pt-2', 'pb-4', 'w-full', 'h-full', 'overflow-y-scroll');
     innerDiv2.ondrop = (event) => drop(event);
     innerDiv2.ondragover = (event) => allowDrop(event);
     innerDiv2.setAttribute('id', `sem${sem}`);
@@ -500,7 +511,7 @@ window.onload = () => {
 
 function rec_courses(recom = 0) {
   const major = document.getElementById('major').value;
-  const chosenCoursesEmpt = Object.values(chosenCourses).every((arr) => arr.length === 0);
+
   query = document.querySelector('#courseQuery');
   totalCreds = document.querySelector('#totalCredits');
   reqMajorCreds = document.querySelector('#majorCredits');
