@@ -404,6 +404,13 @@ async function updateCourses(exec = 0) {
       courseName.style.clear = 'both';
       courseName.textContent = course.name;
 
+      if (course.name.slice(0, 8) === 'Elective') {
+        courseName.contentEditable = true;
+        courseName.addEventListener('click', () => {
+          courseName.focus();
+        });
+      }
+
       const courseCredits = document.createElement('p');
       courseCredits.classList.add('text-center', 'py-1', 'font-mono', 'text-sm', 'w-[37.5%]');
       courseCredits.textContent = `${course.credits} Credits`;
