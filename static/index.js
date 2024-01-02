@@ -347,7 +347,7 @@ function drop(ev) {
       } else {
         if (parseInt(target.getAttribute('credits')) + parseInt(course.credits) > semCreds[sem - 1]) {
           changed = false;
-          showAlert('Exceeding course cap ' + semCreds[sem - 1]);
+          showAlert('Exceeding course cap: ' + semCreds[sem - 1]);
         } else {
           changed = false;
           showAlert((message='Course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied'),(title='Incomplete Pre-requisites'));
@@ -421,7 +421,7 @@ async function updateCourses(exec = 0) {
       coursePrereqs.classList.add('text-left', 'm-0', 'font-mono', 'text-sm', 'relative');
 
       const collapsibleHeader = document.createElement('button');
-      collapsibleHeader.classList.add('rounded-md', 'p-2', 'text-xs', 'bg-blue-900', 'text-white', 'shadow-sm', 'focus:outline-none');
+      collapsibleHeader.classList.add('rounded-md', 'p-2', 'text-xs', 'bg-cyan-500', 'shadow-sm', 'focus:outline-none');
       collapsibleHeader.textContent = 'View Prerequisites';
 
       const collapsibleContent = document.createElement('div');
