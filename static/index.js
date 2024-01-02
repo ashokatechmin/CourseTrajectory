@@ -12,11 +12,11 @@ const doubleSemCourses = [
 ];
 const majorCreds = {
   default: 'NA',
-  './courses/cs_maj.json': 120,
-  './courses/cs_major_math_crypt.json': 120,
-  './courses/cs_major_math_ml.json': 120,
-  './courses/cs_ent.json': 120,
-  './courses/economics.json': 120,
+  './courses/cs_maj.json': 116,
+  './courses/cs_major_math_crypt.json': 116,
+  './courses/cs_major_math_ml.json': 116,
+  './courses/cs_ent.json': 116,
+  './courses/economics.json': 116,
 };
 // for majorCredits
 let deftag = 0;
@@ -30,26 +30,27 @@ const showAlert = async (message, title = '') => {
 
   // Create the popup div
   const popup = document.createElement('div');
-  popup.className = 'relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white flex flex-col items-center';
+  popup.className = 'relative top-20 mx-auto p-4 border w-96 shadow-lg rounded-md bg-white flex flex-col';
 
   // Add the title
   if (title !== '') {
     const titleElement = document.createElement('p');
     titleElement.textContent = title;
-    titleElement.className = 'mb-2 text-center font-bold text-xl';
+    titleElement.className = 'mb-2 font-bold text-xl font-mono';
 
     popup.appendChild(titleElement);
   }
 
   // Add the message
   const messageElement = document.createElement('p');
-  messageElement.textContent = message;
-  messageElement.className = 'mb-4 text-center';
+  const messageText = message.replace(/\n/g, '<br>'); // Replace \n with <br> tags
+  messageElement.innerHTML = messageText; // Use innerHTML to render <br> tags
+  messageElement.className = 'mb-4 text-sm font-mono whitespace-pre-line'; // Apply whitespace-pre-line to handle line breaks
 
   // Add a close button
   const closeButton = document.createElement('button');
   closeButton.textContent = 'Close';
-  closeButton.className = 'px-4 py-2 bg-red-500 text-white hover:bg-red-700 rounded';
+  closeButton.className = 'px-4 py-2 bg-red-500 mx-auto text-white hover:bg-red-700 rounded font-mono text-sm inline-flex items-center w-fit';
   closeButton.onclick = function () {
     document.body.removeChild(overlay);
   };
@@ -82,7 +83,7 @@ function updatePrerequisitesDisplay(movedCourse) {
           if (prereqCourseElem && chosenCourses[sem].includes(prerequisiteCourseName)) {
             if (courseName === movedCourse || prerequisiteCourseName === movedCourse) {
               // Prerequisite course not completed yet, check for waiver
-              showAlert(`Course ${courseName} requires that you have completed ${prerequisiteCourseName}. Please obtain a waiver from OAA.`);
+              showAlert((message=`Course: ${courseName} requires that you have completed ${prerequisiteCourseName}. \nPlease obtain a waiver from OAA.`),(title='Waiver Required'));
             }
             // Darken the background of the prerequisite course
             darken = true;
@@ -138,7 +139,7 @@ const getCourseData = async (query, path, exec) => {
         deftag = 1;
         majorDiv = document.querySelector('#majorCredits');
         majorDiv.setAttribute('credits', majorCreds[path]);
-        majorDiv.innerHTML = `Remaining non-open major credits: ${majorDiv.getAttribute('credits')}`;
+        majorDiv.innerHTML = `Remaining Non-Open Academic Credits: ${majorDiv.getAttribute('credits')}`;
         totCredits = document.querySelector('#totalCredits');
         totCredits.setAttribute('credits', '0');
         totCredits.innerHTML = `Total Credits: ${totCredits.getAttribute('credits')}`;
@@ -221,6 +222,8 @@ function drop(ev) {
   const course = mainCourseData.find((course) => course.name === courseName);
   let changed = true;
 
+  const major = document.querySelector("#major").value;
+
   var pre_reqs = course.pre_reqs;
   var flag = pre_reqs.length;
 
@@ -275,7 +278,7 @@ function drop(ev) {
               if (flagcourse && mainCourseData.find((course) => course.name === coursename).pre_reqs.length !== 0) {
                 flagend = 1;
                 changed = false;
-                showAlert('Course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied');
+                showAlert((message='Course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied'),(title='Incomplete Pre-requisites'));
               }
             });
           }
@@ -289,12 +292,13 @@ function drop(ev) {
                 totalCredVal = parseInt(totalCreds.getAttribute('credits'));
                 totalCreds.setAttribute('credits', totalCredVal + course.credits);
                 totalCreds.innerHTML = `Total Credits: ${totalCreds.getAttribute('credits')}`;
-                if (deftag && reqMajorCreds.getAttribute('credits') > 0) {
-                  reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) - course.credits);
-                  reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+                if (deftag && (majorCreds[major] - parseInt(totalCreds.getAttribute('credits'))) >= 0) {
+                  reqMajorCreds.setAttribute('credits', majorCreds[major] - parseInt(totalCreds.getAttribute('credits')));
+                  reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
                 }
-                if (reqMajorCreds.getAttribute('credits') < 0) {
+                if (majorCreds[major] - parseInt(totalCreds.getAttribute('credits')) < 0) {
                   reqMajorCreds.setAttribute('credits', 0);
+                  reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
                 }
               }
             }
@@ -315,9 +319,13 @@ function drop(ev) {
                   totalCredVal = parseInt(totalCreds.getAttribute('credits'));
                   totalCreds.setAttribute('credits', totalCredVal - course.credits);
                   totalCreds.innerHTML = `Total Credits: ${totalCreds.getAttribute('credits')}`;
-                  if (deftag) {
-                    reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) + course.credits);
-                    reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+                  if (deftag && (majorCreds[major] - parseInt(totalCreds.getAttribute('credits'))) >= 0) {
+                    reqMajorCreds.setAttribute('credits', majorCreds[major] - parseInt(totalCreds.getAttribute('credits')));
+                    reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
+                  }
+                  if (majorCreds[major] - parseInt(totalCreds.getAttribute('credits')) < 0) {
+                    reqMajorCreds.setAttribute('credits', 0);
+                    reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
                   }
                 }
               }
@@ -342,7 +350,7 @@ function drop(ev) {
           showAlert('Exceeding course cap ' + semCreds[sem - 1]);
         } else {
           changed = false;
-          showAlert('Course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied');
+          showAlert((message='Course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied'),(title='Incomplete Pre-requisites'));
         }
       }
     } else {
@@ -430,7 +438,7 @@ async function updateCourses(exec = 0) {
         'mt-1'
       );
       if (course.pre_reqs.length != 0) {
-        collapsibleContent.textContent = course.pre_reqs; // Assign prerequisites content here
+        collapsibleContent.textContent = course.pre_reqs;
       } else {
         collapsibleContent.textContent = 'None';
       }
@@ -473,7 +481,7 @@ window.onload = () => {
     chosenCourses[sem] = [];
     const div = document.createElement('div');
     //
-    div.classList.add('p-0', 'pb-5', 'm-0', 'border-[2px]', 'border-black', 'w-full', 'h-full', 'shadow', 'bg-slate-200', 'overflow-hidden');
+    div.classList.add('p-0', 'pb-5', 'm-0', 'border-[3px]', 'border-black', 'w-full', 'h-full', 'shadow', 'bg-slate-100', 'overflow-hidden');
 
     const innerDiv1 = document.createElement('div');
     // bg-[#c1121f]
@@ -486,7 +494,7 @@ window.onload = () => {
       'mt-0',
       'mb-0',
       'text-base',
-      'border-b-[2px]',
+      'border-b-[3px]',
       'border-black'
     );
     innerDiv1.setAttribute('id', `Semester-${sem}`);
@@ -516,7 +524,7 @@ window.onload = () => {
 
   showAlert(
     (message =
-      'This platform is designed to aid in course planning and major selection at Ashoka University. Due to potential curriculum changes, verify all information independently. Use this tool as a guide, not the sole basis for academic decisions.'),
+      'This platform is designed to aid in course planning and major selection at Ashoka University. \nDue to potential curriculum changes, verify all information independently. Use this tool as a guide, not the sole basis for academic decisions.'),
     (title = 'Disclaimer')
   );
 };
@@ -560,7 +568,7 @@ function rec_courses(recom = 0) {
         totalCreds.setAttribute('credits', totalcredits);
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
         reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) - totalcredits);
-        reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+        reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
       });
     } else {
       updateCourses(1).then(() => {
@@ -591,7 +599,7 @@ function rec_courses(recom = 0) {
         totalCreds.innerHTML = `Total Credits: ${totalcredits}`;
         if (reqMajorCreds.getAttribute('credits') > 0) {
           reqMajorCreds.setAttribute('credits', parseInt(reqMajorCreds.getAttribute('credits')) - totalcredits);
-          reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+          reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
         }
         if (reqMajorCreds.getAttribute('credits') > 0) {
           reqMajorCreds.setAttribute('credits', 0);
@@ -601,7 +609,7 @@ function rec_courses(recom = 0) {
   } else {
     // clear
     if (major === 'default' && recom) {
-      showAlert('Cannot recommend courses here\nPlease select a major and try again');
+      showAlert('Cannot recommend courses here.\nPlease select a major and try again');
     } else {
       if (!recom) {
         updateCourses(1);
@@ -609,7 +617,7 @@ function rec_courses(recom = 0) {
         totalCreds.innerHTML = `Total Credits: ${credDiv.getAttribute('credits')}`;
         if (deftag) {
           reqMajorCreds.setAttribute('credits', majorCreds[major]);
-          reqMajorCreds.innerHTML = `Remaining non-open major credits: ${reqMajorCreds.getAttribute('credits')}`;
+          reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
         }
       }
     }
