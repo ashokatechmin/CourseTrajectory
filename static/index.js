@@ -620,7 +620,7 @@ function rec_courses(recom = 0) {
   } else {
     // clear
     if (major === 'default' && recom) {
-      showAlert('Cannot recommend courses here.\nPlease select a major and try again');
+      showAlert('Cannot recommend courses here.\nPlease select a major and try again.');
     } else {
       if (!recom) {
         updateCourses(1);
