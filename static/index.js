@@ -20,7 +20,7 @@ const majorCreds = {
   './courses/cs_major_math_ml.json': 116,
   './courses/cs_ent.json': 116,
   './courses/economics.json': 116,
-  './courses/econ_fin.json': 116
+  './courses/econ_fin.json': 116,
 };
 // for majorCredits
 let deftag = 0;
@@ -40,16 +40,20 @@ const showAlert = async (message, title = '') => {
   if (title !== '') {
     const titleElement = document.createElement('p');
     titleElement.textContent = title;
-    titleElement.className = 'mb-2 font-bold text-xl font-mono';
+    titleElement.className = 'text-center mb-2 font-bold text-xl font-mono';
 
     popup.appendChild(titleElement);
   }
 
   // Add the message
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'overflow-y-auto max-h-96';
   const messageElement = document.createElement('p');
   const messageText = message.replace(/\n/g, '<br>'); // Replace \n with <br> tags
   messageElement.innerHTML = messageText; // Use innerHTML to render <br> tags
   messageElement.className = 'mb-4 text-sm font-mono whitespace-pre-line'; // Apply whitespace-pre-line to handle line breaks
+
+  messageDiv.appendChild(messageElement);
 
   // Add a close button
   const closeButton = document.createElement('button');
@@ -60,7 +64,7 @@ const showAlert = async (message, title = '') => {
   };
 
   // Append elements to the popup
-  popup.appendChild(messageElement);
+  popup.appendChild(messageDiv);
   popup.appendChild(closeButton);
 
   // Append the popup to the overlay
@@ -87,7 +91,10 @@ function updatePrerequisitesDisplay(movedCourse) {
           if (prereqCourseElem && chosenCourses[sem].includes(prerequisiteCourseName)) {
             if (courseName === movedCourse || prerequisiteCourseName === movedCourse) {
               // Prerequisite course not completed yet, check for waiver
-              showAlert((message=`course: ${courseName} requires that you have completed ${prerequisiteCourseName}. \nPlease obtain a waiver from OAA.`),(title='Waiver Required'));
+              showAlert(
+                (message = `course: ${courseName} requires that you have completed ${prerequisiteCourseName}. \nPlease obtain a waiver from OAA.`),
+                (title = 'Waiver Required')
+              );
             }
             // Darken the background of the prerequisite course
             darken = true;
@@ -226,7 +233,7 @@ function drop(ev) {
   const course = mainCourseData.find((course) => course.name === courseName);
   let changed = true;
 
-  const major = document.querySelector("#major").value;
+  const major = document.querySelector('#major').value;
 
   var pre_reqs = course.pre_reqs;
   var flag = pre_reqs.length;
@@ -282,7 +289,10 @@ function drop(ev) {
               if (flagcourse && mainCourseData.find((course) => course.name === coursename).pre_reqs.length !== 0) {
                 flagend = 1;
                 changed = false;
-                showAlert((message='course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied'),(title='Incomplete Pre-requisites'));
+                showAlert(
+                  (message = 'course: ' + coursename + '\n' + 'pre-requisites: ' + pre_reqs1 + ' not satisfied'),
+                  (title = 'Incomplete Pre-requisites')
+                );
               }
             });
           }
@@ -296,7 +306,7 @@ function drop(ev) {
                 totalCredVal = parseInt(totalCreds.getAttribute('credits'));
                 totalCreds.setAttribute('credits', totalCredVal + course.credits);
                 totalCreds.innerHTML = `Total Credits: ${totalCreds.getAttribute('credits')}`;
-                if (deftag && (majorCreds[major] - parseInt(totalCreds.getAttribute('credits'))) >= 0) {
+                if (deftag && majorCreds[major] - parseInt(totalCreds.getAttribute('credits')) >= 0) {
                   reqMajorCreds.setAttribute('credits', majorCreds[major] - parseInt(totalCreds.getAttribute('credits')));
                   reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
                 }
@@ -323,7 +333,7 @@ function drop(ev) {
                   totalCredVal = parseInt(totalCreds.getAttribute('credits'));
                   totalCreds.setAttribute('credits', totalCredVal - course.credits);
                   totalCreds.innerHTML = `Total Credits: ${totalCreds.getAttribute('credits')}`;
-                  if (deftag && (majorCreds[major] - parseInt(totalCreds.getAttribute('credits'))) >= 0) {
+                  if (deftag && majorCreds[major] - parseInt(totalCreds.getAttribute('credits')) >= 0) {
                     reqMajorCreds.setAttribute('credits', majorCreds[major] - parseInt(totalCreds.getAttribute('credits')));
                     reqMajorCreds.innerHTML = `Remaining Non-Open Academic Credits: ${reqMajorCreds.getAttribute('credits')}`;
                   }
@@ -354,7 +364,10 @@ function drop(ev) {
           showAlert('Exceeding course cap: ' + semCreds[sem - 1]);
         } else {
           changed = false;
-          showAlert((message='course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied'),(title='Incomplete Pre-requisites'));
+          showAlert(
+            (message = 'course: ' + courseName + '\n' + 'pre-requisites: ' + pre_reqs + ' not satisfied'),
+            (title = 'Incomplete Pre-requisites')
+          );
         }
       }
     } else {
@@ -528,7 +541,7 @@ window.onload = () => {
 
   showAlert(
     (message =
-      'This platform is designed to aid in course planning and major selection at Ashoka University. \nDue to potential curriculum changes, verify all information independently. Use this tool as a guide, not the sole basis for academic decisions.'),
+      'This platform is designed to aid in course planning and major selection at Ashoka University. \n\nDue to potential curriculum changes, verify all information independently. Use this tool as a guide, not the sole basis for academic decisions.'),
     (title = 'Disclaimer')
   );
 };
